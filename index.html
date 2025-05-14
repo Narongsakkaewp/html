@@ -43,23 +43,68 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
-            border: 1px solid black;
         }
 
         th,
         td {
-            border: 1px solid black;
+            border: 1px solid #9194a7;
             padding: 10px;
             text-align: center;
             font-size: 16px;
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #166534;
+            color: white;
+            font-weight: normal;
         }
 
         tbody tr:hover {
             background-color: #f9f9f9;
+        }
+
+        input, select {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+            font-size: 14px;
+            font-family: 'Sarabun';
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn_send {
+            background-color: #166534;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn_send:hover {
+            background-color: #14532d;
+        }
+        .btn_cancel {
+            background-color: #dc2626;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn_cancel:hover {
+            background-color: #991b1b;
         }
     </style>
 
@@ -71,6 +116,28 @@
         <div class="header">
             <h1>Employee Check Table</h1>
         </div>
+
+        <form class="form-inline">
+            <input type="text" id="code" name="code" placeholder="Code">
+            <input type="text" id="name" name="name" placeholder="Name">
+
+            <select name="department" id="department">
+                <option value="" disabled selected >แผนก</option>
+                <option value="it">แผนก : ไอที</option>
+                <option value="mrk">แผนก : การตลาด</option>
+                <option value="hr">แผนก : บุคคล</option>
+                <option value="acc">แผนก : บัญชี</option>
+            </select>
+
+            <label for="startDate" style="font-size: small;">เลือกวันที่เริ่มต้น</label>
+            <input type="date" id="startDate" name="startDate" />
+
+            <label for="endDate" style="font-size: small;">เลือกวันที่สิ้นสุด</label>
+            <input type="date" id="endDate" name="endDate" value="YYYY-MM-DD"/>
+
+            <button class="btn_send" type="button" onclick="alert('ค้นหาสำเร็จ')">ค้นหา</button>
+            <button class="btn_cancel" type="button" onclick="alert('ยกเลิกสำเร็จ')">ยกเลิก</button>
+        </form>
 
         <div class="table-responsive">
             <table>
@@ -114,7 +181,6 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 
 </body>
