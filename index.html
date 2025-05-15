@@ -2,28 +2,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Employee Check Table</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.io/logo_vby.png">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.io/logo_vby.png" />
 
-    <!-- google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
-
-    <style>
+    <!-- <style>
         body {
             font-family: 'Sarabun', sans-serif;
             font-size: 18px;
             padding: 3.5%;
+            width: auto;
 
         }
 
@@ -132,592 +129,98 @@
         .btn_map {
             font-family: 'sarabun', sans-serif;
         }
-    </style>
+    </style> -->
 </head>
 
-<body style="background: linear-gradient(90deg,rgb(2, 182, 104), rgb(1, 111, 65) 100%);">
-    <div class="container">
-
-        <div class="header">
-            <h1>Employee Check Table</h1>
+<body class="bg-gradient-to-r from-green-500 to-emerald-900 font-[Sarabun] text-[18px] px-[3.5%]">
+    <div class="container mx-auto my-6 p-6 bg-white rounded-xl shadow-lg">
+        <div class="text-center pb-6">
+            <h1 class="text-2xl font-bold">Employee Check Table</h1>
         </div>
 
-        <form class="form-inline">
-            <input type="text" id="code" name="code" placeholder="Code">
-            <input type="text" id="name" name="name" placeholder="Name">
-
-            <select name="department" id="department">
+        <form class="flex flex-wrap justify-center items-center gap-2 mb-4">
+            <input type="text" id="code" name="code" placeholder="Code"
+                class="p-2 border border-gray-300 rounded w-[200px] text-sm" />
+            <input type="text" id="name" name="name" placeholder="Name"
+                class="p-2 border border-gray-300 rounded w-[200px] text-sm" />
+            <select name="department" id="department" class="p-2 border border-gray-300 rounded w-[200px] text-sm">
                 <option value="" disabled selected>แผนก</option>
                 <option value="it">แผนก : ไอที</option>
                 <option value="mrk">แผนก : การตลาด</option>
                 <option value="hr">แผนก : บุคคล</option>
                 <option value="acc">แผนก : บัญชี</option>
             </select>
-
-            <label for="startDate" style="font-size: small;">วันที่เริ่มต้น</label>
-            <input type="date" id="startDate" name="startDate" />
-
-            <label for="endDate" style="font-size: small;">วันที่สิ้นสุด</label>
-            <input type="date" id="endDate" name="endDate" />
-
-            <script>
-                const startDateInput = document.getElementById("startDate");
-                const endDateInput = document.getElementById("endDate");
-
-                startDateInput.addEventListener("change", () => {
-                    const startDate = startDateInput.value;
-                    endDateInput.min = startDate;
-
-                    if (endDateInput.value && endDateInput.value < startDate) {
-                        endDateInput.value = "";
-                    }
-                });
-            </script>
-
-            <button class="btn_send" type="button" onclick="alert('ค้นหาสำเร็จ')">ค้นหา</button>
-            <button class="btn_cancel" type="button" onclick="alert('ยกเลิกสำเร็จ')">ยกเลิก</button>
+            <label for="startDate" class="text-sm">วันที่เริ่มต้น</label>
+            <input type="date" id="startDate" name="startDate"
+                class="p-2 border border-gray-300 rounded w-[200px] text-sm" />
+            <label for="endDate" class="text-sm">วันที่สิ้นสุด</label>
+            <input type="date" id="endDate" name="endDate"
+                class="p-2 border border-gray-300 rounded w-[200px] text-sm" />
+            <button type="button" class="bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded text-sm"
+                onclick="alert('ค้นหาสำเร็จ')">ค้นหา</button>
+            <button type="button" class="bg-red-600 hover:bg-red-800 text-white px-4 py-2 rounded text-sm"
+                onclick="alert('ยกเลิกสำเร็จ')">ยกเลิก</button>
         </form>
 
-        <div class="table-responsive">
-            <table>
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse mt-2 text-sm">
                 <thead>
-                    <tr>
-                        <th>รหัสพนักงาน</th>
-                        <th>แผนก</th>
-                        <th>ชื่อ - นามสกุล</th>
-                        <th>วัน/เวลา Check-in</th>
-                        <th>Lat, Long Check-in</th>
-                        <th>Map</th>
-                        <th>วัน/เวลา Check-out</th>
-                        <th>Lat, Long Check-out</th>
-                        <th>Map</th>
+                    <tr class="bg-green-900 text-white text-center">
+                        <th class="border border-gray-400 p-2">รหัสพนักงาน</th>
+                        <th class="border border-gray-400 p-2">แผนก</th>
+                        <th class="border border-gray-400 p-2">ชื่อ - นามสกุล</th>
+                        <th class="border border-gray-400 p-2">วัน/เวลา Check-in</th>
+                        <th class="border border-gray-400 p-2">Lat, Long Check-in</th>
+                        <th class="border border-gray-400 p-2">Map</th>
+                        <th class="border border-gray-400 p-2">วัน/เวลา Check-out</th>
+                        <th class="border border-gray-400 p-2">Lat, Long Check-out</th>
+                        <th class="border border-gray-400 p-2">Map</th>
                     </tr>
                 </thead>
-                <tbody style="font-weight: normal;">
-                    <tr>
-                        <td>660300</td>
-                        <td>IT</td>
-                        <td>John Doe</td>
-                        <td>14 may 2025, 4:11pm</td>
-                        <td>13.87887706542625, 100.41233933769146</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.87887706542625, 100.41233933769146" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
+                <tbody class="text-center">
+                    <tr class="hover:bg-gray-100">
+                        <td class="border border-gray-400 p-2">660300</td>
+                        <td class="border border-gray-400 p-2">IT</td>
+                        <td class="border border-gray-400 p-2">John Doe</td>
+                        <td class="border border-gray-400 p-2">14 may 2025, 4:11pm</td>
+                        <td class="border border-gray-400 p-2">13.878877, 100.412339</td>
+                        <td class="border border-gray-400 p-2">
+                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
+                                rel="noopener noreferrer">
+                                <button
+                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
                             </a>
                         </td>
-                        <td>14 may 2025, 6:02pm</td>
-                        <td>13.87887706542625, 100.41233933769146</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.87887706542625, 100.41233933769146" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
+                        <td class="border border-gray-400 p-2">14 may 2025, 6:02pm</td>
+                        <td class="border border-gray-400 p-2">13.878877, 100.412339</td>
+                        <td class="border border-gray-400 p-2">
+                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
+                                rel="noopener noreferrer">
+                                <button
+                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
                             </a>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
+                    <tr class="hover:bg-gray-100">
+                        <td class="border border-gray-400 p-2">660301</td>
+                        <td class="border border-gray-400 p-2">Marketing</td>
+                        <td class="border border-gray-400 p-2">Jane Doe</td>
+                        <td class="border border-gray-400 p-2">13 may 2025, 8:14am</td>
+                        <td class="border border-gray-400 p-2">13.725761, 100.527069</td>
+                        <td class="border border-gray-400 p-2">
+                            <a href="https://www.google.com/maps?q=13.725761,100.527069" target="_blank"
+                                rel="noopener noreferrer">
+                                <button
+                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
                             </a>
                         </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660300</td>
-                        <td>IT</td>
-                        <td>John Doe</td>
-                        <td>14 may 2025, 4:11pm</td>
-                        <td>13.87887706542625, 100.41233933769146</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.87887706542625, 100.41233933769146" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>14 may 2025, 6:02pm</td>
-                        <td>13.87887706542625, 100.41233933769146</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.87887706542625, 100.41233933769146" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>660301</td>
-                        <td>Marketing</td>
-                        <td>Jane Doe</td>
-                        <td>13 may 2025, 8:14am</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
-                            </a>
-                        </td>
-                        <td>13 may 2025, 4:37pm</td>
-                        <td>13.725760645859578, 100.52706912363175</td>
-                        <td>
-                            <a href="https://www.google.com/maps?q=13.725760645859578,100.52706912363175" E"
-                                target="_blank" rel="noopener noreferrer">
-                                <button class="btn_map">Map</button>
+                        <td class="border border-gray-400 p-2">13 may 2025, 4:37pm</td>
+                        <td class="border border-gray-400 p-2">13.725761, 100.527069</td>
+                        <td class="border border-gray-400 p-2">
+                            <a href="https://www.google.com/maps?q=13.725761,100.527069" target="_blank"
+                                rel="noopener noreferrer">
+                                <button
+                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
                             </a>
                         </td>
                     </tr>
@@ -726,12 +229,24 @@
         </div>
     </div>
 
-</body>
+    <!-- ฟังก์ชันควบคุมวันที่ -->
+    <script>
+        const startDateInput = document.getElementById("startDate");
+        const endDateInput = document.getElementById("endDate");
 
-<footer>
-    <div style="text-align: center; margin-top: 20px; color: white;">
-        <p>© 2025 Employee Check Table. <br> All rights reserved.</p>
-    </div>
-</footer>
+        startDateInput.addEventListener("change", () => {
+            const startDate = startDateInput.value;
+            endDateInput.min = startDate;
+
+            if (endDateInput.value && endDateInput.value < startDate) {
+                endDateInput.value = "";
+            }
+        });
+    </script>
+
+    <footer class="text-center text-white mt-6">
+        <p>© 2025 Employee Check Table. <br />All rights reserved.</p>
+    </footer>
+</body>
 
 </html>
