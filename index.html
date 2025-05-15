@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Employee Check Table</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.io/logo_vby.png" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous"> -->
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,6 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
 
+    <!-- CSS no Framwork -->
     <!-- <style>
         body {
             font-family: 'Sarabun', sans-serif;
@@ -133,9 +135,59 @@
 </head>
 
 <body class="bg-gradient-to-r from-green-500 to-emerald-900 font-[Sarabun] text-[18px] px-[3.5%]">
-    <div class="container mx-auto my-6 p-6 bg-white rounded-xl shadow-lg">
+    <!-- Navbar -->
+    <nav class="my-6 p-6 bg-white rounded-xl shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <img src="assets/favicon.io/logo_vby.png" alt="Logo" class="h-10 w-10" />
+                </div>
+
+                <!-- Hamburger Button -->
+                <button id="menuToggle" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-green-700">หน้าแรก</a>
+                    <a href="#" class="text-gray-700 hover:text-green-700">ตรวจสอบ</a>
+                    <a href="#" class="text-gray-700 hover:text-green-700">รายงาน</a>
+                    <a href="#" class="text-gray-700 hover:text-green-700">ติดต่อ</a>
+                </div>
+
+                <!-- Login Button -->
+                <div class="hidden md:flex">
+                    <button onclick="openLogin()"
+                        class="bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded text-sm">
+                        เข้าสู่ระบบ
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="navbar-dropdown" class="hidden mt-4 md:hidden">
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">หน้าแรก</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">ตรวจสอบ</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">รายงาน</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">ติดต่อ</a>
+                <button onclick="openLogin()"
+                    class="w-full mt-2 bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded text-sm">
+                    เข้าสู่ระบบ
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container max-w-full my-6 p-6 bg-white rounded-xl shadow-lg">
         <div class="text-center pb-6">
-            <h1 class="text-2xl font-bold">Employee Check Table</h1>
+            <h1 class="text-3xl font-bold">Employee Check Table</h1>
         </div>
 
         <form class="flex flex-wrap justify-center items-center gap-2 mb-4">
@@ -177,6 +229,7 @@
                         <th class="border border-gray-400 p-2">Map</th>
                     </tr>
                 </thead>
+
                 <tbody class="text-center">
                     <tr class="hover:bg-gray-100">
                         <td class="border border-gray-400 p-2">660300</td>
@@ -201,6 +254,7 @@
                             </a>
                         </td>
                     </tr>
+
                     <tr class="hover:bg-gray-100">
                         <td class="border border-gray-400 p-2">660301</td>
                         <td class="border border-gray-400 p-2">Marketing</td>
@@ -224,12 +278,25 @@
                             </a>
                         </td>
                     </tr>
+
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- ฟังก์ชันควบคุมวันที่ -->
+    <!-- Hamburger Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('navbar-dropdown');
+
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        });
+    </script>
+
+    <!-- Date Control -->
     <script>
         const startDateInput = document.getElementById("startDate");
         const endDateInput = document.getElementById("endDate");
@@ -244,9 +311,27 @@
         });
     </script>
 
-    <footer class="text-center text-white mt-6">
-        <p>© 2025 Employee Check Table. <br />All rights reserved.</p>
-    </footer>
+    <div id="modalContainer"></div>
+    <!-- Login Modal -->
+    <script>
+        function openLogin() {
+            fetch('login.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('modalContainer').innerHTML = html;
+                    document.getElementById('loginModal').classList.remove('hidden');
+                });
+        }
+        function closeLogin() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+    </script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script> -->
 </body>
+
+<footer class="text-center text-white mt-6">
+    <p>© 2025 Employee Check Table. <br />All rights reserved.</p>
+</footer>
 
 </html>
