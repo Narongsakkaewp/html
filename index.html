@@ -145,6 +145,9 @@
             height: 40px;
             width: 40px;
         }
+        td{
+            font-weight: lighter;
+        }
     </style>
 </head>
 
@@ -159,7 +162,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0 ms-3">
                     <li class="nav-item">
                         <a class="nav-link" href="main.html">หน้าแรก</a>
                     </li>
@@ -178,49 +181,54 @@
         </div>
     </nav>
 
-
-    <div class="container max-w-full my-6 p-6 bg-white rounded-xl shadow-lg">
-        <div class="text-center pb-6">
-            <h1 class="text-3xl font-bold">Employee Check Table</h1>
+    <div class="container mw-100 my-6 p-4 bg-white rounded-4 shadow-lg">
+        <div class="text-center pb-4">
+            <h1 class="display-6 fw-bold">Employee Check Table</h1>
         </div>
 
-        <form class="flex flex-wrap justify-center items-center gap-2 mb-4">
-            <input type="text" id="code" name="code" placeholder="Code"
-                class="p-2 border border-gray-300 rounded w-[200px] text-sm" />
-            <input type="text" id="name" name="name" placeholder="Name"
-                class="p-2 border border-gray-300 rounded w-[200px] text-sm" />
-            <select name="department" id="department" class="p-2 border border-gray-300 rounded w-[200px] text-sm">
-                <option value="" disabled selected>แผนก</option>
-                <option value="it">แผนก : ไอที</option>
-                <option value="mrk">แผนก : การตลาด</option>
-                <option value="hr">แผนก : บุคคล</option>
-                <option value="acc">แผนก : บัญชี</option>
-            </select>
-            <label for="startDate" class="text-sm">วันที่เริ่มต้น</label>
-            <input type="date" id="startDate" name="startDate"
-                class="p-2 border border-gray-300 rounded w-[200px] text-sm" />
-            <label for="endDate" class="text-sm">วันที่สิ้นสุด</label>
-            <input type="date" id="endDate" name="endDate"
-                class="p-2 border border-gray-300 rounded w-[200px] text-sm" />
-            <button type="button" class="bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded text-sm"
-                onclick="alert('ค้นหาสำเร็จ')">ค้นหา</button>
-            <button type="button" class="bg-red-600 hover:bg-red-800 text-white px-4 py-2 rounded text-sm"
-                onclick="alert('ยกเลิกสำเร็จ')">ยกเลิก</button>
+        <form class="row gx-2 gy-2 align-items-end mb-4">
+            <div class="col-md-2">
+                <input type="text" id="code" name="code" placeholder="Code" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-2">
+                <input type="text" id="name" name="name" placeholder="Name" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-2">
+                <select name="department" id="department" class="form-select form-select-sm">
+                    <option value="" disabled selected>แผนก</option>
+                    <option value="it">แผนก : ไอที</option>
+                    <option value="mrk">แผนก : การตลาด</option>
+                    <option value="hr">แผนก : บุคคล</option>
+                    <option value="acc">แผนก : บัญชี</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="startDate" class="form-label form-label-sm">วันที่เริ่มต้น :</label>
+                <input type="date" id="startDate" name="startDate" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-2">
+                <label for="endDate" class="form-label form-label-sm">วันที่สิ้นสุด :</label>
+                <input type="date" id="endDate" name="endDate" class="form-control form-control-sm" />
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-success btn-sm" onclick="alert('ค้นหาสำเร็จ')">ค้นหา</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="alert('ยกเลิกสำเร็จ')">ยกเลิก</button>
+            </div>
         </form>
 
-        <div class="overflow-x-auto">
-            <table class="w-full border-collapse mt-2 text-sm">
-                <thead>
-                    <tr class="bg-green-900 text-white text-center">
-                        <th class="border border-gray-400 p-2">รหัสพนักงาน</th>
-                        <th class="border border-gray-400 p-2">แผนก</th>
-                        <th class="border border-gray-400 p-2">ชื่อ - นามสกุล</th>
-                        <th class="border border-gray-400 p-2">วัน/เวลา Check-in</th>
-                        <th class="border border-gray-400 p-2">Lat, Long Check-in</th>
-                        <th class="border border-gray-400 p-2">Map</th>
-                        <th class="border border-gray-400 p-2">วัน/เวลา Check-out</th>
-                        <th class="border border-gray-400 p-2">Lat, Long Check-out</th>
-                        <th class="border border-gray-400 p-2">Map</th>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle text-center ">
+                <thead class="table-success">
+                    <tr class="text-white text-center">
+                        <th class="border border-dark">รหัสพนักงาน</th>
+                        <th class="border border-dark">แผนก</th>
+                        <th class="border border-dark">ชื่อ - นามสกุล</th>
+                        <th class="border border-dark">วัน/เวลา Check-in</th>
+                        <th class="border border-dark">Lat, Long Check-in</th>
+                        <th class="border border-dark">Map</th>
+                        <th class="border border-dark">วัน/เวลา Check-out</th>
+                        <th class="border border-dark">Lat, Long Check-out</th>
+                        <th class="border border-dark">Map</th>
                     </tr>
                 </thead>
 
@@ -242,102 +250,6 @@
                         <td class="border border-gray-400 p-2">13.878877, 100.412339</td>
                         <td class="border border-gray-400 p-2">
                             <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
-                                rel="noopener noreferrer">
-                                <button
-                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-100">
-                        <td class="border border-gray-400 p-2">660300</td>
-                        <td class="border border-gray-400 p-2">IT</td>
-                        <td class="border border-gray-400 p-2">John Doe</td>
-                        <td class="border border-gray-400 p-2">14 may 2025, 4:11pm</td>
-                        <td class="border border-gray-400 p-2">13.878877, 100.412339</td>
-                        <td class="border border-gray-400 p-2">
-                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
-                                rel="noopener noreferrer">
-                                <button
-                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
-                            </a>
-                        </td>
-                        <td class="border border-gray-400 p-2">14 may 2025, 6:02pm</td>
-                        <td class="border border-gray-400 p-2">13.878877, 100.412339</td>
-                        <td class="border border-gray-400 p-2">
-                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
-                                rel="noopener noreferrer">
-                                <button
-                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-100">
-                        <td class="border border-gray-400 p-2">660300</td>
-                        <td class="border border-gray-400 p-2">IT</td>
-                        <td class="border border-gray-400 p-2">John Doe</td>
-                        <td class="border border-gray-400 p-2">14 may 2025, 4:11pm</td>
-                        <td class="border border-gray-400 p-2">13.878877, 100.412339</td>
-                        <td class="border border-gray-400 p-2">
-                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
-                                rel="noopener noreferrer">
-                                <button
-                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
-                            </a>
-                        </td>
-                        <td class="border border-gray-400 p-2">14 may 2025, 6:02pm</td>
-                        <td class="border border-gray-400 p-2">13.878877, 100.412339</td>
-                        <td class="border border-gray-400 p-2">
-                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
-                                rel="noopener noreferrer">
-                                <button
-                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-100">
-                        <td class="border border-gray-400 p-2">660300</td>
-                        <td class="border border-gray-400 p-2">IT</td>
-                        <td class="border border-gray-400 p-2">John Doe</td>
-                        <td class="border border-gray-400 p-2">14 may 2025, 4:11pm</td>
-                        <td class="border border-gray-400 p-2">13.878877, 100.412339</td>
-                        <td class="border border-gray-400 p-2">
-                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
-                                rel="noopener noreferrer">
-                                <button
-                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
-                            </a>
-                        </td>
-                        <td class="border border-gray-400 p-2">14 may 2025, 6:02pm</td>
-                        <td class="border border-gray-400 p-2">13.878877, 100.412339</td>
-                        <td class="border border-gray-400 p-2">
-                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
-                                rel="noopener noreferrer">
-                                <button
-                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr class="hover:bg-gray-100">
-                        <td class="border border-gray-400 p-2">660301</td>
-                        <td class="border border-gray-400 p-2">Marketing</td>
-                        <td class="border border-gray-400 p-2">Jane Doe</td>
-                        <td class="border border-gray-400 p-2">13 may 2025, 8:14am</td>
-                        <td class="border border-gray-400 p-2">13.725761, 100.527069</td>
-                        <td class="border border-gray-400 p-2">
-                            <a href="https://www.google.com/maps?q=13.725761,100.527069" target="_blank"
-                                rel="noopener noreferrer">
-                                <button
-                                    class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
-                            </a>
-                        </td>
-                        <td class="border border-gray-400 p-2">13 may 2025, 4:37pm</td>
-                        <td class="border border-gray-400 p-2">13.725761, 100.527069</td>
-                        <td class="border border-gray-400 p-2">
-                            <a href="https://www.google.com/maps?q=13.725761,100.527069" target="_blank"
                                 rel="noopener noreferrer">
                                 <button
                                     class="bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded text-sm">Map</button>
