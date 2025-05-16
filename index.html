@@ -149,7 +149,7 @@
         .map-hover:hover,
         .map-hover:focus {
             background-color: #ffd350 !important;
-            color: #fff !important;
+            color: #000 !important;
         }
 
         td {
@@ -168,9 +168,9 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0 ms-3">
+                <ul class="nav justify-content-center me-auto mb-2 mb-md-0">
                     <li class="nav-item">
                         <a class="nav-link" href="main.html">หน้าแรก</a>
                     </li>
@@ -194,7 +194,7 @@
             <h1 class="display-6 fw-bold">Employee Check Table</h1>
         </div>
 
-        <form class="row gx-2 gy-2 align-items-end mb-4">
+        <form class="row gx-2 gy-2 align-items-end mb-4 d-flex justify-content-center">
             <div class="col-md-2">
                 <input type="text" id="code" name="code" placeholder="Code" class="form-control form-control-sm" />
             </div>
@@ -224,8 +224,8 @@
             </div>
         </form>
 
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover align-middle text-center ">
+        <div class="table-responsive ">
+            <table class="table table-bordered table-hover align-middle text-center">
                 <thead class="table-success">
                     <tr class="text-white text-center">
                         <th class="border border-secondary">รหัสพนักงาน</th>
