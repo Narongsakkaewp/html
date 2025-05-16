@@ -145,20 +145,31 @@
             height: 40px;
             width: 40px;
         }
-        td{
+
+        .map-hover:hover,
+        .map-hover:focus {
+            background-color: #e65100 !important;
+            /* darker orange */
+            color: #fff !important;
+            border-color: #b45309 !important;
+            box-shadow: 0 0 0 0.2rem rgba(255, 152, 0, 0.3);
+        }
+
+        td {
             font-weight: lighter;
         }
     </style>
 </head>
 
-<body class="bg-success bg-gradient">
+<body class="bg-success">
     <!-- Navbar -->
-<nav class="navbar navbar-expand-md navbar-light bg-white rounded-4 shadow-lg my-4 p-3">
+    <nav class="navbar navbar-expand-md navbar-light bg-white rounded-4 shadow-lg my-4 p-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="main.html">
                 <img src="assets/favicon.io/logo_vby.png" alt="Logo" />
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -240,15 +251,17 @@
                         <td class="border border-dark">14 may 2025, 4:11pm</td>
                         <td class="border border-dark">13.878877, 100.412339</td>
                         <td class="border border-dark">
-                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank" rel="noopener noreferrer">
-                                <button class="btn btn-warning btn-sm border-1px">Map</button>
+                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
+                                rel="noopener noreferrer">
+                                <button class="btn btn-warning btn-sm border-dark map-hover">Map</button>
                             </a>
                         </td>
                         <td class="border border-dark">14 may 2025, 6:02pm</td>
                         <td class="border border-dark">13.878877, 100.412339</td>
                         <td class="border border-dark">
-                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank" rel="noopener noreferrer">
-                                <button class="btn btn-warning btn-sm">Map</button>
+                            <a href="https://www.google.com/maps?q=13.878877,100.412339" target="_blank"
+                                rel="noopener noreferrer">
+                                <button class="btn btn-warning btn-sm border-dark map-hover">Map</button>
                             </a>
                         </td>
                     </tr>
@@ -293,12 +306,14 @@
                 .then(response => response.text())
                 .then(html => {
                     document.getElementById('modalContainer').innerHTML = html;
-                    document.getElementById('loginModal').classList.remove('hidden');
+                    document.getElementById('loginModal').classList.remove('d-none');
                 });
         }
         function closeLogin() {
-            document.getElementById('loginModal').classList.add('hidden');
+            document.getElementById('loginModal').classList.add('d-none');
         }
+
+        
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
@@ -306,7 +321,7 @@
         crossorigin="anonymous"></script>
 </body>
 
-<footer class="text-center text-white mt-6">
+<footer class="text-center text-light mt-5 bg-transparent">
     <p>© 2025 Employee Check Table. <br />All rights reserved.</p>
 </footer>
 
