@@ -148,59 +148,36 @@
     </style>
 </head>
 
-<body class="bg-light">
+<body class="bg-success bg-gradient">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-light bg-white rounded-4 shadow-lg my-4 p-3">
+<nav class="navbar navbar-expand-md navbar-light bg-white rounded-4 shadow-lg my-4 p-3">
         <div class="container-fluid">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <a href="main.html">
-                    <div class="flex-shrink-0">
-                        <img src="assets/favicon.io/logo_vby.png" alt="Logo" class="h-10 w-10" />
-                    </div>
-                </a>
-
-                <!-- Hamburger Button -->
-                <button id="menuToggle" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 1h15M1 7h15M1 13h15" />
-                    </svg>
-                </button>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-6">
-                    <a href="main.html" class="text-gray-700 hover:text-green-700">หน้าแรก</a>
-                    <a href="#" class="text-gray-700 hover:text-green-700">ตรวจสอบ</a>
-                    <a href="#" class="text-gray-700 hover:text-green-700">รายงาน</a>
-                    <a href="contact.html" class="text-gray-700 hover:text-green-700">ติดต่อ</a>
-                </div>
-
-                <!-- Login Button -->
-                <div class="hidden md:flex">
-                    <button onclick="openLogin()"
-                        class="bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded text-sm">
-                        เข้าสู่ระบบ
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div id="navbar-dropdown" class="hidden mt-4 md:hidden">
-                <a href="main.html"
-                    class="block px-4 py-2 text-gray-700 hover:bg-gray-100 bg-[#548c2f] text-white rounded-md">หน้าแรก</a>
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">ตรวจสอบ</a>
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">รายงาน</a>
-                <a href="contact.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">ติดต่อ</a>
-                <button onclick="openLogin()"
-                    class="w-full mt-2 bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded-md text-sm">
-                    เข้าสู่ระบบ
-                </button>
+            <a class="navbar-brand" href="main.html">
+                <img src="assets/favicon.io/logo_vby.png" alt="Logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main.html">หน้าแรก</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ตรวจสอบ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">รายงาน</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">ติดต่อ</a>
+                    </li>
+                </ul>
+                <button onclick="openLogin()" class="btn btn-success ms-md-3">เข้าสู่ระบบ</button>
             </div>
         </div>
     </nav>
+
 
     <div class="container max-w-full my-6 p-6 bg-white rounded-xl shadow-lg">
         <div class="text-center pb-6">
