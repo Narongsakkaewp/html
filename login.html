@@ -5,26 +5,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Modal backdrop for Bootstrap-like overlay */
+        #loginModal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1050;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- <div id="loginModal" 
-    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-80 relative">
-            <button onclick="closeLogin()"
-                class="absolute top-2 right-4 text-gray-400 hover:text-black text-xl font-bold focus:outline-none">
-                &times;
-            </button>
+    <div id="loginModal">
+        <div class="bg-white p-4 rounded-4 shadow-lg" style="width: 22rem; position: relative;">
+            <button onclick="closeLogin()" type="button" class="btn-close position-absolute top-0 end-0 m-3"
+                aria-label="Close"></button>
 
-            <h2 class="text-xl font-semibold mb-4 text-center">เข้าสู่ระบบ</h2>
+            <h2 class="h5 fw-bold mb-4 text-center">เข้าสู่ระบบ</h2>
 
-            <input type="text" placeholder="Username" class="w-full p-2 mb-2 border border-gray-300 rounded">
-
-            <input type="password" placeholder="Password" class="w-full p-2 mb-4 border border-gray-300 rounded">
-
-            <button class="bg-green-700 text-white w-full py-2 rounded hover:bg-green-800">เข้าสู่ระบบ</button>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Username">
+            </div>
+            <div class="mb-4">
+                <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <button class="btn btn-success w-100">เข้าสู่ระบบ</button>
         </div>
-    </div> -->
+    </div>
 </body>
 
 </html>
