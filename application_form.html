@@ -51,8 +51,8 @@
         <!-- form -->
         <div class="grid grid-cols-[450px_3fr_2.5fr] gap-4"> <!-- Left Panel -->
             <div>
-                <div class="form-group">
-                    <div class="h-48 w-48 flex flex-col justify-center mt-8 ml-24 rounded bg-gray-200">
+                <div class="form-group text-sm">
+                    <div class="h-48 w-48 flex flex-col justify-center mt-8 ml-48 rounded bg-gray-200">
                         <input type="file" id="image1" name="img_user" accept="image/*" class="hidden" />
                         <label for="image1" class="flex items-center justify-center cursor-pointer">
                             <span class="text-black text-lg text-center">
@@ -64,7 +64,7 @@
 
                     <div class="form-group mt-4 ml-8">
                         <div class="flex items-center mb-4">
-                            <label for="position_id" class="w-32 text-gray-700 font-medium self-center">
+                            <label for="position_id" class="w-32 text-gray-700 font-medium self-center text-right mr-4">
                                 <span class="text-red-500">*</span> ตำแหน่งที่สมัคร :
                             </label>
                             <select id="position_id" name="position_id"
@@ -81,7 +81,7 @@
 
                     <div class="form-group mt-4 ml-8">
                         <div class="flex items-center mb-4">
-                            <label for="educational" class="w-32 text-gray-700 font-medium self-center">
+                            <label for="educational" class="w-32 text-gray-700 font-medium self-center text-right mr-4">
                                 <span class="text-red-500 ">*</span> วุฒิการศึกษา :
                             </label>
                             <input type="text" id="educational" name="educational" required
@@ -92,7 +92,7 @@
 
                     <div class="form-group mt-4 ml-8">
                         <div class="flex items-center mb-4">
-                            <label for="major" class="w-32 text-gray-700 font-medium self-center">
+                            <label for="major" class="w-32 text-gray-700 font-medium self-center text-right mr-4">
                                 <span class="text-red-500">*</span> สาขา :
                             </label>
                             <input type="text" id="major" name="major" required
@@ -103,7 +103,7 @@
 
                     <div class="form-group mt-4 ml-8">
                         <div class="flex items-center mb-4">
-                            <label for="salary" class="w-32 text-gray-700 font-medium self-center">
+                            <label for="salary" class="w-32 text-gray-700 font-medium self-center text-right mr-4">
                                 <span class="text-red-500">*</span> เงินเดือนที่<br>ต้องการ :
                             </label>
                             <input type="text" id="salary" name="salary" required
@@ -120,7 +120,7 @@
                         1.ใบสมัครงานเป็นส่วนหนึ่งในการพิจารณาโปรดกรอกข้อความให้ครบถ้วน </label>
                 </div>
                 <!-- Checkboxes -->
-                <div class="grid grid-cols-1 md:grid-cols-3 mt-4 text-base gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 mt-4 text-sm gap-4">
                     <label class="flex items-center gap-2">
                         <input type="checkbox" id="applied1" name="applied_documents[]" value="รูปถ่ายหน้าตรง">
                         <span>รูปถ่ายหน้าตรงขนาด 1นิ้ว จำนวน 1 รูป</span>
@@ -152,33 +152,33 @@
                 </div>
 
                 <!-- File Uploads -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-base">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
                     <div>
                         <label for="file_home">สำเนาทะเบียนบ้าน</label>
-                        <input class="form-control mt-1" type="file" id="file_home" name="file_home" accept="image/*">
+                        <input class="form-control mt-1 border w-60" type="file" id="file_home" name="file_home" accept="image/*">
                     </div>
                     <div>
                         <label for="file_military">สำเนาใบผ่านทหาร</label>
-                        <input class="form-control mt-1" type="file" id="file_military" name="file_military"
+                        <input class="form-control mt-1 border w-60" type="file" id="file_military" name="file_military"
                             accept="image/*">
                     </div>
                     <div>
                         <label for="file_educational">สำเนาใบรับรองการศึกษา</label>
-                        <input class="form-control mt-1" type="file" id="file_educational" name="file_educational"
+                        <input class="form-control mt-1 border w-60" type="file" id="file_educational" name="file_educational"
                             accept="image/*">
                     </div>
                     <div>
                         <label for="file_card">สำเนาบัตรประชาชน</label>
-                        <input class="form-control mt-1" type="file" id="file_card" name="file_card" accept="image/*">
+                        <input class="form-control mt-1 border w-60" type="file" id="file_card" name="file_card" accept="image/*">
                     </div>
                     <div>
                         <label for="file_workpass">สำเนาใบผ่านงาน</label>
-                        <input class="form-control mt-1" type="file" id="file_workpass" name="file_workpass"
+                        <input class="form-control mt-1 border w-60" type="file" id="file_workpass" name="file_workpass"
                             accept="image/*">
                     </div>
                     <div>
                         <label for="file_driver">สำเนาใบขับขี่</label>
-                        <input class="form-control mt-1" type="file" id="file_driver" name="file_driver"
+                        <input class="form-control mt-1 border w-60" type="file" id="file_driver" name="file_driver"
                             accept="image/*">
                     </div>
                 </div>
@@ -214,7 +214,7 @@
 
             <div class="mt-8"> <!-- Right Panel -->
                 <div class="form-group">
-                    <label class="control-label no-padding-right" for="form-field-1-1" style="color: #66BB00;">
+                    <label class="control-label no-padding-right font-semibold" for="form-field-1-1" style="color: #66BB00;">
                         2.ประวัติส่วนตัว (ต่อ) </label>
                 </div>
 
