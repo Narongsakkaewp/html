@@ -49,10 +49,10 @@
         </div>
     </div>
     <!-- form -->
-    <div class="grid grid-cols-[450px_3fr_2.5fr] gap-4"> <!-- Left Panel -->
-        <div>
+    <div class="grid grid-cols-[450px_3fr_2.5fr] gap-4">
+        <div class="mt-8"> <!-- Left Panel -->
             <div class="form-group text-sm">
-                <div class="h-48 w-48 flex flex-col justify-center mt-8 ml-48 rounded bg-gray-200">
+                <div class="h-48 w-48 flex flex-col justify-center ml-48 rounded bg-gray-200">
                     <input type="file" id="image1" name="img_user" accept="image/*" class="hidden" />
                     <label for="image1" class="flex items-center justify-center cursor-pointer">
                         <span class="text-black text-lg text-center">
@@ -155,36 +155,35 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
                 <div>
                     <label for="file_home">สำเนาทะเบียนบ้าน</label>
-                    <input class="form-control mt-1 border w-60" type="file" id="file_home" name="file_home"
+                    <input class="form-control mt-1 border w-60 rounded" type="file" id="file_home" name="file_home"
                         accept="image/*">
                 </div>
                 <div>
                     <label for="file_military">สำเนาใบผ่านทหาร</label>
-                    <input class="form-control mt-1 border w-60" type="file" id="file_military" name="file_military"
+                    <input class="form-control mt-1 border w-60 rounded" type="file" id="file_military" name="file_military"
                         accept="image/*">
                 </div>
                 <div>
                     <label for="file_educational">สำเนาใบรับรองการศึกษา</label>
-                    <input class="form-control mt-1 border w-60" type="file" id="file_educational"
+                    <input class="form-control mt-1 border w-60 rounded" type="file" id="file_educational"
                         name="file_educational" accept="image/*">
                 </div>
                 <div>
                     <label for="file_card">สำเนาบัตรประชาชน</label>
-                    <input class="form-control mt-1 border w-60" type="file" id="file_card" name="file_card"
+                    <input class="form-control mt-1 border w-60 rounded" type="file" id="file_card" name="file_card"
                         accept="image/*">
                 </div>
                 <div>
                     <label for="file_workpass">สำเนาใบผ่านงาน</label>
-                    <input class="form-control mt-1 border w-60" type="file" id="file_workpass" name="file_workpass"
+                    <input class="form-control mt-1 border w-60 rounded" type="file" id="file_workpass" name="file_workpass"
                         accept="image/*">
                 </div>
                 <div>
                     <label for="file_driver">สำเนาใบขับขี่</label>
-                    <input class="form-control mt-1 border w-60" type="file" id="file_driver" name="file_driver"
+                    <input class="form-control mt-1 border w-60 rounded" type="file" id="file_driver" name="file_driver"
                         accept="image/*">
                 </div>
             </div>
-
 
             <div class="form-group mt-6">
                 <label class="control-label no-padding-right font-semibold" style="color: #66BB00;">
@@ -211,16 +210,34 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group"><!---- กรอกชื่อภาษาไทย ----->
+                <div class="col-sm-5 mt-4">
+                    <label class="control-label">
+                        <font style="color: red;">*</font> ชื่อ - นามสกุล
+                    </label>
+                    <input type="text" id="name_th" placeholder="" name="name_th" class="form-control" />
+                </div>
+                <br>
+                <div class="col-sm-5">
+                    <label class="control-label">
+                        ชื่อเล่น
+                    </label>
+                    <input type="text" id="nickname_th" placeholder="" name="nickname_th" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8"> <!-- Right Panel -->
+            <div class="form-group">
+                <label class="control-label no-padding-right font-semibold" for="form-field-1-1"
+                    style="color: #66BB00;">
+                    2.ประวัติส่วนตัว (ต่อ) </label>
+            </div>
         </div>
     </div>
 
-    <div class="mt-8"> <!-- Right Panel -->
-        <div class="form-group">
-            <label class="control-label no-padding-right font-semibold" for="form-field-1-1" style="color: #66BB00;">
-                2.ประวัติส่วนตัว (ต่อ) </label>
-        </div>
 
-    </div>
     </div>
     </div>
 </body>
