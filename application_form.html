@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Application Form</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.io/logo_vby.png" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/78659597ce.js" crossorigin="anonymous"></script>
+
+    <!-- CSS Internal No Framwork!! -->
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        .widget-header {
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+</head>
+
+<body class="body-form bg-zinc-50 col-sm-3 control-label no-padding-right">
+    <!-- navbar -->
+    <div class=" navbar">
+        <div class="mx-auto">
+            <div class="bg-white p-6 shadow">
+                <h2 class="text-xl font-semibold gap-2">
+                    <span>📄</span> ใบสมัครงาน (Application Form)
+                </h2>
+            </div>
+        </div>
+
+        <!-- form -->
+        <div class="grid grid-cols-3">
+            <div>
+                <div class="form-group">
+                    <div class="h-48 w-48 flex flex-col justify-center mt-8 ml-24 rounded bg-gray-200">
+                        <input type="file" id="image1" name="img_user" accept="image/*" class="hidden" />
+                        <label for="image1" class="flex items-center justify-center cursor-pointer">
+                            <span class="text-black text-lg text-center">
+                                <br>กรุณาคลิ๊ก !<br>เพื่อเพิ่มภาพถ่าย<br>
+                                <i class="fa fa-plus-circle" style="color: #66BB00; font-size: 30px;"></i>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-group mt-4 ml-8">
+                        <div class="flex items-center mb-4">
+                            <label for="position_id" class="w-32 text-gray-700 font-medium self-center">
+                                <span class="text-red-500">*</span> ตำแหน่งที่สมัคร :
+                            </label>
+                            <select id="position_id" name="position_id"
+                                class="w-52 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                required>
+                                <option value="" disabled selected hidden>กรุณาเลือกตำแหน่ง</option>
+                                <option value="sale">Sale</option>
+                                <option value="admin">Admin</option>
+                                <option value="ITsupport">IT Support</option>
+                                <option value="BD">Business Development</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4 ml-8">
+                        <div class="flex items-center mb-4">
+                            <label for="educational" class="w-32 text-gray-700 font-medium self-center">
+                                <span class="text-red-500 ">*</span> วุฒิการศึกษา :
+                            </label>
+                            <input type="text" id="educational" name="educational" required
+                                class="w-52 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4 ml-8">
+                        <div class="flex items-center mb-4">
+                            <label for="major" class="w-32 text-gray-700 font-medium self-center">
+                                <span class="text-red-500">*</span> สาขา :
+                            </label>
+                            <input type="text" id="major" name="major" required
+                                class="w-52 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4 ml-8">
+                        <div class="flex items-center mb-4">
+                            <label for="salary" class="w-32 text-gray-700 font-medium self-center">
+                                <span class="text-red-500">*</span> เงินเดือนที่<br>ต้องการ :
+                            </label>
+                            <input type="text" id="salary" name="salary" required
+                                class="w-52 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                autocomplete="off" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group">
+                    <div class="h-48 w-48 flex flex-col justify-center mt-8 ml-24 rounded bg-gray-200">
+                        <input type="file" id="image1" name="img_user" accept="image/*" class="hidden" />
+                        <label for="image1" class="flex items-center justify-center cursor-pointer">
+                            <span class="text-black text-lg text-center">
+                                <br>กรุณาคลิ๊ก !<br>เพื่อเพิ่มภาพถ่าย<br>
+                                <i class="fa fa-plus-circle" style="color: #66BB00; font-size: 30px;"></i>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-group mt-4 ml-8">
+                        <div class="flex items-center mb-4">
+                            <label for="position_id" class="w-32 text-gray-700 font-medium">
+                                <span class="text-red-500">*</span> ตำแหน่งที่สมัคร :
+                            </label>
+                            <select id="position_id" name="position_id"
+                                class="w-52 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required>
+                                <option value="" disabled selected hidden>กรุณาเลือกตำแหน่ง</option>
+                                <option value="sale">Sale</option>
+                                <option value="admin">Admin</option>
+                                <option value="ITsupport">IT Support</option>
+                                <option value="BD">Business Development</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4 ml-8">
+                        <div class="flex items-center mb-4">
+                            <label for="educational" class="w-32 text-gray-700 font-medium self-center">
+                                <span class="text-red-500 ">*</span> วุฒิการศึกษา :
+                            </label>
+                            <input type="text" id="educational" name="educational" required
+                                class="w-52 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4 ml-8">
+                        <div class="flex items-center mb-4">
+                            <label for="major" class="w-32 text-gray-700 font-medium">
+                                <span class="text-red-500">*</span> สาขา :
+                            </label>
+                            <input type="text" id="major" name="major" required
+                                class="w-52 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                autocomplete="off" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
