@@ -47,8 +47,8 @@
             </div>
         </div>
     </div>
-    <!-- form -->
-    <div class="grid grid-cols-[450px_2fr_2fr] gap-4" id="step1" class="step">
+    <!-- form 1 -->
+    <div id="step1" class="step grid grid-cols-[450px_2fr_2fr] gap-4">
         <div class="mt-8"> <!-- Left Panel -->
             <div class="form-group text-sm">
                 <div class="h-60 w-48 flex flex-col justify-center ml-48 rounded bg-gray-200 relative overflow-hidden"
@@ -416,14 +416,387 @@
                         <label for="postcode" class="mb-2 text-gray-700 font-medium">รหัสไปรษณีย์
                         </label>
                         <input type="text" id="postcode" name="postcode" placeholder="รหัสไปรษณีย์"
-                            class="w-[200px] border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            class="w-[200px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
                 </div>
 
+                <div class="form-group flex gap-6">
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="tel" class="mb-2 text-gray-700 font-medium">เบอร์โทรศัพท์
+                        </label>
+                        <input type="text" id="tel" name="tel" placeholder="เบอร์โทรศัพท์"
+                            class="w-[200px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="mobile" class="mb-2 text-gray-700 font-medium">เบอร์โทรศัพท์มือถือ
+                        </label>
+                        <input type="text" id="mobile" name="mobile" placeholder="เบอร์โทรศัพท์มือถือ"
+                            class="w-[200px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="form-group flex gap-6">
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="email" class="mb-2 text-gray-700 font-medium">E-mail
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="E-mail"
+                            class="w-[200px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="fb" class="mb-2 text-gray-700 font-medium">Facebook
+                        </label>
+                        <input type="text" id="fb" name="fb" placeholder="Facebook"
+                            class="w-[200px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="form-group flex gap-6">
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="card_id" class="mb-2 text-gray-700 font-medium">เลที่บัตรประชาชน
+                        </label>
+                        <input type="text" id="card_id" name="card_id" placeholder="เลที่บัตรประชาชน"
+                            class="w-[200px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="bdath" class="form-label form-label-sm mb-2">วันที่ออกบัตร</label>
+                        <input type="date" id="bdath" name="bdath"
+                            class="w-56 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" required />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- form 2 -->
+    <div id="step2" class="step hidden grid grid-cols-[450px_2fr_2fr] gap-4">
+        <div class="mt-8"> <!-- Middle Panel -->
+            <div class="form-group">
+                <label class="control-label no-padding-right font-semibold" style="color: #66BB00;">
+                    1.ใบสมัครงานเป็นส่วนหนึ่งในการพิจารณาโปรดกรอกข้อความให้ครบถ้วน </label>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 mt-4 text-sm gap-4"> <!-- Checkboxes -->
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" id="applied1" name="applied_documents[]" value="รูปถ่ายหน้าตรง">
+                    <span>รูปถ่ายหน้าตรงขนาด 1นิ้ว จำนวน 1 รูป</span>
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" id="applied2" name="applied_documents[]" value="สำเนาทะเบียนบ้าน">
+                    <span>สำเนาทะเบียนบ้าน</span>
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" id="applied3" name="applied_documents[]" value="สำเนาใบผ่านทหาร">
+                    <span>สำเนาใบผ่านทหาร</span>
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" id="applied4" name="applied_documents[]" value="สำเนาใบรับรองการศึกษา">
+                    <span>สำเนาใบรับรองการศึกษา</span>
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" id="applied5" name="applied_documents[]" value="สำเนาบัตรประชาชน">
+                    <span>สำเนาบัตรประชาชน</span>
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" id="applied6" name="applied_documents[]" value="สำเนาใบผ่านงาน">
+                    <span>สำเนาใบผ่านงาน</span>
+                </label>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" id="applied7" name="applied_documents[]" value="สำเนาใบขับขี่">
+                    <span>สำเนาใบขับขี่</span>
+                </label>
+            </div>
+
+            <!-- File Uploads -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
+                <div>
+                    <label for="file_home">สำเนาทะเบียนบ้าน</label>
+                    <input class="form-control mt-1 border w-40 rounded " type="file" id="file_home" name="file_home"
+                        accept="image/*">
+
+                </div>
+                <div>
+                    <label for="file_military">สำเนาใบผ่านทหาร</label>
+                    <input class="form-control mt-1 border w-40 rounded" type="file" id="file_military"
+                        name="file_military" accept="image/*">
+                </div>
+                <div>
+                    <label for="file_educational">สำเนาใบรับรองการศึกษา</label>
+                    <input class="form-control mt-1 border w-40 rounded" type="file" id="file_educational"
+                        name="file_educational" accept="image/*">
+                </div>
+                <div>
+                    <label for="file_card">สำเนาบัตรประชาชน</label>
+                    <input class="form-control mt-1 border w-40 rounded" type="file" id="file_card" name="file_card"
+                        accept="image/*">
+                </div>
+                <div>
+                    <label for="file_workpass">สำเนาใบผ่านงาน</label>
+                    <input class="form-control mt-1 border w-40 rounded" type="file" id="file_workpass"
+                        name="file_workpass" accept="image/*">
+                </div>
+
+                <div>
+                    <label for="file_driver">สำเนาใบผ่านงาน</label>
+                    <input class="form-control mt-1 border w-40 rounded" type="file" id="file_driver" name="file_driver"
+                        accept="image/*">
+                </div>
+            </div>
+
+            <div class="form-group mt-6">
+                <label class="control-label no-padding-right font-semibold" style="color: #66BB00;">
+                    2.ประวัติส่วนตัว </label>
+            </div>
+            <div class="row text-sm"> <!-- กรอกข้อมูลส่วนตัว Div ใหญ่-->
+                <div class="form-group flex items-center justify-center gap-4 w-full mt-4">
+                    <label class="text-gray-700 font-medium">
+                        <span class="text-red-500">*</span> คำนำหน้าชื่อ/Prefix :
+                    </label>
+                    <div class="flex items-center gap-12">
+                        <label class="flex items-center gap-1">
+                            <input type="radio" id="mr" name="prefix" value="mr">
+                            <span>นาย/Mr.</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="radio" id="mrs" name="prefix" value="mrs">
+                            <span>นาง/Ms.</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="radio" id="miss" name="prefix" value="miss">
+                            <span>นางสาว/Mrs.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4 flex gap-6"><!---- กรอกชื่อภาษาไทย ----->
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="name-thai" class="mb-2 text-gray-700 font-medium">
+                            <span class="text-red-500">*</span> ชื่อ-นามสกุล (ภาษาไทย)
+                        </label>
+                        <input type="text" id="name-thai" name="name-thai" required placeholder="ชื่อ - นามสกุล"
+                            class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="nickname-thai" class="mb-2 text-gray-700 font-medium">
+                            <span class="text-red-500">*</span> ชื่อเล่น (ภาษาไทย)
+                        </label>
+                        <input type="text" id="nickname-thai" name="nickname-thai" required placeholder="ชื่อเล่น"
+                            class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="form-group flex gap-6"><!---- กรอกชื่อภาษาอังกฤษ ----->
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="name-eng" class="mb-2 text-gray-700 font-medium">
+                            <span class="text-red-500">*</span> ชื่อ-นามสกุล (ภาษาอังกฤษ)
+                        </label>
+                        <input type="text" id="name-eng" name="name-eng" required placeholder="Name - Surname"
+                            class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="nickname-eng" class="mb-2 text-gray-700 font-medium">
+                            <span class="text-red-500">*</span> ชื่อเล่น (ภาษาอังกฤษ)
+                        </label>
+                        <input type="text" id="nickname-eng" name="nickname-eng" required placeholder="Nickname"
+                            class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="form-group flex gap-6"><!---- รายละเอียดเพิ่มเติม ----->
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="bdath" class="form-label form-label-sm mb-2">
+                            <span class="text-red-500">*</span> วัน/เดือน/ปีเกิด</label>
+                        <input type="date" id="bdath" name="bdath"
+                            class="w-56 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" required />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="age" class="mb-2 text-gray-700 font-medium">อายุ (ปี)
+                        </label>
+                        <input type="text" id="age" name="age" placeholder="อายุ"
+                            class="w-24 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="time" class="mb-2 text-gray-700 font-medium">เวลาเกิด
+                        </label>
+                        <input type="time" id="time" name="time"
+                            class="w-32 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="ch-year" class="mb-2 text-gray-700 font-medium">ปีนักษัตร
+                        </label>
+                        <input type="text" id="ch-year" name="ch-year" placeholder="ปีนักษัตร"
+                            class="w-36 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="form-group flex gap-6"><!---- รายละเอียดเพิ่มเติม ต่อ 1 ----->
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="ethnicity" class="form-label form-label-sm mb-2">เชื้อชาติ</label>
+                        <input type="text" id="ethnicity" name="ethnicity" placeholder="เชื้อชาติ"
+                            class="w-28 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" required />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="nationality" class="mb-2 text-gray-700 font-medium">สัญชาติ
+                        </label>
+                        <input type="text" id="nationality" name="nationality" placeholder="สัญชาติ"
+                            class="w-28 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="religion" class="mb-2 text-gray-700 font-medium">ศาสนา
+                        </label>
+                        <input type="text" id="religion" name="religion" placeholder="ศาสนา"
+                            class="w-28 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="placeofbirth" class="mb-2 text-gray-700 font-medium">สถานที่เกิด
+                        </label>
+                        <input type="text" id="placeofbirth" name="placeofbirth" placeholder="สถานที่เกิด"
+                            class="w-64 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="form-group flex gap-6"><!---- รายละเอียดเพิ่มเติม ต่อ 2 ----->
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="height" class="form-label form-label-sm mb-2">ส่วนสูง</label>
+                        <input type="" id="height" name="height" placeholder="ส่วนสูง"
+                            class="w-28 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" required />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="weight" class="mb-2 text-gray-700 font-medium">น้ำหนัก
+                        </label>
+                        <input type="text" id="weight" name="weight" placeholder="น้ำหนัก"
+                            class="w-28 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="skin" class="mb-2 text-gray-700 font-medium">สีผิว
+                        </label>
+                        <input type="text" id="skin" name="skin" placeholder="สีผิว"
+                            class="w-28 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="blood-type" class="mb-2 text-gray-700 font-medium">กรุ๊ปเลือด
+                        </label>
+                        <input type="text" id="blood-type" name="blood-type" placeholder="กรุ๊ปเลือด"
+                            class="w-28 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="tatoo" class="mb-2 text-gray-700 font-medium">ตำหนิ/รอยสัก
+                        </label>
+                        <input type="text" id="tatoo" name="tatoo" placeholder="ตำหนิ/รอยสัก"
+                            class="w-[120px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="">
+        <div class="flex flex-col items-center gap-4">
+            <!-- จุดไข่ปลา -->
+            <div id="step-indicators" class="flex space-x-2 mt-4">
+                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+            </div>
+
+            <!-- ปุ่มย้อนกลับ / ถัดไป -->
+            <div class="flex space-x-4 mb-4">
+                <button id="backBtn" onclick="changeStep(-1)"
+                    class="bg-[#66BB00] text-white px-4 py-2 rounded hover:bg-[#66BB00] hidden">ย้อนกลับ</button>
+                <button id="nextBtn" onclick="changeStep(1)"
+                    class="bg-[#66BB00] text-white px-4 py-2 rounded hover:bg-[#558F00]">ถัดไป</button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function showStep(step) {
+            for (let i = 1; i <= totalSteps; i++) {
+                document.getElementById(step$,{ i }).classList.add("hidden");
+            }
+            document.getElementById(step$,{ step }).classList.remove("hidden");
+
+            // จัดการจุดไข่ปลา
+            const dots = document.querySelectorAll(".dot");
+            dots.forEach((dot, index) => {
+                dot.classList.remove("bg-gray-400", "bg-gray-500");
+                dot.classList.add("bg-gray-300");
+                if (index === step - 1) {
+                    dot.classList.remove("bg-gray-300");
+                    dot.classList.add("bg-gray-500");
+                }
+            });
+
+            // แสดง/ซ่อนปุ่มย้อนกลับ
+            document.getElementById("backBtn").classList.toggle("hidden", step === 1);
+
+            // เปลี่ยนปุ่มถัดไปเป็น "ส่ง" ถ้าอยู่หน้าสุดท้าย
+            const nextBtn = document.getElementById("nextBtn");
+            if (step === totalSteps) {
+                nextBtn.textContent = "ส่ง";
+            } else {
+                nextBtn.textContent = "ถัดไป";
+            }
+        }
+
+        function changeStep(direction) {
+            if (currentStep + direction > totalSteps) {
+                alert("ส่งข้อมูลเรียบร้อยแล้ว!");
+                return;
+            }
+
+            currentStep += direction;
+            showStep(currentStep);
+        }
+
+        // เรียกแสดงครั้งแรก
+        showStep(currentStep);
+    </script>
 
     <script> // JavaScript for image preview
         document.getElementById('image1').addEventListener('change', function (event) {
