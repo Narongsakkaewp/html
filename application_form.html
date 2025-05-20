@@ -40,7 +40,7 @@
 <body class="body-form bg-gray-50 col-sm-3 control-label no-padding-right">
     <div class="navbar"> <!-- navbar -->
         <div>
-            <div class="bg-gray-400 p-6 shadow w-full">
+            <div class="bg-gradient-to-b from-gray-400 to-gray-300 p-6 shadow w-full">
                 <h2 class="text-xl font-semibold gap-2">
                     <span>📄</span> ใบสมัครงาน (Application Form)
                 </h2>
@@ -478,58 +478,28 @@
     </div>
 
     <!-- form 2 -->
-    <div id="step2" class="step hidden grid grid-cols-[450px_2fr_2fr] gap-4">
+    <div id="step1" class=" grid grid-cols-[50%_50%] gap-4"> <!-- อย่าลืม step hidden -->
         <div class="mt-8"> <!-- Left Panel -->
-            <div class="form-group text-sm">
-                <div class="form-group mt-4 ml-8">
-                    <div class="flex items-center mb-4">
-                        <label for="position_id" class="w-32 text-gray-700 font-medium self-center text-right mr-4">
-                            <span class="text-red-500">*</span> ตำแหน่งที่สมัคร :
-                        </label>
-                        <select id="position_id" name="position_id"
-                            class="w-52 h-10 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
-                            required>
-                            <option value="" disabled selected hidden>--กรุณาเลือกตำแหน่ง--</option>
-                            <option value="sale">Sale</option>
-                            <option value="admin">Admin</option>
-                            <option value="ITsupport">IT Support</option>
-                            <option value="BD">Programmer</option>
-                            <option value="BD">Advertising Manager</option>
-                            <option value="BD">Sustainable development</option>
-                            <option value="BD">Business Development</option>
-                        </select>
-                    </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="control-label no-padding-right font-semibold ml-16" style="color: #66BB00;">
+                        2.ประวัติส่วนตัว (ต่อ) </label>
                 </div>
 
-                <div class="form-group mt-4 ml-8">
-                    <div class="flex items-center mb-4">
-                        <label for="educational" class="w-32 text-gray-700 font-medium self-center text-right mr-4">
-                            <span class="text-red-500 ">*</span> วุฒิการศึกษา :
+                <div class="form-group flex gap-6 ml-16 mt-4"><!---- กรอกชื่อบิดา ----->
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="name-eng" class="mb-2 text-gray-700 font-medium">ชื่อบิดา
                         </label>
-                        <input type="text" id="educational" name="educational" required
-                            class="w-52 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                        <input type="text" id="name-eng" name="name-eng" required placeholder="Name - Surname"
+                            class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
-                </div>
 
-                <div class="form-group mt-4 ml-8">
-                    <div class="flex items-center mb-4">
-                        <label for="major" class="w-32 text-gray-700 font-medium self-center text-right mr-4">
-                            <span class="text-red-500">*</span> สาขา :
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="nickname-eng" class="mb-2 text-gray-700 font-medium">อาชีพบิดา
                         </label>
-                        <input type="text" id="major" name="major" required
-                            class="w-52 h-8 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
-                            autocomplete="off" />
-                    </div>
-                </div>
-
-                <div class="form-group mt-4 ml-8">
-                    <div class="flex items-center mb-4">
-                        <label for="salary" class="w-32 text-gray-700 font-medium self-center text-right mr-4">
-                            <span class="text-red-500">*</span> เงินเดือนที่<br>ต้องการ :
-                        </label>
-                        <input type="text" id="salary" name="salary" required
-                            class="w-52 h-8 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                        <input type="text" id="nickname-eng" name="nickname-eng" required placeholder="Nickname"
+                            class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
                 </div>
@@ -560,7 +530,7 @@
         </div>
     </footer>
 
-    <script>
+    <!-- <script>
         let currentStep = 1;
         const totalSteps = 6;
 
@@ -599,7 +569,7 @@
         }
 
         showStep(currentStep);
-    </script>
+    </script> -->
 
     <script> // JavaScript for image preview
         document.getElementById('image1').addEventListener('change', function (event) {
