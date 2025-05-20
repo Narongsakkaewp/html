@@ -52,14 +52,19 @@
     <div class="grid grid-cols-[450px_3fr_2.5fr] gap-4">
         <div class="mt-8"> <!-- Left Panel -->
             <div class="form-group text-sm">
-                <div class="h-48 w-48 flex flex-col justify-center ml-48 rounded bg-gray-200">
+                <div class="h-60 w-48 flex flex-col justify-center ml-48 rounded bg-gray-200 relative overflow-hidden"
+                    id="image-container">
                     <input type="file" id="image1" name="img_user" accept="image/*" class="hidden" />
-                    <label for="image1" class="flex items-center justify-center cursor-pointer">
-                        <span class="text-black text-lg text-center">
+                    <label for="image1"
+                        class="flex items-center justify-center cursor-pointer h-full w-full absolute top-0 left-0 z-10"
+                        id="image-label">
+                        <span class="text-black text-lg text-center" id="upload-text">
                             <br>กรุณาคลิ๊ก !<br>เพื่อเพิ่มภาพถ่าย<br>
                             <i class="fa fa-plus-circle" style="color: #66BB00; font-size: 30px;"></i>
                         </span>
                     </label>
+                    <!-- ภาพตัวอย่างจะแสดงตรงนี้ -->
+                    <img id="preview" class="h-full w-full object-cover rounded hidden z-0" />
                 </div>
 
                 <div class="form-group mt-4 ml-8">
@@ -68,12 +73,14 @@
                             <span class="text-red-500">*</span> ตำแหน่งที่สมัคร :
                         </label>
                         <select id="position_id" name="position_id"
-                            class="w-52 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            class="w-52 h-10 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             required>
                             <option value="" disabled selected hidden>กรุณาเลือกตำแหน่ง</option>
                             <option value="sale">Sale</option>
                             <option value="admin">Admin</option>
                             <option value="ITsupport">IT Support</option>
+                            <option value="BD">Programmer</option>
+                            <option value="BD">Sustainable development</option>
                             <option value="BD">Business Development</option>
                         </select>
                     </div>
@@ -85,7 +92,7 @@
                             <span class="text-red-500 ">*</span> วุฒิการศึกษา :
                         </label>
                         <input type="text" id="educational" name="educational" required
-                            class="w-52 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            class="w-52 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
                 </div>
@@ -96,7 +103,7 @@
                             <span class="text-red-500">*</span> สาขา :
                         </label>
                         <input type="text" id="major" name="major" required
-                            class="w-52 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            class="w-52 h-8 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
                 </div>
@@ -107,7 +114,7 @@
                             <span class="text-red-500">*</span> เงินเดือนที่<br>ต้องการ :
                         </label>
                         <input type="text" id="salary" name="salary" required
-                            class="w-52  border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            class="w-52 h-8 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
                 </div>
@@ -157,6 +164,7 @@
                     <label for="file_home">สำเนาทะเบียนบ้าน</label>
                     <input class="form-control mt-1 border w-40 rounded " type="file" id="file_home" name="file_home"
                         accept="image/*">
+
                 </div>
                 <div>
                     <label for="file_military">สำเนาใบผ่านทหาร</label>
@@ -211,13 +219,13 @@
                     </div>
                 </div>
 
-                <div class="form-group mt-4 flex justify-center gap-6"><!---- กรอกชื่อภาษาไทย ----->
+                <div class="form-group mt-2 flex justify-center gap-6"><!---- กรอกชื่อภาษาไทย ----->
                     <div class="flex flex-col items-start mb-4">
                         <label for="name-thai" class="mb-2 text-gray-700 font-medium">
                             <span class="text-red-500">*</span> ชื่อ-นามสกุล (ภาษาไทย)
                         </label>
                         <input type="text" id="name-thai" name="name-thai" required placeholder="ชื่อ-นามสกุล"
-                            class="w-60 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            class="w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
 
@@ -226,18 +234,18 @@
                             <span class="text-red-500">*</span> ชื่อเล่น (ภาษาไทย)
                         </label>
                         <input type="text" id="nickname-thai" name="nickname-thai" required placeholder="ชื่อเล่น"
-                            class="w-60 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            class="w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
                 </div>
 
-                <div class="form-group mt-4 flex justify-center gap-6"><!---- กรอกชื่อภาษาอังกฤษ ----->
+                <div class="form-group flex justify-center gap-6"><!---- กรอกชื่อภาษาอังกฤษ ----->
                     <div class="flex flex-col items-start mb-4">
                         <label for="name-eng" class="mb-2 text-gray-700 font-medium">
                             <span class="text-red-500">*</span> ชื่อ-นามสกุล (ภาษาอังกฤษ)
                         </label>
                         <input type="text" id="name-eng" name="name-eng" required placeholder="Name Surname"
-                            class="w-60 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            class="w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
 
@@ -246,9 +254,13 @@
                             <span class="text-red-500">*</span> ชื่อเล่น (ภาษาอังกฤษ)
                         </label>
                         <input type="text" id="nickname-eng" name="nickname-eng" required placeholder="Nickname"
-                            class="w-60 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            class="w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
+                </div>
+
+                <div class="form-group">
+
                 </div>
             </div>
         </div>
@@ -265,6 +277,28 @@
 
     </div>
     </div>
+
+    <script>
+        document.getElementById('image1').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('preview');
+            const uploadText = document.getElementById('upload-text');
+            const label = document.getElementById('image-label');
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                    uploadText.style.display = 'none'; // ซ่อนข้อความเมื่อมีภาพ
+                }
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                preview.classList.add('hidden');
+                uploadText.style.display = ''; // แสดงข้อความถ้าไม่มีภาพ
+            }
+        });
+    </script>
 </body>
 
 </html>
