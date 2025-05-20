@@ -488,49 +488,60 @@
 
                 <div class="form-group flex gap-6 ml-16 mt-4"><!---- กรอกชื่อบิดา ----->
                     <div class="flex flex-col items-start mb-4">
-                        <label for="name-eng" class="mb-2 text-gray-700 font-medium">ชื่อบิดา
+                        <label for="" class="mb-2 text-gray-700 font-medium">ชื่อบิดา
                         </label>
-                        <input type="text" id="name-eng" name="name-eng" required placeholder="Name - Surname"
+                        <input type="text" id="" name="" required placeholder="ชื่อบิดา"
                             class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
 
                     <div class="flex flex-col items-start mb-4">
-                        <label for="nickname-eng" class="mb-2 text-gray-700 font-medium">อาชีพบิดา
+                        <label for="" class="mb-2 text-gray-700 font-medium">อาชีพบิดา
                         </label>
-                        <input type="text" id="nickname-eng" name="nickname-eng" required placeholder="Nickname"
+                        <input type="text" id="" name="" required placeholder="อาชีพบิดา"
                             class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 mt-4 text-sm gap-4"> <!-- Checkboxes -->
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="applied1" name="applied_documents[]" value="รูปถ่ายหน้าตรง">
+                                <span>รูปถ่ายหน้าตรงขนาด 1นิ้ว จำนวน 1 รูป</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="applied2" name="applied_documents[]"
+                                    value="สำเนาทะเบียนบ้าน">
+                                <span>สำเนาทะเบียนบ้าน</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- FOOTER -->
-    <footer class="">
-        <div class="flex flex-col items-center gap-4">
-            <!-- จุดไข่ปลา -->
-            <div id="step-indicators" class="flex space-x-2 mt-4">
-                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
-                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
-                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
-                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
-                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
-                <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+        <!-- FOOTER -->
+        <footer class="">
+            <div class="flex flex-col items-center gap-4">
+                <!-- จุดไข่ปลา -->
+                <div id="step-indicators" class="flex space-x-2 mt-4">
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                </div>
+
+                <!-- ปุ่มย้อนกลับ / ถัดไป -->
+                <div class="flex space-x-4 mb-4">
+                    <button id="backBtn" onclick="changeStep(-1)"
+                        class="bg-[#66BB00] text-white px-4 py-2 rounded hover:bg-[#66BB00] hidden">ย้อนกลับ</button>
+                    <button id="nextBtn" onclick="changeStep(1)"
+                        class="bg-[#66BB00] text-white px-4 py-2 rounded hover:bg-[#558F00]">ถัดไป</button>
+                </div>
             </div>
+        </footer>
 
-            <!-- ปุ่มย้อนกลับ / ถัดไป -->
-            <div class="flex space-x-4 mb-4">
-                <button id="backBtn" onclick="changeStep(-1)"
-                    class="bg-[#66BB00] text-white px-4 py-2 rounded hover:bg-[#66BB00] hidden">ย้อนกลับ</button>
-                <button id="nextBtn" onclick="changeStep(1)"
-                    class="bg-[#66BB00] text-white px-4 py-2 rounded hover:bg-[#558F00]">ถัดไป</button>
-            </div>
-        </div>
-    </footer>
-
-    <!-- <script>
+        <!-- <script>
         let currentStep = 1;
         const totalSteps = 6;
 
@@ -571,27 +582,27 @@
         showStep(currentStep);
     </script> -->
 
-    <script> // JavaScript for image preview
-        document.getElementById('image1').addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            const preview = document.getElementById('preview');
-            const uploadText = document.getElementById('upload-text');
-            const label = document.getElementById('image-label');
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                    preview.classList.remove('hidden');
-                    uploadText.style.display = 'none'; // ซ่อนข้อความเมื่อมีภาพ
+        <script> // JavaScript for image preview
+            document.getElementById('image1').addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                const preview = document.getElementById('preview');
+                const uploadText = document.getElementById('upload-text');
+                const label = document.getElementById('image-label');
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        preview.src = e.target.result;
+                        preview.classList.remove('hidden');
+                        uploadText.style.display = 'none'; // ซ่อนข้อความเมื่อมีภาพ
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.src = '';
+                    preview.classList.add('hidden');
+                    uploadText.style.display = ''; // แสดงข้อความถ้าไม่มีภาพ
                 }
-                reader.readAsDataURL(file);
-            } else {
-                preview.src = '';
-                preview.classList.add('hidden');
-                uploadText.style.display = ''; // แสดงข้อความถ้าไม่มีภาพ
-            }
-        });
-    </script>
+            });
+        </script>
 </body>
 
 </html>
