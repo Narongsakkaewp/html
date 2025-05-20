@@ -38,10 +38,9 @@
 </head>
 
 <body class="body-form bg-gray-50 col-sm-3 control-label no-padding-right">
-    <!-- navbar -->
-    <div class=" navbar">
-        <div class="mx-auto">
-            <div class="bg-gray-400 p-6 shadow">
+    <div class="navbar"> <!-- navbar -->
+        <div>
+            <div class="bg-gray-400 p-6 shadow w-full">
                 <h2 class="text-xl font-semibold gap-2">
                     <span>📄</span> ใบสมัครงาน (Application Form)
                 </h2>
@@ -49,7 +48,7 @@
         </div>
     </div>
     <!-- form -->
-    <div class="grid grid-cols-[450px_2fr_2fr] gap-4">
+    <div class="grid grid-cols-[450px_2fr_2fr] gap-4" id="step1" class="step">
         <div class="mt-8"> <!-- Left Panel -->
             <div class="form-group text-sm">
                 <div class="h-60 w-48 flex flex-col justify-center ml-48 rounded bg-gray-200 relative overflow-hidden"
@@ -80,6 +79,7 @@
                             <option value="admin">Admin</option>
                             <option value="ITsupport">IT Support</option>
                             <option value="BD">Programmer</option>
+                            <option value="BD">Advertising Manager</option>
                             <option value="BD">Sustainable development</option>
                             <option value="BD">Business Development</option>
                         </select>
@@ -292,7 +292,7 @@
                     </div>
                 </div>
 
-                <div class="form-group flex gap-6"><!---- รายละเอียดเพิ่มเติม ต่อ ----->
+                <div class="form-group flex gap-6"><!---- รายละเอียดเพิ่มเติม ต่อ 1 ----->
                     <div class="flex flex-col items-start mb-4">
                         <label for="ethnicity" class="form-label form-label-sm mb-2">เชื้อชาติ</label>
                         <input type="text" id="ethnicity" name="ethnicity" placeholder="เชื้อชาติ"
@@ -325,7 +325,7 @@
                     </div>
                 </div>
 
-                <div class="form-group flex gap-6"><!---- รายละเอียดเพิ่มเติม ต่อ ----->
+                <div class="form-group flex gap-6"><!---- รายละเอียดเพิ่มเติม ต่อ 2 ----->
                     <div class="flex flex-col items-start mb-4">
                         <label for="height" class="form-label form-label-sm mb-2">ส่วนสูง</label>
                         <input type="" id="height" name="height" placeholder="ส่วนสูง"
@@ -374,32 +374,55 @@
                     style="color: #66BB00;">
                     2.ประวัติส่วนตัว (ต่อ) </label>
             </div>
-
-            <div class="form-group mt-4 flex gap-6"><!---- กรอกชื่อภาษาไทย ----->
-                <div class="flex flex-col items-start mb-4">
-                    <label for="name-thai" class="mb-2 text-gray-700 font-medium"> ที่อยู่ตามทะเบียนบ้าน
-                    </label>
-                    <input type="text" id="name-thai" name="name-thai" placeholder="เลขที่/หมู่บ้าน/ซอย/ถนน"
-                        class="w-[600px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
-                        autocomplete="off" />
+            <div class="text-sm"> <!-- กรอกข้อมูลส่วนตัว Div ใหญ่-->
+                <div class="form-group mt-4 flex gap-6"> <!--ที่อยู่ต่างๆ-->
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="address" class="mb-2 text-gray-700 font-medium"> ที่อยู่ตามทะเบียนบ้าน
+                        </label>
+                        <input type="text" id="address" name="address" placeholder="เลขที่/หมู่บ้าน/ซอย/ถนน"
+                            class="w-[350px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group mt-4">
-                <div class="items-center mb-4">
-                    <label for="position_id" class="">จังหวัด :</label>
-                    <select id="position_id" name="position_id"
-                        class="w-52 h-10 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
-                        required>
-                        <option value="" disabled selected hidden>--กรุณาเลือกจังหวัด--</option>
-                    </select>
+                <div class="form-group flex gap-6">
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="" class="">จังหวัด :</label>
+                        <select id="" name=""
+                            class="w-[200px] h-10 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500">
+                            <option value="" disabled selected hidden>--กรุณาเลือกจังหวัด--</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="" class="">อำเภอ :</label>
+                        <select id="" name=""
+                            class="w-[200px] h-10 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500">
+                            <option value="" disabled selected hidden>--กรุณาเลือกอำเภอ--</option>
+                        </select>
+                    </div>
                 </div>
+
+                <div class="form-group flex gap-6">
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="" class="mb-2">ตำบล :</label>
+                        <select id="" name=""
+                            class="w-[200px] border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500">
+                            <option value="" disabled selected hidden>--กรุณาเลือกตำบล--</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="postcode" class="mb-2 text-gray-700 font-medium">รหัสไปรษณีย์
+                        </label>
+                        <input type="text" id="postcode" name="postcode" placeholder="รหัสไปรษณีย์"
+                            class="w-[200px] border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-
-
-    </div>
     </div>
 
     <script> // JavaScript for image preview
