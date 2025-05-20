@@ -193,31 +193,60 @@
             <div class="row text-sm">
                 <div class="form-group flex items-center justify-center gap-4 w-full mt-4">
                     <label class="text-gray-700 font-medium">
-                        <span class="text-red-500">*</span> คำนำหน้าชื่อ :
+                        <span class="text-red-500">*</span> คำนำหน้าชื่อ/Prefix :
                     </label>
                     <div class="flex items-center gap-12">
                         <label class="flex items-center gap-1">
                             <input type="radio" id="mr" name="prefix" value="mr">
-                            <span>นาย</span>
+                            <span>นาย/Mr.</span>
                         </label>
                         <label class="flex items-center gap-1">
                             <input type="radio" id="mrs" name="prefix" value="mrs">
-                            <span>นาง</span>
+                            <span>นาง/Ms.</span>
                         </label>
                         <label class="flex items-center gap-1">
                             <input type="radio" id="miss" name="prefix" value="miss">
-                            <span>นางสาว</span>
+                            <span>นางสาว/Mrs.</span>
                         </label>
                     </div>
                 </div>
 
-                <div class="form-group mt-4"><!---- กรอกชื่อภาษาไทย ----->
-                    <div class="flex items-center mb-4">
-                        <label for="educational" class="w-32 text-gray-700 font-medium self-center text-right mr-4">
-                            <span class="text-red-500 ">*</span> ชื่อ-นามสกุล (ภาษาไทย)
+                <div class="form-group mt-4 flex justify-center gap-6"><!---- กรอกชื่อภาษาไทย ----->
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="name-thai" class="mb-2 text-gray-700 font-medium">
+                            <span class="text-red-500">*</span> ชื่อ-นามสกุล (ภาษาไทย)
                         </label>
-                        <input type="text" id="educational" name="educational" required
-                            class="w-52 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                        <input type="text" id="name-thai" name="name-thai" required placeholder="ชื่อ-นามสกุล"
+                            class="w-60 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="nickname-thai" class="mb-2 text-gray-700 font-medium">
+                            <span class="text-red-500">*</span> ชื่อเล่น (ภาษาไทย)
+                        </label>
+                        <input type="text" id="nickname-thai" name="nickname-thai" required placeholder="ชื่อเล่น"
+                            class="w-60 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="form-group mt-4 flex justify-center gap-6"><!---- กรอกชื่อภาษาอังกฤษ ----->
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="name-eng" class="mb-2 text-gray-700 font-medium">
+                            <span class="text-red-500">*</span> ชื่อ-นามสกุล (ภาษาอังกฤษ)
+                        </label>
+                        <input type="text" id="name-eng" name="name-eng" required placeholder="Name Surname"
+                            class="w-60 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            autocomplete="off" />
+                    </div>
+
+                    <div class="flex flex-col items-start mb-4">
+                        <label for="nickname-eng" class="mb-2 text-gray-700 font-medium">
+                            <span class="text-red-500">*</span> ชื่อเล่น (ภาษาอังกฤษ)
+                        </label>
+                        <input type="text" id="nickname-eng" name="nickname-eng" required placeholder="Nickname"
+                            class="w-60 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
                 </div>
