@@ -483,7 +483,7 @@
     </div>
 
     <!-- form 2 -->
-    <div id="step2" class=" grid grid-cols-[50%_50%] gap-4"> <!-- อย่าลืม step hidden -->
+    <div id="step2" class="step hidden grid grid-cols-[50%_50%] gap-4"> <!-- อย่าลืม step hidden -->
         <div class="mt-8"> <!-- Left Panel -->
             <div class="form-group">
                 <div class="form-group">
@@ -695,9 +695,75 @@
         </div>
     </div>
 
+    <!-- form 3 -->
+    <div id="step3" class=" grid grid-cols-[100%] gap-4"> <!-- อย่าลืม step hidden -->
+        <div class="mt-8"> <!-- Left Panel -->
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="control-label no-padding-right font-semibold ml-16" style="color: #66BB00;">
+                        4.ด้านการศึกษา</label>
+                </div>
+                <div class="flex justify-center">
+                    <table class="">
+                        <thead class="">
+                            <tr class="">
+                                <th class="">ระดับการศึกษา</th>
+                                <th class="">ชื่อสถานศึกษา</th>
+                                <th class="">ประเทศ</th>
+                                <th class="">สาขาวิชา</th>
+                                <th class="">เกรดเฉลี่ย</th>
+                                <th class="">ปีที่สำเร็จการศึกษา</th>
+                                <th class="">เพิ่มระดับการศึกษา</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="">
+                                    <select name="edu_level" id="edu_level" class="form-select form-select-sm">
+                                        <option value="" disabled selected>ระดับการศึกษา</option>
+                                    </select>
+                                </td>
+                                <td class="">
+                                    <input type="text" id="school_name" name="school_name" placeholder="ชื่อสถานศึกษา"
+                                        class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="">
+                                    <input type="text" id="country" name="country" placeholder="ประเทศ"
+                                        class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="">
+                                    <input type="text" id="major" name="major" placeholder="สาขาวิชา"
+                                        class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="">
+                                    <input type="text" id="gpa" name="gpa" placeholder="เกรดเฉลี่ย"
+                                        class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="">
+                                    <input type="text" id="grad_year" name="grad_year" placeholder="ปีที่สำเร็จการศึกษา"
+                                        class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="">
+                                    <button type="button" class="bg-[#66BB00] text-white px-4 py-2 rounded hover:bg-[#558F00]">
+                                        เพิ่มระดับการศึกษา
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script> // JavaScript for step navigation
-        let currentStep = 1;
+        let currentStep = 3;
         const totalSteps = 6;
 
         function showStep(step) {
