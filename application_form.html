@@ -464,15 +464,14 @@
 
                 <div class="form-group flex gap-6">
                     <div class="flex flex-col items-start mb-4">
-                        <label for="card_id" class="mb-2 text-gray-700 font-medium">เลขที่บัตรประชาชน
-                        </label>
-                        <input type="text" id="card_id" name="card_id" placeholder="เลขที่บัตรประชาชน"
-                            class="w-[420px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
-                            autocomplete="off" />
+                        <label for="card_id" class="mb-2 text-gray-700 font-medium">เลขที่บัตรประชาชน</label>
+                        <input type="text" id="card_id" name="card_id" placeholder="เลขที่บัตรประชาชน" maxlength="17"
+                            class="w-full md:w-[420px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                            autocomplete="off" oninput="formatThaiID(this)" />
                     </div>
                 </div>
 
-                    <div class="form-group flex gap-6">
+                <div class="form-group flex gap-6">
                     <div class="flex flex-col items-start mb-4">
                         <label for="bdath" class="form-label form-label-sm mb-2">วันที่ออกบัตร</label>
                         <input type="date" id="bdath" name="bdath"
@@ -487,8 +486,8 @@
                             autocomplete="off" required />
                     </div>
 
-                    </div>
-                
+                </div>
+
             </div>
         </div>
     </div>
@@ -800,6 +799,26 @@
             </div>
         </div>
     </div>
+
+    <script> // JavaScript for Thai ID formatting
+        function formatThaiID(input) {
+            // ลบทุกตัวที่ไม่ใช่ตัวเลข
+            let value = input.value.replace(/\D/g, '');
+
+            // ตัดให้เหลือ 13 หลัก
+            if (value.length > 13) value = value.substr(0, 13);
+
+            // ใส่ขีดตามฟอร์แมต
+            let formatted = value;
+            if (value.length > 0) formatted = value.substr(0, 1);
+            if (value.length > 1) formatted += '-' + value.substr(1, 4);
+            if (value.length > 5) formatted += '-' + value.substr(5, 5);
+            if (value.length > 10) formatted += '-' + value.substr(10, 2);
+            if (value.length > 12) formatted += '-' + value.substr(12, 1);
+
+            input.value = formatted;
+        }
+    </script>
 
     <script> // JavaScript for step navigation
         let currentStep = 1;
