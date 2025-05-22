@@ -493,7 +493,7 @@
                 <div class="flex items-center mb-2 gap-4"> <!-- กรอกชื่อพ่อ-->
                     <div class="form-group flex gap-6 ml-16 mt-4"><!---- พ่อ ----->
                         <div class="flex flex-col items-start mb-4">
-                            <label for="" class="mb-2 text-gray-700 font-medium">ชื่อบิดา
+                            <label for="" class="mb-2 text-gray-700 font-medium">ชื่อขนามสกุล บิดา
                             </label>
                             <input type="text" id="" name="" required placeholder="ชื่อบิดา"
                                 class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
@@ -510,12 +510,12 @@
 
                         <div class="md:grid-cols-3 text-sm mt-6"> <!-- Checkboxes -->
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" id="" name="" value="มีชีวิตอยู่">
+                                <input type="radio" id="dadalive" name="dadalive" value="yes">
                                 <span>มีชีวิตอยู่</span>
                             </label>
 
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" id="" name="" value="ถึงแก่กรรม">
+                                <input type="radio" id="dadalive" name="dadalive" value="no">
                                 <span>ถึงแก่กรรม</span>
                             </label>
                         </div>
@@ -525,7 +525,7 @@
                 <div class="flex items-center mb-2 gap-4"> <!-- กรอกชื่อแม่-->
                     <div class="form-group flex gap-6 ml-16 mt-4"><!---- แม่ ----->
                         <div class="flex flex-col items-start mb-4">
-                            <label for="" class="mb-2 text-gray-700 font-medium">ชื่อมารดา
+                            <label for="" class="mb-2 text-gray-700 font-medium">ชื่อ-นามสกุล มารดา
                             </label>
                             <input type="text" id="" name="" required placeholder="ชื่อมารดา"
                                 class="w-80 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
@@ -542,12 +542,12 @@
 
                         <div class="md:grid-cols-3 text-sm mt-6"> <!-- Checkboxes -->
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" id="" name="" value="มีชีวิตอยู่">
+                                <input type="radio" id="momalive" name="momalive" value="yes">
                                 <span>มีชีวิตอยู่</span>
                             </label>
 
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" id="" name="" value="ถึงแก่กรรม">
+                                <input type="radio" id="momalive" name="momalive" value="no">
                                 <span>ถึงแก่กรรม</span>
                             </label>
                         </div>
@@ -591,31 +591,58 @@
                     </div>
                 </div>
 
-                <div>
-                    <label class="control-label no-padding-right font-semibold ml-16" style="color: #66BB00;">
-                        ความสามารถ</label>
-                </div>
-                <div class="flex flex-row gap-8 text-sm mt-4 ml-16"> <!-- Checkboxes -->
-                    <span>รถจักรยานยนต์</span>
-                    <label class=" tems-center gap-2">
-                        <input type="checkbox" id="" name="" value="">
-                        <span>มีใบขับขี่</span>
-                    </label>
+                <div> <!-- ความสามารถ ใบขับขี่-->
+                    <div class="">
+                        <label class="control-label no-padding-right font-semibold ml-16" style="color: #66BB00;">
+                            ความสามารถ</label>
+                    </div>
+                    <div> <!-- ใบขับขี่ มอไซค์ -->
+                        <div class="flex flex-row gap-8 text-sm mt-4 ml-16">
+                            <span class="font-medium">รถจักรยานยนต์</span>
+                            <label class="flex items-center gap-2">
+                                <input type="radio" name="motor_license" value="yes">
+                                <span>มีใบขับขี่</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="radio" name="motor_license" value="no">
+                                <span>ไม่มีใบขับขี่</span>
+                            </label>
+                        </div>
+                        <div class="form-group mt-4 ml-16 text-sm"> <!-- Checkboxes ใบขับขี่-->
+                            <div class="flex items-center mb-4 gap-4">
+                                <label for="" class=""> เลขที่ใบอนุญาตขับขี่ :
+                                </label>
+                                <input type="text" id="" name="" required placeholder="เลขที่ใบอนุญาตขับขี่"
+                                    class="w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                    autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
 
-                    <label class="items-center gap-2">
-                        <input type="checkbox" id="" name="" value="">
-                        <span>ไม่มีใบขับขี่</span>
-                    </label>
-                </div>
-                <div class="form-group mt-4 ml-8">
-                    <div class="flex items-center mb-4 gap-4">
-                        <label for="" class=""> เลขที่ใบอนุญาตขับขี่ :
-                        </label>
-                        <input type="text" id="" name="" required placeholder="เลขที่ใบอนุญาตขับขี่"
-                            class="w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
-                            autocomplete="off" />
+                    <div> <!-- ใบขับขี่ รถยนต์ -->
+                        <div class="flex flex-row gap-8 text-sm mt-4 ml-16">
+                            <span class="font-medium">รถยนต์ส่วนบุคคล</span>
+                            <label class="flex items-center gap-2">
+                                <input type="radio" name="motor_license" value="yes">
+                                <span>มีใบขับขี่</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="radio" name="motor_license" value="no">
+                                <span>ไม่มีใบขับขี่</span>
+                            </label>
+                        </div>
+                        <div class="form-group mt-4 ml-16 text-sm"> <!-- Checkboxes ใบขับขี่-->
+                            <div class="flex items-center mb-4 gap-4">
+                                <label for="" class=""> เลขที่ใบอนุญาตขับขี่ :
+                                </label>
+                                <input type="text" id="" name="" required placeholder="เลขที่ใบอนุญาตขับขี่"
+                                    class="w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                    autocomplete="off" />
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
