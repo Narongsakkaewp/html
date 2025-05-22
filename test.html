@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.io/logo_vby.png" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/78659597ce.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Kanit', 'Noto Sans Thai', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navbar/Header -->
+    <header class="w-full bg-gradient-to-b from-gray-400 to-gray-300 p-4 md:p-6 shadow">
+        <h2 class="text-xl md:text-2xl font-semibold flex items-center gap-2">
+            <span>📄</span> ใบสมัครงาน (Application Form)
+        </h2>
+    </header>
+
+    <main class="container mx-auto px-2 py-6">
+
+        <!-- Multi-step Form: Step 1 -->
+        <section id="step1"
+            class="grid grid-cols-1 md:grid-cols-[350px_1fr_1fr] gap-4">
+
+            <!-- Left Panel -->
+            <div class="mt-4">
+                <div class="form-group text-sm">
+                    <!-- Image Upload -->
+                    <div class="h-60 w-44 flex flex-col justify-center mx-auto rounded bg-gray-200 relative overflow-hidden mb-6"
+                        id="image-container">
+                        <input type="file" id="image1" name="img_user" accept="image/*" class="hidden" />
+                        <label for="image1"
+                            class="flex items-center justify-center cursor-pointer h-full w-full absolute top-0 left-0 z-10"
+                            id="image-label">
+                            <span class="text-black text-lg text-center" id="upload-text">
+                                <br>กรุณาคลิ๊ก !<br>เพื่อเพิ่มภาพถ่าย<br>
+                                <i class="fa fa-plus-circle" style="color: #66BB00; font-size: 30px;"></i>
+                            </span>
+                        </label>
+                        <img id="preview" class="h-full w-full object-cover rounded hidden z-0" />
+                    </div>
+                    <!-- ตำแหน่งที่สมัคร -->
+                    <div class="form-group mt-4">
+                        <div class="flex flex-col gap-1">
+                            <label for="position_id" class="text-gray-700 font-medium">
+                                <span class="text-red-500">*</span> ตำแหน่งที่สมัคร :
+                            </label>
+                            <select id="position_id" name="position_id"
+                                class="w-full md:w-52 h-10 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                required>
+                                <option value="" disabled selected hidden>--กรุณาเลือกตำแหน่ง--</option>
+                                <option value="sale">Sale</option>
+                                <option value="admin">Admin</option>
+                                <option value="ITsupport">IT Support</option>
+                                <option value="BD">Programmer</option>
+                                <option value="BD">Advertising Manager</option>
+                                <option value="BD">Sustainable development</option>
+                                <option value="BD">Business Development</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- วุฒิการศึกษา -->
+                    <div class="form-group mt-4">
+                        <div class="flex flex-col gap-1">
+                            <label for="educational" class="text-gray-700 font-medium">
+                                <span class="text-red-500">*</span> วุฒิการศึกษา :
+                            </label>
+                            <input type="text" id="educational" name="educational"
+                                class="w-full md:w-52 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" required />
+                        </div>
+                    </div>
+                    <!-- สาขา -->
+                    <div class="form-group mt-4">
+                        <div class="flex flex-col gap-1">
+                            <label for="major" class="text-gray-700 font-medium">
+                                <span class="text-red-500">*</span> สาขา :
+                            </label>
+                            <input type="text" id="major" name="major"
+                                class="w-full md:w-52 h-8 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" required />
+                        </div>
+                    </div>
+                    <!-- เงินเดือนที่ต้องการ -->
+                    <div class="form-group mt-4">
+                        <div class="flex flex-col gap-1">
+                            <label for="salary" class="text-gray-700 font-medium">
+                                <span class="text-red-500">*</span> เงินเดือนที่ต้องการ :
+                            </label>
+                            <input type="text" id="salary" name="salary"
+                                class="w-full md:w-52 h-8 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Panel -->
+            <div class="mt-4">
+                <div class="form-group">
+                    <label class="font-semibold text-[#66BB00]">1. เอกสารประกอบการสมัคร (เลือกให้ครบ)</label>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-4 text-sm">
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="applied_documents[]" value="รูปถ่ายหน้าตรง">
+                        <span>รูปถ่ายหน้าตรงขนาด 1 นิ้ว จำนวน 1 รูป</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="applied_documents[]" value="สำเนาทะเบียนบ้าน">
+                        <span>สำเนาทะเบียนบ้าน</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="applied_documents[]" value="สำเนาใบผ่านทหาร">
+                        <span>สำเนาใบผ่านทหาร</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="applied_documents[]" value="สำเนาใบรับรองการศึกษา">
+                        <span>สำเนาใบรับรองการศึกษา</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="applied_documents[]" value="สำเนาบัตรประชาชน">
+                        <span>สำเนาบัตรประชาชน</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="applied_documents[]" value="สำเนาใบผ่านงาน">
+                        <span>สำเนาใบผ่านงาน</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" name="applied_documents[]" value="สำเนาใบขับขี่">
+                        <span>สำเนาใบขับขี่</span>
+                    </label>
+                </div>
+                <!-- File Uploads -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
+                    <div>
+                        <label for="file_home">สำเนาทะเบียนบ้าน</label>
+                        <input class="mt-1 border w-full md:w-40 rounded" type="file" id="file_home"
+                            name="file_home" accept="image/*">
+                    </div>
+                    <div>
+                        <label for="file_military">สำเนาใบผ่านทหาร</label>
+                        <input class="mt-1 border w-full md:w-40 rounded" type="file" id="file_military"
+                            name="file_military" accept="image/*">
+                    </div>
+                    <div>
+                        <label for="file_educational">สำเนาใบรับรองการศึกษา</label>
+                        <input class="mt-1 border w-full md:w-40 rounded" type="file" id="file_educational"
+                            name="file_educational" accept="image/*">
+                    </div>
+                    <div>
+                        <label for="file_card">สำเนาบัตรประชาชน</label>
+                        <input class="mt-1 border w-full md:w-40 rounded" type="file" id="file_card"
+                            name="file_card" accept="image/*">
+                    </div>
+                    <div>
+                        <label for="file_workpass">สำเนาใบผ่านงาน</label>
+                        <input class="mt-1 border w-full md:w-40 rounded" type="file" id="file_workpass"
+                            name="file_workpass" accept="image/*">
+                    </div>
+                    <div>
+                        <label for="file_driver">สำเนาใบขับขี่</label>
+                        <input class="mt-1 border w-full md:w-40 rounded" type="file" id="file_driver"
+                            name="file_driver" accept="image/*">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="mt-4">
+                <div class="form-group">
+                    <label class="font-semibold text-[#66BB00]">2. ประวัติส่วนตัว</label>
+                </div>
+                <div class="flex flex-col gap-4 mt-4 text-sm">
+                    <!-- คำนำหน้า -->
+                    <div class="flex flex-col gap-2">
+                        <label class="text-gray-700 font-medium">
+                            <span class="text-red-500">*</span> คำนำหน้าชื่อ/Prefix :
+                        </label>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <label class="flex items-center gap-1">
+                                <input type="radio" name="prefix" value="mr">
+                                <span>นาย/Mr.</span>
+                            </label>
+                            <label class="flex items-center gap-1">
+                                <input type="radio" name="prefix" value="mrs">
+                                <span>นาง/Ms.</span>
+                            </label>
+                            <label class="flex items-center gap-1">
+                                <input type="radio" name="prefix" value="miss">
+                                <span>นางสาว/Mrs.</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- ชื่อ-นามสกุล, ชื่อเล่น ภาษาไทย -->
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex flex-col w-full mb-2">
+                            <label for="name-thai" class="text-gray-700 font-medium">
+                                <span class="text-red-500">*</span> ชื่อ-นามสกุล (ภาษาไทย)
+                            </label>
+                            <input type="text" id="name-thai" name="name-thai" required placeholder="ชื่อ - นามสกุล"
+                                class="w-full h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" />
+                        </div>
+                        <div class="flex flex-col w-full mb-2">
+                            <label for="nickname-thai" class="text-gray-700 font-medium">
+                                <span class="text-red-500">*</span> ชื่อเล่น (ภาษาไทย)
+                            </label>
+                            <input type="text" id="nickname-thai" name="nickname-thai" required placeholder="ชื่อเล่น"
+                                class="w-full h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" />
+                        </div>
+                    </div>
+                    <!-- ชื่อ-นามสกุล, ชื่อเล่น ภาษาอังกฤษ -->
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex flex-col w-full mb-2">
+                            <label for="name-eng" class="text-gray-700 font-medium">
+                                <span class="text-red-500">*</span> ชื่อ-นามสกุล (ภาษาอังกฤษ)
+                            </label>
+                            <input type="text" id="name-eng" name="name-eng" required placeholder="Name - Surname"
+                                class="w-full h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" />
+                        </div>
+                        <div class="flex flex-col w-full mb-2">
+                            <label for="nickname-eng" class="text-gray-700 font-medium">
+                                <span class="text-red-500">*</span> ชื่อเล่น (ภาษาอังกฤษ)
+                            </label>
+                            <input type="text" id="nickname-eng" name="nickname-eng" required placeholder="Nickname"
+                                class="w-full h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" />
+                        </div>
+                    </div>
+                    <!-- รายละเอียดเพิ่มเติม (วันเกิด-ปีนักษัตร) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-2">
+                            <label for="bdate" class="text-gray-700 font-medium"><span class="text-red-500">*</span> วัน/เดือน/ปีเกิด</label>
+                            <input type="date" id="bdate" name="bdate"
+                                class="w-full h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" required />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="age" class="text-gray-700 font-medium">อายุ (ปี)</label>
+                            <input type="text" id="age" name="age" placeholder="อายุ"
+                                class="w-full h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="time" class="text-gray-700 font-medium">เวลาเกิด</label>
+                            <input type="time" id="time" name="time"
+                                class="w-full h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="ch-year" class="text-gray-700 font-medium">ปีนักษัตร</label>
+                            <input type="text" id="ch-year" name="ch-year" placeholder="ปีนักษัตร"
+                                class="w-full h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                autocomplete="off" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ตารางประวัติการศึกษา -->
+        <section class="mt-8">
+            <h3 class="text-lg md:text-xl font-semibold text-[#66BB00] mb-2">ประวัติการศึกษา</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-[900px] w-full bg-white rounded-lg shadow border border-gray-200">
+                    <thead>
+                        <tr class="bg-gray-100 text-center">
+                            <th class="py-2 px-4">ระดับการศึกษา</th>
+                            <th class="py-2 px-4">ชื่อสถานศึกษา</th>
+                            <th class="py-2 px-4">ประเทศ</th>
+                            <th class="py-2 px-4">สาขาวิชา</th>
+                            <th class="py-2 px-4">เกรดเฉลี่ย</th>
+                            <th class="py-2 px-4">ปีที่สำเร็จการศึกษา</th>
+                            <th class="py-2 px-4">เพิ่มระดับการศึกษา</th>
+                        </tr>
+                    </thead>
+                    <tbody id="edu-table-body" class="text-center align-middle">
+                        <tr>
+                            <td class="py-2 px-4">
+                                <select name="edu_level[]" class="w-40 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                    <option value="" disabled selected>ระดับการศึกษา</option>
+                                    <option value="ประถมศึกษา">ประถมศึกษา</option>
+                                    <option value="มัธยมศึกษา">มัธยมศึกษา</option>
+                                    <option value="ปวช.">ปวช.</option>
+                                    <option value="ปวส.">ปวส.</option>
+                                    <option value="อนุปริญญา">อนุปริญญา</option>
+                                    <option value="ปริญญาตรี">ปริญญาตรี</option>
+                                    <option value="ปริญญาโท">ปริญญาโท</option>
+                                    <option value="ปริญญาเอก">ปริญญาเอก</option>
+                                </select>
+                            </td>
+                            <td class="py-2 px-4">
+                                <input type="text" name="school_name[]" placeholder="ชื่อสถานศึกษา"
+                                    class="w-40 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" autocomplete="off" />
+                            </td>
+                            <td class="py-2 px-4">
+                                <input type="text" name="country[]" placeholder="ประเทศ"
+                                    class="w-32 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" autocomplete="off" />
+                            </td>
+                            <td class="py-2 px-4">
+                                <input type="text" name="major[]" placeholder="สาขาวิชา"
+                                    class="w-40 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" autocomplete="off" />
+                            </td>
+                            <td class="py-2 px-4">
+                                <input type="text" name="gpa[]" placeholder="เกรดเฉลี่ย"
+                                    class="w-24 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" autocomplete="off" />
+                            </td>
+                            <td class="py-2 px-4">
+                                <select name="grad_year[]" class="grad-year-dropdown w-32 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                    <option value="" disabled selected>ปีที่สำเร็จการศึกษา</option>
+                                </select>
+                            </td>
+                            <td class="py-2 px-4">
+                                <button type="button" onclick="addEduRow()" class="px-3 py-1 rounded bg-[#66BB00] text-white hover:bg-[#558F00] text-lg">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="w-full mt-8">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <!-- จุดไข่ปลา -->
+                <div id="step-indicators" class="flex space-x-2 mt-4">
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                    <span class="dot w-4 h-4 rounded-full bg-gray-300"></span>
+                </div>
+                <!-- ปุ่มย้อนกลับ / ถัดไป -->
+                <div class="flex space-x-4 mb-4">
+                    <button id="backBtn" class="bg-[#66BB00] text-white px-4 py-2 rounded hover:bg-[#558F00] hidden">ย้อนกลับ</button>
+                    <button id="nextBtn" class="bg-[#66BB00] text-white px-4 py-2 rounded hover:bg-[#558F00]">ถัดไป</button>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Image Preview
+        document.getElementById('image1').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('preview');
+            const uploadText = document.getElementById('upload-text');
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                    uploadText.style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                preview.classList.add('hidden');
+                uploadText.style.display = '';
+            }
+        });
+
+        // ฟังก์ชันเพิ่มแถวประวัติการศึกษา
+        function addEduRow() {
+            const tbody = document.getElementById('edu-table-body');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+            <td class="py-2 px-4">
+                <select name="edu_level[]" class="w-40 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                    <option value="" disabled selected>ระดับการศึกษา</option>
+                    <option value="ประถมศึกษา">ประถมศึกษา</option>
+                    <option value="มัธยมศึกษา">มัธยมศึกษา</option>
+                    <option value="ปวช.">ปวช.</option>
+                    <option value="ปวส.">ปวส.</option>
+                    <option value="อนุปริญญา">อนุปริญญา</option>
+                    <option value="ปริญญาตรี">ปริญญาตรี</option>
+                    <option value="ปริญญาโท">ปริญญาโท</option>
+                    <option value="ปริญญาเอก">ปริญญาเอก</option>
+                </select>
+            </td>
+            <td class="py-2 px-4">
+                <input type="text" name="school_name[]" placeholder="ชื่อสถานศึกษา"
+                    class="w-40 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" autocomplete="off" />
+            </td>
+            <td class="py-2 px-4">
+                <input type="text" name="country[]" placeholder="ประเทศ"
+                    class="w-32 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" autocomplete="off" />
+            </td>
+            <td class="py-2 px-4">
+                <input type="text" name="major[]" placeholder="สาขาวิชา"
+                    class="w-40 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" autocomplete="off" />
+            </td>
+            <td class="py-2 px-4">
+                <input type="text" name="gpa[]" placeholder="เกรดเฉลี่ย"
+                    class="w-24 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700" autocomplete="off" />
+            </td>
+            <td class="py-2 px-4">
+                <select name="grad_year[]" class="grad-year-dropdown w-32 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                    <option value="" disabled selected>ปีที่สำเร็จการศึกษา</option>
+                </select>
+            </td>
+            <td class="py-2 px-4">
+                <button type="button" onclick="addEduRow()" class="px-3 py-1 rounded bg-[#66BB00] text-white hover:bg-[#558F00] text-lg">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </td>
+            `;
+            tbody.appendChild(newRow);
+            fillGradYearOptions(); // เติมปีให้กับ select ใหม่
+        }
+
+        // กรอกปีที่สำเร็จการศึกษา 2500-ปีปัจจุบัน ทุก dropdown
+        function fillGradYearOptions() {
+            const selects = document.querySelectorAll('.grad-year-dropdown');
+            const currentYear = new Date().getFullYear() + 543;
+            selects.forEach(select => {
+                // ลบ option เก่า (ยกเว้น disabled)
+                while (select.options.length > 1) select.remove(1);
+                for (let year = 2500; year <= currentYear; year++) {
+                    const option = document.createElement('option');
+                    option.value = year;
+                    option.text = year;
+                    select.appendChild(option);
+                }
+            });
+        }
+        fillGradYearOptions();
+
+        // (Optional) Responsive table scroll on mobile handled by overflow-x-auto from Tailwind
+    </script>
+</body>
+
+</html>
