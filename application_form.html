@@ -598,8 +598,8 @@
                     </div>
                     <div> <!-- ใบขับขี่ มอไซค์ -->
                         <div class="flex flex-row gap-8 text-sm mt-4 ml-16">
-                            <span class="font-medium">รถจักรยานยนต์</span>
-                            <label class="flex items-center gap-2">
+                            <span class="font-bold">รถจักรยานยนต์</span>
+                            <label class="flex items-center gap-2 ml-2">
                                 <input type="radio" name="motor_license" value="yes">
                                 <span>มีใบขับขี่</span>
                             </label>
@@ -621,13 +621,13 @@
 
                     <div> <!-- ใบขับขี่ รถยนต์ -->
                         <div class="flex flex-row gap-8 text-sm mt-4 ml-16">
-                            <span class="font-medium">รถยนต์ส่วนบุคคล</span>
+                            <span class="font-bold">รถยนต์ส่วนบุคคล</span>
                             <label class="flex items-center gap-2">
-                                <input type="radio" name="motor_license" value="yes">
+                                <input type="radio" name="car_license" value="yes">
                                 <span>มีใบขับขี่</span>
                             </label>
                             <label class="flex items-center gap-2">
-                                <input type="radio" name="motor_license" value="no">
+                                <input type="radio" name="car_license" value="no">
                                 <span>ไม่มีใบขับขี่</span>
                             </label>
                         </div>
@@ -643,6 +643,54 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <div class="mt-8"> <!-- Right Panel -->
+            <div class="form-group"> <!-- สถานภาพ -->
+                <div class="form-group">
+                    <label class="control-label no-padding-right font-semibold" style="color: #66BB00;">
+                        3.สถานภาพ </label>
+                </div>
+                <div class="flex flex-row gap-8 text-sm mt-4">
+                    <span class="font-bold">สถานภาพทางสมรส : </span>
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="Marital" value="single">
+                        <span>โสด</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="Marital" value="married">
+                        <span>สมรส</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="Marital" value="widowed ">
+                        <span>หม้าย</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="Marital" value="divorced">
+                        <span>หย่าร้าง</span>
+                    </label>
+                </div>
+
+                <div class="flex flex-row gap-8 text-sm mt-4">
+                    <span class="font-bold">สถานภาพทางทหาร : </span>
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="motor_license" value="yes">
+                        <span>รับราชการทหารแล้ว</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="motor_license" value="no">
+                        <span>ยังไม่ได้รับการเกณฑ์ทหาร</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="motor_license" value="no">
+                        <span>ผ่านการเกณฑ์ทหารแล้ว</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="motor_license" value="no">
+                        <span>ได้รับการยกเว้น/จบ รด.</span>
+                    </label>
+                </div>
             </div>
         </div>
     </div>
