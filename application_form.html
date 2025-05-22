@@ -704,21 +704,21 @@
                         4.ด้านการศึกษา</label>
                 </div>
                 <div class="flex justify-center text-sm mt-4">
-                    <table class="min-w-[1500px] bg-white rounded-lg shadow-lg border border-gray-200">
+                    <table class="min-w-auto bg-white rounded-lg shadow-lg border border-gray-200">
                         <thead>
                             <tr class="bg-gray-100 text-center">
-                                <th class="py-2 px-4">ระดับการศึกษา</th>
-                                <th class="py-2 px-4">ชื่อสถานศึกษา</th>
-                                <th class="py-2 px-4">ประเทศ</th>
-                                <th class="py-2 px-4">สาขาวิชา</th>
-                                <th class="py-2 px-4">เกรดเฉลี่ย</th>
-                                <th class="py-2 px-4">ปีที่สำเร็จการศึกษา</th>
-                                <th class="py-2 px-4">เพิ่มระดับการศึกษา</th>
+                                <th class="py-2 px-4 border border-gray-300">ระดับการศึกษา</th>
+                                <th class="py-2 px-4 border border-gray-300">ชื่อสถานศึกษา</th>
+                                <th class="py-2 px-4 border border-gray-300">ประเทศ</th>
+                                <th class="py-2 px-4 border border-gray-300">สาขาวิชา</th>
+                                <th class="py-2 px-4 border border-gray-300">เกรดเฉลี่ย</th>
+                                <th class="py-2 px-4 border border-gray-300">ปีที่สำเร็จการศึกษา</th>
+                                <th class="py-2 px-4 border border-gray-300">เพิ่มระดับการศึกษา</th>
                             </tr>
                         </thead>
                         <tbody id="edu-table-body" class="text-center align-middle">
-                            <tr>
-                                <td class="py-2 px-4">
+                            <tr class="border border-gray-300">
+                                <td class="py-2 px-4 border border-gray-300">
                                     <select name="edu_level[]"
                                         class="w-40 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
                                         <option value="" disabled selected>ระดับการศึกษา</option>
@@ -732,34 +732,34 @@
                                         <option value="ปริญญาเอก">ปริญญาเอก</option>
                                     </select>
                                 </td>
-                                <td class="py-2 px-4">
+                                <td class="py-2 px-4 border border-gray-300">
                                     <input type="text" name="school_name[]" placeholder="ชื่อสถานศึกษา"
-                                        class="w-40 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                        class="w-56 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                                         autocomplete="off" />
                                 </td>
-                                <td class="py-2 px-4">
+                                <td class="py-2 px-4 border border-gray-300">
                                     <input type="text" name="country[]" placeholder="ประเทศ"
-                                        class="w-32 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                        class="w-48 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                                         autocomplete="off" />
                                 </td>
-                                <td class="py-2 px-4">
+                                <td class="py-2 px-4 border border-gray-300">
                                     <input type="text" name="major[]" placeholder="สาขาวิชา"
-                                        class="w-40 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                        class="w-56 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                                         autocomplete="off" />
                                 </td>
-                                <td class="py-2 px-4">
+                                <td class="py-2 px-4 border border-gray-300">
                                     <input type="text" name="gpa[]" placeholder="เกรดเฉลี่ย"
                                         class="w-24 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                                         autocomplete="off" />
                                 </td>
-                                <td class="py-2 px-4">
+                                <td class="py-2 px-4 border border-gray-300">
                                     <select name="grad_year[]" id="grad_year_select"
                                         class="w-36 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
                                         <option value="" disabled selected>ปีที่สำเร็จการศึกษา</option>
                                         <!-- options จะถูกเติมด้วย JS -->
                                     </select>
                                 </td>
-                                <td class="py-2 px-4">
+                                <td class="py-2 px-4 border border-gray-300">
                                     <button type="button" onclick="addEduRow()"
                                         class="px-3 py-1 rounded bg-[#66BB00] text-white hover:bg-[#558F00] text-lg">
                                         <i class="fa-solid fa-plus"></i>
