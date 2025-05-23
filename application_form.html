@@ -806,7 +806,8 @@
 
                         <div class="flex items-center gap-4 ml-2">
                             <input type="text" placeholder="ชื่อโปรแกรม" name="program[]"
-                                class="w-60 h-8 border border-gray-300 rounded px-3 py-2 text text-gray-700" />
+                                class="w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                autocomplete="off" />
                             <div class="flex gap-4">
                                 <label class="flex items-center gap-1">
                                     <input type="radio" name="skill0" value="ปานกลาง" />
@@ -920,6 +921,55 @@
         });
     </script>
 
+    <script> // JavaScript for adding Programs skills
+        let programIndex = 1;
+
+        function addProgramRow() {
+            const list = document.getElementById('program-list');
+
+            const row = document.createElement('div');
+            row.className = "flex items-center gap-6";
+
+            row.innerHTML = `
+      <div class="space-y-4 mt-6" id="program-list">
+                    <div class="flex items ml-16 mb-2 items-center"> <!-- กรอกชื่อโปรแกรม-->
+                        <label for="" class="mb-2 text-gray-700 font-medium">โปรแกรมคอมพิวเตอร์</label>
+
+                        <div class="flex items-center gap-4 ml-2">
+                            <input type="text" placeholder="ชื่อโปรแกรม" name="program[]"
+                                class="w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                autocomplete="off" />
+                            <div class="flex gap-4">
+                                <label class="flex items-center gap-1">
+                                    <input type="radio" name="skill0" value="ปานกลาง" />
+                                    <span class="text-sm">ปานกลาง</span>
+                                </label>
+                                <label class="flex items-center gap-1">
+                                    <input type="radio" name="skill0" value="ดี" />
+                                    <span class="text-sm">ดี</span>
+                                </label>
+                                <label class="flex items-center gap-1">
+                                    <input type="radio" name="skill0" value="ดีมาก" />
+                                    <span class="text-sm">ดีมาก</span>
+                                </label>
+                                <label class="flex items-center gap-1">
+                                    <input type="radio" name="skill0" value="ดีเยี่ยม" />
+                                    <span class="text-sm">ดีเยี่ยม</span>
+                                </label>
+                            </div>
+                            <button onclick="addProgramRow()"
+                                class="bg-[#66BB00] text-white px-3 py-3 rounded hover:bg-[#558F00] flex items items-center text-sm">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    `;
+
+            list.appendChild(row);
+            programIndex++;
+        }
+    </script>
     <script> // JavaScript for adding education rows
         function addEduRow() {
             const tbody = document.getElementById('edu-table-body');
