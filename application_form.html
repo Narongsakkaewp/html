@@ -1011,11 +1011,11 @@
 
         <div class="mt-8"> <!-- right Panel -->
             <div class="form-group">
-                <div class="form-group">
+                <div class="form-group"> <!-- อบรม/ฝึกงาน -->
                     <label class="control-label no-padding-right font-semibold ml-8" style="color: #66BB00;">
                         6.การอบรม การดูงาน การฝึกงาน (Training Course)</label>
                 </div>
-                <div class="mt-6">
+                <div class="mt-6"> <!-- ตารางอบรม/ฝึกงาน-->
                     <label class="control-label text-xs font-semibold ml-8">
                         <span class="text-red-500">*</span> เรียงจากใหม่ไปเก่าสุด
                     </label>
@@ -1027,7 +1027,7 @@
                                 <th class="py-2 px-4 border border-gray-300">หลักสูตร/หัวข้อ</th>
                                 <th class="py-2 px-4 border border-gray-300">ชื่อสถาบัน</th>
                                 <th class="py-2 px-4 border border-gray-300">ระยะเวลา</th>
-                                <th class="py-2 px-4 border border-gray-300">เพิ่ม</th>
+                                <th class="py-2 px-4 border border-gray-300">เพิ่มข้อมูล</th>
                             </tr>
                         </thead>
                         <tbody id="Training-Course" class="text-center text-sm">
@@ -1070,6 +1070,91 @@
         </div>
     </div>
 
+    <!-- form 5 -->
+    <div id="step5" class="step hidden grid grid-cols-[100%] gap-4 text-sm">
+        <div class="mt-8">
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="control-label no-padding-right font-semibold ml-16" style="color: #66BB00;">
+                        5.ประวัติการทำงาน</label>
+                </div>
+                <div class="mt-2">
+                    <label class="control-label text-sm ml-16">
+                        <span class="text-red-500">*</span> เรียงจากใหม่ไปเก่าสุด
+                    </label>
+
+                    <table class="mx-auto mt-2 min-w-fit bg-white shadow-lg border border-gray-200">
+                        <thead>
+                            <tr class="bg-gray-100 text-center text-sm">
+                                <th class="py-2 px-4 border border-gray-300">สถานที่ทำงาน</th>
+                                <th class="py-2 px-4 border border-gray-300">ตำแหน่ง</th>
+                                <th class="py-2 px-4 border border-gray-300">งานที่รับผิดชอบ</th>
+                                <th class="py-2 px-4 border border-gray-300">ระยะเวลาการทำงาน</th>
+                                <th class="py-2 px-4 border border-gray-300">เงินเดือนล่าสุด</th>
+                                <th class="py-2 px-4 border border-gray-300">รายได้อื่น ๆ</th>
+                                <th class="py-2 px-4 border border-gray-300">รายได้สุทธิ</th>
+                                <th class="py-2 px-4 border border-gray-300">สาเหตุที่ออก</th>
+                                <th class="py-2 px-4 border border-gray-300">เพิ่มข้อมูล</th>
+                            </tr>
+                        </thead>
+                        <tbody id="work-experience-table" class="text-center text-sm">
+                            <tr class="border border-gray-300">
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="company_name[]" placeholder="ชื่อสถานที่ทำงาน"
+                                        class="w-40 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="position[]" placeholder="ตำแหน่ง"
+                                        class="w-40 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="responsibility[]" placeholder="งานที่รับผิดชอบ"
+                                        class="w-52 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="date" name="work_duration[]"
+                                        class="w-40 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+                                        autocomplete="off" /> <span>ถึง</span> <input type="date" name="work_duration[]"
+                                        class="w-40 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="last_salary[]" placeholder="บาท"
+                                        class="w-32 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700 text-right"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="other_income[]" placeholder="บาท"
+                                        class="w-32 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700 text-right"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="net_income[]" placeholder="บาท"
+                                        class="w-32 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700 text-right"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="reason_for_leaving[]" placeholder="สาเหตุที่ออก"
+                                        class="w-52 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+                                        autocomplete="off" />
+                                </td>
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <button type="button" onclick="addWorkExperienceRow()"
+                                        class="bg-[#66BB00] hover:bg-[#558F00] text-white px-3 py-1 rounded text-lg">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script> // JavaScript for Thai ID formatting
         function formatThaiID(input) {
             // ลบทุกตัวที่ไม่ใช่ตัวเลข
@@ -1091,7 +1176,7 @@
     </script>
 
     <script> // JavaScript for step navigation
-        let currentStep = 4;
+        let currentStep = 5;
         const totalSteps = 6;
 
         function showStep(step) {
@@ -1354,6 +1439,28 @@
             tbody.appendChild(tr);
         }
     </script>
+
+    <script> //JavaScript for adding work experience rows
+        function addWorkExperienceRow() {
+            const tableBody = document.getElementById("work-experience-table");
+
+            // เลือกแถวตัวอย่าง (แถวแรก)
+            const firstRow = tableBody.querySelector("tr");
+            if (!firstRow) return;
+
+            // ก็อปปี้แถว
+            const newRow = firstRow.cloneNode(true);
+
+            // เคลียร์ค่าที่กรอกไว้ใน input ทุกช่อง
+            newRow.querySelectorAll("input").forEach(input => {
+                input.value = "";
+            });
+
+            // เพิ่มแถวใหม่ต่อท้าย
+            tableBody.appendChild(newRow);
+        }
+    </script>
+
 
     <!-- FOOTER -->
     <footer class="footer items-center py-4 mt-8">
