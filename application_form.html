@@ -1283,14 +1283,14 @@
                     <p class="control-label no-padding-right font-semibold text-[#66BB00]">
                         9.บุคคลที่ไม่ใช่ญาติซึ่งทราบประวัติของท่านและบริษัทสามารถตรวจสอบได้</p>
                 </div>
-                <div class="text-sm flex flex-col mt-2 space-y-2">
+                <div class="text-md flex flex-col mt-2 space-y-2">
                     <label>ชื่อ - นามสกุล:</label>
-                    <input type="text" class="mt-1 w-64 border rounded px-2 py-1">
+                    <input type="text" class="mt-1 w-64 border rounded px-2 py-1" placeholder="ชื่อ - นามสกุล">
                     <label>ความสัมพันธ์:</label>
-                    <input type="text" class="mt-1 w-64 border rounded px-2 py-1">
+                    <input type="text" class="mt-1 w-64 border rounded px-2 py-1" placeholder="ความสัมพันธ์">
                     <label>เบอร์โทรศัพท์:</label>
-                    <input type="text" class="mt-1 w-64 border rounded px-2 py-1">
-
+                    <input type="text" class="mt-1 w-64 border rounded px-2 py-1" placeholder="เบอร์โทรศัพท์"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);">
                     <div class="space-y-4">
                         <p>ท่านสะดวกที่จะเดินทางไปปฏิบัติงานต่างจังหวัดหรือไม่</p>
                         <div class="space-x-2">
