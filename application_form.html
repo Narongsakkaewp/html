@@ -800,9 +800,10 @@
                     <label class="control-label no-padding-right font-semibold ml-16" style="color: #66BB00;">
                         5.ความสามารถทางด้านภาษาและอื่น ๆ</label>
                 </div>
+
                 <div class="space-y-4 mt-6" id="program-list"> <!-- รายการโปรแกรมคอมพิวเตอร์ -->
                     <div class="flex items ml-16 mb-2 items-center"> <!-- กรอกชื่อโปรแกรม-->
-                        <label for="" class="mb-2 font-medium">โปรแกรมคอมพิวเตอร์ :</label>
+                        <label for="" class="mb-2 font-bold">โปรแกรมคอมพิวเตอร์ :</label>
 
                         <div class="flex items-center gap-4 ml-2">
                             <input type="text" placeholder="ชื่อโปรแกรม" name="program[]"
@@ -833,9 +834,10 @@
                         </div>
                     </div>
                 </div>
+
                 <div> <!-- ทักษะอื่น ๆ -->
                     <div class="flex items-center mb-2 gap-4 ml-16 mt-4"> <!-- กรอกทักษะอื่น ๆ-->
-                        <label for="" class="mb-2 font-medium">ทักษะอื่น ๆ :</label>
+                        <label for="" class="mb-2 font-bold">ทักษะอื่น ๆ :</label>
                         <div class="flex items-center gap-4 ml-2">
                             <textarea name="other_skill" placeholder="ระบุทักษะอื่น ๆ"
                                 class="w-96 h-40 ml-14 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 resize-none"
@@ -846,7 +848,7 @@
 
                 <div> <!-- ภาษา -->
                     <div class="flex items-center mb-2 gap-4 ml-16 mt-4"> <!-- กรอกด้านภาษา-->
-                        <label for="" class="mb-2 font-medium">ด้านภาษา :</label>
+                        <label for="" class="mb-2 font-bold">ด้านภาษา :</label>
                     </div>
                     <div>
                         <table class="ml-20 min-w-auto bg-white shadow-lg border border-gray-200">
@@ -861,7 +863,7 @@
                                 </tr>
                             </thead>
                             <tbody id="language-table-body" class="text-center align-middle">
-                                <tr class="border border-gray-300">
+                                <tr class="border border-gray-300"> <!--Thai-->
                                     <td class="py-2 px-4 border border-gray-300">
                                         <label for="">ภาษาไทย</label>
                                         <!-- <select name="language[]" id="language_select"
@@ -931,17 +933,25 @@
                                     </td>
                                 </tr>
 
-                                <tr class="border border-gray-300">
+                                <tr class="border border-gray-300"> <!--English-->
                                     <td class="py-2 px-4 border border-gray-300">
-                                        <input type="text" name="language[]" placeholder="ภาษาอื่น ๆ"
-                                            class="w- h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
-                                            autocomplete="off" />
+                                        <label for="">ภาษาอังกฤษ</label>
+                                        <!-- <select name="language[]" id="language_select"
+                                            class="w-44 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                            <option value="" disabled selected>ภาษา</option>
+                                            <option value="ไทย">ไทย</option>
+                                            <option value="อังกฤษ">อังกฤษ</option>
+                                            <option value="จีน">จีน</option>
+                                            <option value="ญี่ปุ่น">ญี่ปุ่น</option>
+                                            <option value="เกาหลี">เกาหลี</option>
+                                            <option value="ฝรั่งเศส">ฝรั่งเศส</option>
+                                        </select> -->
                                     </td>
 
                                     <td class="py-2 px-4 border border-gray-300">
-                                        <select name="listening_select" id="listening_select"
+                                        <select name="listening" id="listening_select"
                                             class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
-                                            <option value="" disabled selected></option>
+                                            <option value="" disabled selected>เลือก</option>
                                             <option value="ปานกลาง">ปานกลาง</option>
                                             <option value="ดี">ดี</option>
                                             <option value="ดีมาก">ดีมาก</option>
@@ -951,23 +961,38 @@
                                     </td>
 
                                     <td class="py-2 px-4 border border-gray-300">
-                                        <select name="" id=""
+                                        <select name="speaking" id="speaking_select"
                                             class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
-                                            <option value="" disabled selected></option>
+                                            <option value="" disabled selected>เลือก</option>
+                                            <option value="ปานกลาง">ปานกลาง</option>
+                                            <option value="ดี">ดี</option>
+                                            <option value="ดีมาก">ดีมาก</option>
+                                            <option value="ดีเยี่ยม">ดีเยี่ยม</option>
+                                            <option value="Native">Native</option>
                                         </select>
                                     </td>
 
                                     <td class="py-2 px-4 border border-gray-300">
-                                        <select name="" id=""
+                                        <select name="reading" id="reading_select"
                                             class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
-                                            <option value="" disabled selected></option>
+                                            <option value="" disabled selected>เลือก</option>
+                                            <option value="ปานกลาง">ปานกลาง</option>
+                                            <option value="ดี">ดี</option>
+                                            <option value="ดีมาก">ดีมาก</option>
+                                            <option value="ดีเยี่ยม">ดีเยี่ยม</option>
+                                            <option value="Native">Native</option>
                                         </select>
                                     </td>
 
                                     <td class="py-2 px-4 border border-gray-300">
-                                        <select name="" id=""
+                                        <select name="writting" id="writting_select"
                                             class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
-                                            <option value="" disabled selected></option>
+                                            <option value="" disabled selected>เลือก</option>
+                                            <option value="ปานกลาง">ปานกลาง</option>
+                                            <option value="ดี">ดี</option>
+                                            <option value="ดีมาก">ดีมาก</option>
+                                            <option value="ดีเยี่ยม">ดีเยี่ยม</option>
+                                            <option value="Native">Native</option>
                                         </select>
                                     </td>
                                     <td class="py-2 px-4 border border-gray-300">
@@ -980,6 +1005,66 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8"> <!-- right Panel -->
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="control-label no-padding-right font-semibold ml-8" style="color: #66BB00;">
+                        6.การอบรม การดูงาน การฝึกงาน (Training Course)</label>
+                </div>
+                <div class="mt-6">
+                    <label class="control-label text-xs font-semibold ml-8">
+                        <span class="text-red-500">*</span> เรียงจากใหม่ไปเก่าสุด
+                    </label>
+
+                    <table class="ml-8 mt-2 min-w-fit bg-white shadow-lg border border-gray-200">
+                        <thead>
+                            <tr class="bg-gray-100 text-center text-sm">
+                                <th class="py-2 px-4 border border-gray-300">ปี (พ.ศ.)</th>
+                                <th class="py-2 px-4 border border-gray-300">หลักสูตร/หัวข้อ</th>
+                                <th class="py-2 px-4 border border-gray-300">ชื่อสถาบัน</th>
+                                <th class="py-2 px-4 border border-gray-300">ระยะเวลา</th>
+                                <th class="py-2 px-4 border border-gray-300">เพิ่ม</th>
+                            </tr>
+                        </thead>
+                        <tbody id="Training-Course" class="text-center text-sm">
+                            <tr class="border border-gray-300">
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="tn-year[]" placeholder="พ.ศ."
+                                        class="w-20 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700 text-center"
+                                        autocomplete="off" />
+                                </td>
+
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="tn-topic[]" placeholder="หลักสูตร/หัวข้อ"
+                                        class="w-52 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+                                        autocomplete="off" />
+                                </td>
+
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="tn-institute[]" placeholder="ชื่อสถาบัน"
+                                        class="w-52 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+                                        autocomplete="off" />
+                                </td>
+
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <input type="text" name="tn-duration[]" placeholder="เช่น 3 วัน, 10 ชม."
+                                        class="w-32 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+                                        autocomplete="off" />
+                                </td>
+
+                                <td class="py-2 px-4 border border-gray-300">
+                                    <button type="button" onclick="addTrainingCourse()"
+                                        class="bg-[#66BB00] hover:bg-[#558F00] text-white px-3 py-1 rounded text-lg">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -1068,56 +1153,6 @@
         });
     </script>
 
-    <script> // JavaScript for adding Programs skills
-        let programIndex = 1;
-
-        function addProgramRow() {
-            const list = document.getElementById('program-list');
-
-            const row = document.createElement('div');
-            row.className = "flex items-center gap-6";
-
-            row.innerHTML = `
-      <div class="space-y-4 mt-6" id="program-list">
-                    <div class="flex items ml-16 mb-2 items-center"> <!-- กรอกชื่อโปรแกรม-->
-                        <label for="" class="mb-2 text-gray-700 font-medium">โปรแกรมคอมพิวเตอร์</label>
-
-                        <div class="flex items-center gap-4 ml-2">
-                            <input type="text" placeholder="ชื่อโปรแกรม" name="program[]"
-                                class="w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
-                                autocomplete="off" />
-                            <div class="flex gap-4">
-                                <label class="flex items-center gap-1">
-                                    <input type="radio" name="skill0" value="ปานกลาง" />
-                                    <span class="text-sm">ปานกลาง</span>
-                                </label>
-                                <label class="flex items-center gap-1">
-                                    <input type="radio" name="skill0" value="ดี" />
-                                    <span class="text-sm">ดี</span>
-                                </label>
-                                <label class="flex items-center gap-1">
-                                    <input type="radio" name="skill0" value="ดีมาก" />
-                                    <span class="text-sm">ดีมาก</span>
-                                </label>
-                                <label class="flex items-center gap-1">
-                                    <input type="radio" name="skill0" value="ดีเยี่ยม" />
-                                    <span class="text-sm">ดีเยี่ยม</span>
-                                </label>
-                            </div>
-                            <button onclick="addProgramRow()"
-                                class="bg-[#66BB00] text-white px-3 py-3 rounded hover:bg-[#558F00] flex items items-center text-sm">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-    `;
-
-            list.appendChild(row);
-            programIndex++;
-        }
-    </script>
-
     <script> // JavaScript for adding education rows
         function addEduRow() {
             const tbody = document.getElementById('edu-table-body');
@@ -1169,6 +1204,68 @@
         }
     </script>
 
+    <script> // JavaScript for populating graduation year options ตั้งแต่ปี 2500 ถึงปีปัจจุบัน
+        // เติม option ปี 2500 ถึงปีปัจจุบัน (ปี พ.ศ.)
+        const gradYearSelect = document.getElementById('grad_year_select');
+        const currentYear = new Date().getFullYear() + 543; // แปลงเป็นปี พ.ศ.
+        for (let year = 2500; year <= currentYear; year++) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.text = year;
+            gradYearSelect.appendChild(option);
+        }
+    </script>
+
+    <script> // JavaScript for adding Programs skills
+        let programIndex = 1;
+
+        function addProgramRow() {
+            const list = document.getElementById('program-list');
+
+            const row = document.createElement('div');
+            row.className = "flex items-center gap-6";
+
+            row.innerHTML = `
+                <div class="space-y-4 mt-6" id="program-list">
+                    <div class="flex items ml-16 mb-2 items-center"> <!-- กรอกชื่อโปรแกรม-->
+                        <label for="" class="mb-2 font-bold">โปรแกรมคอมพิวเตอร์ :</label>
+
+                        <div class="flex items-center gap-4 ml-2">
+                            <input type="text" placeholder="ชื่อโปรแกรม" name="program[]"
+                                class="ml-2 w-60 h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                                autocomplete="off" />
+                            <div class="flex gap-4">
+                                <label class="flex items-center gap-1">
+                                    <input type="radio" name="skill0" value="ปานกลาง" />
+                                    <span class="text-sm">ปานกลาง</span>
+                                </label>
+                                <label class="flex items-center gap-1">
+                                    <input type="radio" name="skill0" value="ดี" />
+                                    <span class="text-sm">ดี</span>
+                                </label>
+                                <label class="flex items-center gap-1">
+                                    <input type="radio" name="skill0" value="ดีมาก" />
+                                    <span class="text-sm">ดีมาก</span>
+                                </label>
+                                <label class="flex items-center gap-1">
+                                    <input type="radio" name="skill0" value="ดีเยี่ยม" />
+                                    <span class="text-sm">ดีเยี่ยม</span>
+                                </label>
+                            </div>
+                            <button onclick="addProgramRow()"
+                                class="bg-[#66BB00] text-white px-3 py-3 rounded hover:bg-[#558F00] flex items items-center text-sm">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    `;
+
+            list.appendChild(row);
+            programIndex++;
+        }
+    </script>
+
     <script> // JavaScript for adding language rows
         function addLanguageRow() {
             const tbody = document.getElementById("language-table-body");
@@ -1180,9 +1277,9 @@
             const tdLanguage = document.createElement("td");
             tdLanguage.className = "py-2 px-4 border border-gray-300";
             tdLanguage.innerHTML = `
-    <input type="text" name="language[]" placeholder="ภาษาอื่น ๆ"
-      class="w-36 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700" autocomplete="off" />
-  `;
+            <input type="text" name="language[]" placeholder="ภาษาอื่น ๆ"
+            class="w-28 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700" autocomplete="off" />
+            `;
             tr.appendChild(tdLanguage);
 
             // ทักษะ 4 ด้าน (ฟัง, พูด, อ่าน, เขียน)
@@ -1191,15 +1288,15 @@
                 const td = document.createElement("td");
                 td.className = "py-2 px-4 border border-gray-300";
                 td.innerHTML = `
-      <select name="${skills[i]}[]" class="w-24 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700">
-        <option value="" disabled selected>เลือก</option>
-        <option value="ปานกลาง">ปานกลาง</option>
-        <option value="ดี">ดี</option>
-        <option value="ดีมาก">ดีมาก</option>
-        <option value="ดีเยี่ยม">ดีเยี่ยม</option>
-        <option value="Native">Native</option>
-      </select>
-    `;
+            <select name="${skills[i]}[]" class="w-20 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700">
+                <option value="" disabled selected>เลือก</option>
+                <option value="ปานกลาง">ปานกลาง</option>
+                <option value="ดี">ดี</option>
+                <option value="ดีมาก">ดีมาก</option>
+                <option value="ดีเยี่ยม">ดีเยี่ยม</option>
+                <option value="Native">Native</option>
+            </select>
+            `;
                 tr.appendChild(td);
             }
 
@@ -1207,11 +1304,11 @@
             const tdBtn = document.createElement("td");
             tdBtn.className = "py-2 px-4 border border-gray-300";
             tdBtn.innerHTML = `
-    <button type="button" onclick="addLanguageRow()"
-      class="bg-[#66BB00] hover:bg-[#558F00] text-white px-2 py-1 rounded text-lg">
-      <i class="fa-solid fa-plus"></i>
-    </button>
-  `;
+            <button type="button" onclick="addLanguageRow()"
+                class="bg-[#66BB00] hover:bg-[#558F00] text-white px-3 py-1 rounded text-lg">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+            `;
             tr.appendChild(tdBtn);
 
             tbody.appendChild(tr);
@@ -1219,15 +1316,42 @@
 
     </script>
 
-    <script> // JavaScript for populating graduation year options ตั้งแต่ปี 2500 ถึงปีปัจจุบัน
-        // เติม option ปี 2500 ถึงปีปัจจุบัน (ปี พ.ศ.)
-        const gradYearSelect = document.getElementById('grad_year_select');
-        const currentYear = new Date().getFullYear() + 543; // แปลงเป็นปี พ.ศ.
-        for (let year = 2500; year <= currentYear; year++) {
-            const option = document.createElement('option');
-            option.value = year;
-            option.text = year;
-            gradYearSelect.appendChild(option);
+    <script> //JavaScript for adding training rows
+        function addTrainingCourse() {
+            const tbody = document.getElementById("Training-Course");
+            const tr = document.createElement("tr");
+            tr.className = "border border-gray-300";
+
+            tr.innerHTML = `
+      <td class="py-2 px-4 border border-gray-300">
+        <input type="text" name="tn-year[]" placeholder="พ.ศ."
+          class="w-20 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700 text-center"
+          autocomplete="off" />
+      </td>
+      <td class="py-2 px-4 border border-gray-300">
+        <input type="text" name="tn-topic[]" placeholder="หลักสูตร/หัวข้อ"
+          class="w-52 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+          autocomplete="off" />
+      </td>
+      <td class="py-2 px-4 border border-gray-300">
+        <input type="text" name="tn-institute[]" placeholder="ชื่อสถาบัน"
+          class="w-52 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+          autocomplete="off" />
+      </td>
+      <td class="py-2 px-4 border border-gray-300">
+        <input type="text" name="tn-duration[]" placeholder="เช่น 3 วัน, 10 ชม."
+          class="w-32 h-8 border border-gray-300 rounded px-2 py-1 text-gray-700"
+          autocomplete="off" />
+      </td>
+      <td class="py-2 px-4 border border-gray-300">
+        <button type="button" onclick="addTrainingCourse()"
+          class="bg-[#66BB00] hover:bg-[#558F00] text-white px-3 py-1 rounded text-lg">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </td>
+    `;
+
+            tbody.appendChild(tr);
         }
     </script>
 
