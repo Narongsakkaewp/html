@@ -40,7 +40,7 @@
 <body class="body-form bg-gray-50 col-sm-3 control-label no-padding-right">
     <div class="navbar"> <!-- navbar -->
         <div>
-            <div class="bg-gradient-to-b from-gray-400 to-gray-300 p-6 shadow w-full">
+            <div class="bg-gradient-to-t from-gray-300 to-gray-100 p-6 shadow w-full">
                 <h2 class="flex items-center text-xl font-semibold gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                         <path
@@ -793,7 +793,7 @@
     </div>
 
     <!-- form 4 -->
-    <div id="step4" class="step hidden grid grid-cols-1 md:grid-cols-2 gap-4 text-sm"> <!-- อย่าลืม step hidden -->
+    <div id="step4" class="step hidden text-sm grid grid-cols-1 md:grid-cols-[2fr_2fr] gap-4"> <!-- อย่าลืม step hidden -->
         <div class="mt-8"> <!-- Left Panel -->
             <div class="form-group">
                 <div class="form-group">
@@ -1004,6 +1004,22 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div>
+                            <label class="control-label text-xs ml-20 mt-2">
+                                <span class="text-red-500">*</span> ผลคะแนน TOEIC, IELTS, TOEFL, HSK, JLPT หรืออื่น ๆ
+                                (ถ้ามี)
+                                <!-- Input file ซ่อน -->
+                                <input type="file" id="languageFileInput" class="hidden"
+                                    onchange="handleLanguageFile(this)" />
+
+                                <!-- ปุ่มแสดงชื่อไฟล์ -->
+                                <button type="button" id="uploadButton"
+                                    onclick="document.getElementById('languageFileInput').click()"
+                                    class="mt-4 ml-2 px-3 py-1 rounded bg-[#66BB00] text-white hover:bg-[#558F00] text-lg">
+                                    <i class="fa-solid fa-file-arrow-up mr-2"></i> เลือกไฟล์
+                                </button>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1176,7 +1192,7 @@
     </script>
 
     <script> // JavaScript for step navigation
-        let currentStep = 5;
+        let currentStep = 4;
         const totalSteps = 6;
 
         function showStep(step) {
@@ -1401,6 +1417,16 @@
 
     </script>
 
+    <script>    // JavaScript for handling language file upload
+        function handleLanguageFile(input) {
+            if (input.files.length > 0) {
+                const fileName = input.files[0].name;
+                const uploadButton = document.getElementById('uploadButton');
+                uploadButton.innerHTML = `<i class="fa-solid fa-file-arrow-up mr-2"></i> ${fileName}`;
+            }
+        }
+    </script>
+
     <script> //JavaScript for adding training rows
         function addTrainingCourse() {
             const tbody = document.getElementById("Training-Course");
@@ -1460,7 +1486,6 @@
             tableBody.appendChild(newRow);
         }
     </script>
-
 
     <!-- FOOTER -->
     <footer class="footer items-center py-4 mt-8">
