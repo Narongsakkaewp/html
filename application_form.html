@@ -848,6 +848,122 @@
                     <div class="flex items-center mb-2 gap-4 ml-16 mt-4"> <!-- กรอกด้านภาษา-->
                         <label for="" class="mb-2 font-medium">ด้านภาษา :</label>
                     </div>
+                    <div>
+                        <table class="ml-20 min-w-auto bg-white shadow-lg border border-gray-200">
+                            <thead>
+                                <tr class="bg-gray-100 text-center">
+                                    <th class="py-2 px-4 border border-gray-300">ภาษา</th>
+                                    <th class="py-2 px-4 border border-gray-300">ฟัง</th>
+                                    <th class="py-2 px-4 border border-gray-300">พูด</th>
+                                    <th class="py-2 px-4 border border-gray-300">อ่าน</th>
+                                    <th class="py-2 px-4 border border-gray-300">เขียน</th>
+                                    <th class="py-2 px-4 border border-gray-300">เพิ่มภาษา</th>
+                                </tr>
+                            </thead>
+                            <tbody id="language-table-body" class="text-center align-middle">
+                                <tr class="border border-gray-300">
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <select name="language[]" id="language_select"
+                                            class="w-44 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                            <option value="" disabled selected>ภาษา</option>
+                                            <option value="ไทย">ไทย</option>
+                                            <option value="อังกฤษ">อังกฤษ</option>
+                                            <option value="จีน">จีน</option>
+                                            <option value="ญี่ปุ่น">ญี่ปุ่น</option>
+                                            <option value="เกาหลี">เกาหลี</option>
+                                            <option value="ฝรั่งเศส">ฝรั่งเศส</option>
+                                        </select>
+                                    </td>
+
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <select name="listening_select" id="listening_select"
+                                            class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                            <option value="" disabled selected></option>
+                                            <option value="ปานกลาง">ปานกลาง</option>
+                                            <option value="ดี">ดี</option>
+                                            <option value="ดีมาก">ดีมาก</option>
+                                            <option value="ดีเยี่ยม">ดีเยี่ยม</option>
+                                            <option value="Native">Native</option>
+                                        </select>
+                                    </td>
+
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <select name="" id=""
+                                            class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                            <option value="" disabled selected></option>
+                                        </select>
+                                    </td>
+
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <select name="" id=""
+                                            class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                            <option value="" disabled selected></option>
+                                        </select>
+                                    </td>
+
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <select name="" id=""
+                                            class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                            <option value="" disabled selected></option>
+                                        </select>
+                                    </td>
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <button type="button" onclick="addLanguageRow()"
+                                            class="px-3 py-1 rounded bg-[#66BB00] text-white hover:bg-[#558F00] text-lg">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+              
+                                <tr class="border border-gray-300">
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <input type="text" name="language[]" placeholder="ภาษาอื่น ๆ"
+                                            class="w- h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                            autocomplete="off" />
+                                    </td>
+
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <select name="listening_select" id="listening_select"
+                                            class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                            <option value="" disabled selected></option>
+                                            <option value="ปานกลาง">ปานกลาง</option>
+                                            <option value="ดี">ดี</option>
+                                            <option value="ดีมาก">ดีมาก</option>
+                                            <option value="ดีเยี่ยม">ดีเยี่ยม</option>
+                                            <option value="Native">Native</option>
+                                        </select>
+                                    </td>
+
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <select name="" id=""
+                                            class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                            <option value="" disabled selected></option>
+                                        </select>
+                                    </td>
+
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <select name="" id=""
+                                            class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                            <option value="" disabled selected></option>
+                                        </select>
+                                    </td>
+
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <select name="" id=""
+                                            class="w-20 h-8 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                                            <option value="" disabled selected></option>
+                                        </select>
+                                    </td>
+                                    <td class="py-2 px-4 border border-gray-300">
+                                        <button type="button" onclick="addLanguageRow()"
+                                            class="px-3 py-1 rounded bg-[#66BB00] text-white hover:bg-[#558F00] text-lg">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
