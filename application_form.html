@@ -63,8 +63,9 @@
                     <label for="image1"
                         class="flex items-center justify-center cursor-pointer h-full w-full absolute top-0 left-0 z-10"
                         id="image-label">
-                        <span class="text-black text-lg text-center" id="upload-text">
-                            <i class="fa-regular fa-image" style="color: #66BB00; font-size: 30px;"></i>
+                        <span class="font-semibold text-indigo-600 text-center" id="upload-text">
+                            <i class="fa-regular fa-image text-gray-400 text-4xl"></i>
+                            <br>Upload a file<br>
                         </span>
                     </label>
                     <!-- ภาพตัวอย่างจะแสดงตรงนี้ -->
@@ -392,16 +393,16 @@
 
                 <div class="form-group flex gap-6">
                     <div class="flex flex-col items-start mb-4">
-                        <label for="" class="">จังหวัด :</label>
-                        <select id="" name=""
+                        <label for="province" class="">จังหวัด :</label>
+                        <select id="province" name="province"
                             class="w-[200px] h-10 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500">
                             <option value="" disabled selected hidden>--กรุณาเลือกจังหวัด--</option>
                         </select>
                     </div>
 
                     <div class="flex flex-col items-start mb-4">
-                        <label for="" class="">อำเภอ :</label>
-                        <select id="" name=""
+                        <label for="district" class="">อำเภอ :</label>
+                        <select id="district" name="district"
                             class="w-[200px] h-10 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500">
                             <option value="" disabled selected hidden>--กรุณาเลือกอำเภอ--</option>
                         </select>
@@ -410,8 +411,8 @@
 
                 <div class="form-group flex gap-6">
                     <div class="flex flex-col items-start mb-4">
-                        <label for="" class="mb-2">ตำบล :</label>
-                        <select id="" name=""
+                        <label for="subdistrict" class="mb-2">ตำบล :</label>
+                        <select id="subdistrict" name="subdistrict"
                             class="w-[200px] border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500">
                             <option value="" disabled selected hidden>--กรุณาเลือกตำบล--</option>
                         </select>
@@ -473,15 +474,15 @@
 
                 <div class="form-group flex gap-6">
                     <div class="flex flex-col items-start mb-4">
-                        <label for="bdath" class="form-label form-label-sm mb-2">วันที่ออกบัตร</label>
-                        <input type="date" id="bdath" name="bdath"
+                        <label for="carddate" class="form-label form-label-sm mb-2">วันที่ออกบัตร</label>
+                        <input type="date" id="carddate"
                             class="w-[200px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" required />
                     </div>
 
                     <div class="flex flex-col items-start mb-4">
-                        <label for="bdath" class="form-label form-label-sm mb-2">บัตรหมดอายุ</label>
-                        <input type="date" id="bdath" name="bdath"
+                        <label for="cardexpire" class="form-label form-label-sm mb-2">บัตรหมดอายุ</label>
+                        <input type="date" id="cardexpire"
                             class="w-[200px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" required />
                     </div>
@@ -1182,8 +1183,8 @@
                 <div class="space-y-4">
                     <p>1. ท่านเคยเป็นหนี้อยู่ในระหว่างการคิดสัญญากับสถาบันการเงินหรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="debt" value="เคย"> เคย</label>
-                        <label><input type="radio" name="debt" value="ไม่เคย"> ไม่เคย</label>
+                        <label><input type="radio" name="no-1" value="เคย"> เคย</label>
+                        <label><input type="radio" name="no-1" value="ไม่เคย"> ไม่เคย</label>
                     </div>
                 </div>
                 <div>
@@ -1194,22 +1195,22 @@
                 <div class="space-y-4">
                     <p>3. ท่านเคยเล่นหรือเคยเกี่ยวข้องกับการพนันใด ๆ หรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="debt" value="เคย"> เคย</label>
-                        <label><input type="radio" name="debt" value="ไม่เคย"> ไม่เคย</label>
+                        <label><input type="radio" name="no-3" value="เคย"> เคย</label>
+                        <label><input type="radio" name="no-3" value="ไม่เคย"> ไม่เคย</label>
                     </div>
                 </div>
                 <div class="space-y-4">
                     <p>4. ท่านเคยต้องโทษหรือต้องคดีอาญาหรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="debt" value="เคย"> เคย</label>
-                        <label><input type="radio" name="debt" value="ไม่เคย"> ไม่เคย</label>
+                        <label><input type="radio" name="no-4" value="เคย"> เคย</label>
+                        <label><input type="radio" name="no-4'" value="ไม่เคย"> ไม่เคย</label>
                     </div>
                 </div>
                 <div class="space-y-4">
                     <p>5. ท่านเคยเสพสิ่งเสพติดหรือของมึนเมาหรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="debt" value="เคย"> เคย</label>
-                        <label><input type="radio" name="debt" value="ไม่เคย"> ไม่เคย</label>
+                        <label><input type="radio" name="no-5" value="เคย"> เคย</label>
+                        <label><input type="radio" name="no-5" value="ไม่เคย"> ไม่เคย</label>
                     </div>
                 </div>
                 <div class="space-y-4">
@@ -1222,8 +1223,8 @@
                 <div class="space-y-4">
                     <p>7. ท่านเคยมีประว้ติการรักษาหรือมีโรคประจำตัว/เคยได้รับการรักษาทางจิตหรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="debt" value="เคย"> เคย</label>
-                        <label><input type="radio" name="debt" value="ไม่เคย"> ไม่เคย</label>
+                        <label><input type="radio" name="no-7" value="เคย"> เคย</label>
+                        <label><input type="radio" name="no-7" value="ไม่เคย"> ไม่เคย</label>
                     </div>
                 </div>
             </div>
@@ -1235,54 +1236,55 @@
                 <div class="space-y-4">
                     <p>8. ท่านเคยขึ้นทะเบียนเป็นผู้ประกันตนกัลสำนักงานประกันสังคมหรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="debt" value="เคย"> เคย</label>
-                        <label><input type="radio" name="debt" value="ไม่เคย"> ไม่เคย</label>
+                        <label><input type="radio" name="no-8" value="เคย"> เคย</label>
+                        <label><input type="radio" name="no-8" value="ไม่เคย"> ไม่เคย</label>
                     </div>
                 </div>
                 <div>
                     <p>9. ท่านยอมรับที่จะมีการทดลองงานจากทางบริษัทเป็นเวลา 119 วัน ก่อนหรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="debt" value="เคย"> ยอมรับ</label>
-                        <label><input type="radio" name="debt" value="ไม่เคย"> ไม่ยอมรับ</label>
+                        <label><input type="radio" name="no-9" value="เคย"> ยอมรับ</label>
+                        <label><input type="radio" name="n0-9" value="ไม่เคย"> ไม่ยอมรับ</label>
                     </div>
                 </div>
                 <div class="space-y-4">
                     <p>10. ท่านเคยเข้าร่วมกิจกรรมของคณะกรรมการลูกจ้าง/สหภาพแรงงานหรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="debt" value="เคย"> เคย</label>
-                        <label><input type="radio" name="debt" value="ไม่เคย"> ไม่เคย</label>
+                        <label><input type="radio" name="no-10" value="เคย"> เคย</label>
+                        <label><input type="radio" name="no-10" value="ไม่เคย"> ไม่เคย</label>
                     </div>
                 </div>
                 <div class="space-y-4">
                     <p>11. ท่านมีภาระค่าใช้จ่ายที่ต้องรับผิดชอบในครอบครัวหรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="debt" value="เคย"> มี</label>
-                        <label><input type="radio" name="debt" value="ไม่เคย"> ไม่มี</label>
+                        <label><input type="radio" name="no-11" value="เคย"> มี</label>
+                        <label><input type="radio" name="no-11" value="ไม่เคย"> ไม่มี</label>
                     </div>
                 </div>
                 <div class="space-y-4">
                     <p>12. ท่านเคยได้รับการรักษาโรคหัวใจ ความดันโลหิตสูง โรคเบาหวาน <br> โรคตับ โรคมะเร็งหรือโรคร้ายแรงหรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="debt" value="เคย"> เคย</label>
-                        <label><input type="radio" name="debt" value="ไม่เคย"> ไม่เคย</label>
+                        <label><input type="radio" name="no-12" value="เคย"> เคย</label>
+                        <label><input type="radio" name="no-12" value="ไม่เคย"> ไม่เคย</label>
                     </div>
                 </div>
                 <div class="space-y-4">
                     <p>13. ท่านมีบุคคลหรือในครอบครัวเคยมีวัณโรค เบาหวาน มะเร็งหรือโรคทางจิตหรือไม่</p>
                     <div class="space-x-2">
-                        <label><input type="radio" name="preg" value="ใช่"> มี</label>
-                        <label><input type="radio" name="preg" value="ไม่ใช่"> ไม่มี</label>
+                        <label><input type="radio" name="no-13" value="ใช่"> มี</label>
+                        <label><input type="radio" name="no-13" value="ไม่ใช่"> ไม่มี</label>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="mt-8"> <!-- Right Panel -->
-            <div>
+            <div class="space-y-6 ml-16 mt-6 text-md">
                 <div>
                     <p class="control-label no-padding-right font-semibold text-[#66BB00]">
                         9.บุคคลที่ไม่ใช่ญาติซึ่งทราบประวัติของท่านและบริษัทสามารถตรวจสอบได้</p>
                 </div>
+                
                 <div class="text-md flex flex-col mt-2 space-y-2">
                     <label>ชื่อ - นามสกุล:</label>
                     <input type="text" class="mt-1 w-64 border rounded px-2 py-1" placeholder="ชื่อ - นามสกุล">
