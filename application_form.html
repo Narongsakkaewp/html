@@ -1230,7 +1230,6 @@
             </div>
         </div>
 
-
         <div class="mt-8"> <!-- Middle Panel -->
             <div class="space-y-6 ml-16 mt-6 text-md">
                 <div class="space-y-4">
@@ -1262,7 +1261,8 @@
                     </div>
                 </div>
                 <div class="space-y-4">
-                    <p>12. ท่านเคยได้รับการรักษาโรคหัวใจ ความดันโลหิตสูง โรคเบาหวาน <br> โรคตับ โรคมะเร็งหรือโรคร้ายแรงหรือไม่</p>
+                    <p>12. ท่านเคยได้รับการรักษาโรคหัวใจ ความดันโลหิตสูง โรคเบาหวาน <br> โรคตับ
+                        โรคมะเร็งหรือโรคร้ายแรงหรือไม่</p>
                     <div class="space-x-2">
                         <label><input type="radio" name="no-12" value="เคย"> เคย</label>
                         <label><input type="radio" name="no-12" value="ไม่เคย"> ไม่เคย</label>
@@ -1284,7 +1284,7 @@
                     <p class="control-label no-padding-right font-semibold text-[#66BB00]">
                         9.บุคคลที่ไม่ใช่ญาติซึ่งทราบประวัติของท่านและบริษัทสามารถตรวจสอบได้</p>
                 </div>
-                
+
                 <div class="text-md flex flex-col mt-2 space-y-2">
                     <label>ชื่อ - นามสกุล:</label>
                     <input type="text" class="mt-1 w-64 border rounded px-2 py-1" placeholder="ชื่อ - นามสกุล">
@@ -1332,7 +1332,7 @@
     </script>
 
     <script> // JavaScript for step navigation
-        let currentStep = 6;
+        let currentStep = 1;
         const totalSteps = 6;
 
         function showStep(step) {
@@ -1392,6 +1392,54 @@
                 uploadText.style.display = ''; // แสดงข้อความถ้าไม่มีภาพ
             }
         });
+    </script>
+
+    <script>
+        const container = document.getElementById('image-container');
+        const input = document.getElementById('image1');
+        const preview = document.getElementById('preview');
+        const uploadText = document.getElementById('upload-text');
+
+        // Drag over effect
+        container.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            container.classList.add('ring-2', 'ring-blue-400');
+            uploadText.textContent = 'วางไฟล์ที่นี่';
+        });
+
+        // Drag leave effect
+        container.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            container.classList.remove('ring-2', 'ring-blue-400');
+            uploadText.innerHTML = '<i class="fa-regular fa-image text-gray-400 text-4xl"></i><br>Upload a file<br>';
+        });
+        // Drop event
+        container.addEventListener('drop', (e) => {
+            e.preventDefault();
+            container.classList.remove('ring-2', 'ring-blue-400');
+            uploadText.style.display = 'none';
+            const files = e.dataTransfer.files;
+            if (files && files[0]) {
+                input.files = files; // set input files for form submit
+                showPreview(files[0]);
+            }
+        });
+
+        // Input change event
+        input.addEventListener('change', (e) => {
+            if (input.files && input.files[0]) {
+                showPreview(input.files[0]);
+            }
+        });
+
+        function showPreview(file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.classList.remove('hidden');
+            }
+            reader.readAsDataURL(file);
+        }
     </script>
 
     <script> // JavaScript for adding education rows
