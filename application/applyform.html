@@ -102,7 +102,7 @@
                 </div>
 
                 <!-- Basic Info -->
-                <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-gray-700 font-semibold mb-1">ตำแหน่งที่สมัคร <span
                                 class="text-red-500">*</span></label>
@@ -119,7 +119,7 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-1">วุฒิการศึกษาสูงสุด<span
+                        <label class="block text-gray-700 font-semibold mb-1">วุฒิการศึกษาสูงสุด <span
                                 class="text-red-500">*</span></label>
                         <input type="text" required
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50" />
@@ -165,7 +165,7 @@
             <div class="bg-white rounded-xl shadow-md p-8 space-y-6 mt-8">
                 <h2 class="text-lg font-medium text-green-600">ข้อมูลส่วนตัว</h2>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div>
+                    <div> <!-- Row 1 -->
                         <label class="block text-gray-700 font-semibold mb-1">คำนำหน้าชื่อ <span
                                 class="text-red-500">*</span></label>
                         <div class="flex gap-4">
@@ -177,45 +177,155 @@
                                     class="accent-green-500 w-5 h-5" required> นางสาว/Mrs.</label>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-gray-700 font-semibold mb-1">วัน/เดือน/ปีเกิด <span
-                                class="text-red-500">*</span></label>
-                        <input type="date" required
-                            class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                    <div class="flex items-center grid grid-cols-2 gap-4 items-center"> <!-- Row 1 -->
+                        <div class="">
+                            <label class="block text-gray-700 font-semibold mb-1">วัน/เดือน/ปีเกิด <span
+                                    class="text-red-500">*</span></label>
+                            <input type="date" id="birthdate" required
+                                class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-1">เวลาเกิด</label>
+                            <input type="time"
+                                class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                        </div>
                     </div>
-                    <div>
+
+                    <div> <!-- Row 2 -->
+                        <label class="block text-gray-700 font-semibold mb-1">เลขที่บัตรประชาชน <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" required
+                            class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50"
+                            placeholder="X-XXXX-XXXXX-XX-X" maxlength="17" autocomplete="off"
+                            oninput="formatThaiID(this)">
+                    </div>
+                    <div class="flex items-center grid grid-cols-2 gap-4 items-center"> <!-- Row 2 -->
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-1">วันที่ออกบัตร</label>
+                            <input type="date" id="" required
+                                class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-1">บัตรหมดอายุ</label>
+                            <input type="date" id="" required
+                                class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                        </div>
+                    </div>
+
+                    <div> <!-- Row 3 -->
                         <label class="block text-gray-700 font-semibold mb-1">ชื่อ-นามสกุล (ไทย) <span
                                 class="text-red-500">*</span></label>
                         <input type="text" required
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50"
-                            placeholder="ชื่อ - นามสกุลภาษาไทย">
+                            placeholder="ชื่อ - นามสกุล ภาษาไทย">
                     </div>
-                    <div>
+                    <div> <!-- Row 3 -->
                         <label class="block text-gray-700 font-semibold mb-1">ชื่อ-นามสกุล (อังกฤษ) <span
                                 class="text-red-500">*</span></label>
                         <input type="text" required
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50"
-                            placeholder="Name - Surname">
+                            placeholder="ชื่อ - นามสกุล ภาษาอังกฤษ">
                     </div>
-                    <div>
+
+                    <div> <!-- Row 4 -->
                         <label class="block text-gray-700 font-semibold mb-1">ชื่อเล่น (ไทย)</label>
                         <input type="text"
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
                     </div>
-                    <div>
+                    <div> <!-- Row 4 -->
                         <label class="block text-gray-700 font-semibold mb-1">ชื่อเล่น (อังกฤษ)</label>
                         <input type="text"
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
                     </div>
+                </div>
+
+                <div class="flex items-center grid grid-cols-4 gap-6 items-center"> <!--Row 5 -->
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-1">อายุ (ปี)</label>
-                        <input type="number" min="0"
+                        <label class="block text-gray-700 font-semibold">อายุ (ปี) <span
+                                class="text-red-500">*</span></label>
+                        <input type="number" id="age" readonly disabled placeholder="--"
+                            class="w-full h-10 border border-gray-300 rounded-lg px-3 bg-gray-200 text-gray-700">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold">สัญชาติ</label>
+                        <input type="text" id="nationality"
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-1">ปีนักษัตร</label>
-                        <input type="text"
+                        <label class="block text-gray-700 font-semibold">เชื้อชาติ</label>
+                        <input type="text" id="ethnicity"
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold">กรุ๊ปเลือด</label>
+                        <input type="text" id="bloodType"
+                            class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                    </div>
+                </div>
+
+                <div class="flex items-center grid grid-cols-3 gap-6 items-center"> <!--Row 6 -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold">ส่วนสูง (ซม.) </label>
+                        <input type="number" id=""
+                            class=" w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold">น้ำหนัก (กก.) </label>
+                        <input type="number" id=""
+                            class=" w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold">สีผิว</label>
+                        <input type="text" id=""
+                            class=" w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                    </div>
+                </div>
+
+                <div class="flex items-center grid grid-cols-2 gap-6 items-center "> <!--Row 7 -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold">สถานที่เกิด</label>
+                        <input type="text" id=""
+                            class=" w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold">ตำหนิ/รอยสัก</label>
+                        <input type="text" id=""
+                            class=" w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Personal Family Info -->
+            <div class="bg-white rounded-xl shadow-md p-8 space-y-6 mt-8">
+                <h2 class="text-lg font-medium text-green-600">ข้อมูลครอบครัว</h2>
+                <div>
+                    <div class="flex items-center grid grid-cols-2 md:grid-cols-3 gap-6 items-end">
+                        <!-- ชื่อ-นามสกุล บิดา -->
+                        <div>
+                            <label class="block text-gray-700 font-semibold">ชื่อ-นามสกุล บิดา</label>
+                            <input type="text"
+                                class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                        </div>
+                        <!-- อาชีพ บิดา -->
+                        <div>
+                            <label class="block text-gray-700 font-semibold">อาชีพ บิดา</label>
+                            <input type="text"
+                                class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                        </div>
+                        <!-- Radio Group (แนวตั้ง) -->
+                        <div class="flex flex-col gap-y-2 ml-24 mt-6 md:mt-0">
+                            <label class="flex items-center gap-2">
+                                <input type="radio" name="dadalive" value="yes"
+                                    class="w-[15px] h-[15px] accent-green-600 cursor-pointer">
+                                <span class="text-gray-700 font-medium">มีชีวิตอยู่</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="radio" name="dadalive" value="no"
+                                    class="w-[15px] h-[15px] accent-green-600 cursor-pointer">
+                                <span class="text-gray-700 font-medium">ถึงแก่กรรม</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -225,7 +335,7 @@
                 <h2 class="text-lg font-bold text-green-600">ที่อยู่และการติดต่อ</h2>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-1">ที่อยู่ตามทะเบียนบ้าน</label>
+                        <label class="block text-gray-700 font-semibold mb-1">ที่อยู่ปัจจุบัน</label>
                         <input type="text"
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50"
                             placeholder="เลขที่/หมู่บ้าน/ซอย/ถนน">
@@ -236,12 +346,12 @@
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-1">อำเภอ</label>
+                        <label class="block text-gray-700 font-semibold mb-1">อำเภอ/เขต</label>
                         <input type="text"
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-1">ตำบล</label>
+                        <label class="block text-gray-700 font-semibold mb-1">ตำบล/แขวง</label>
                         <input type="text"
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
                     </div>
@@ -256,14 +366,18 @@
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-1">เบอร์มือถือ</label>
+                        <label class="block text-gray-700 font-semibold mb-1">เบอร์มือถือ <span
+                                class="text-red-500">*</span></label>
                         <input type="text"
-                            class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                            class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50"
+                            required>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-1">E-mail</label>
+                        <label class="block text-gray-700 font-semibold mb-1">E-mail <span
+                                class="text-red-500">*</span></label>
                         <input type="email"
-                            class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50">
+                            class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50"
+                            required>
                     </div>
                 </div>
             </div>
@@ -297,21 +411,26 @@
                 </div>
                 <template id="edu-row-template">
                     <tr>
-                        <td>
-                            <select class="border rounded px-2 py-1 bg-gray-50">
-                                <option>ปริญญาตรี</option>
-                                <option>ปวส.</option>
-                                <option>มัธยม</option>
+                        <td> <!--select ระดับการศึกษา-->
+                            <select class="border rounded px-2 py-1 bg-gray-50 my-1">
+                                <option value="" disabled selected>ระดับการศึกษา</option>
+                                <option value="doctorate">ปริญญาเอก</option>
+                                <option value="master">ปริญญาโท</option>
+                                <option value="bachelor">ปริญญาตรี</option>
+                                <option value="associate">อนุปริญญา</option>
+                                <option value="vocational_diploma">ปวส.</option>
+                                <option value="vocational_certificate">ปวช.</option>
+                                <option value="high_school">มัธยมศึกษา</option>
                             </select>
                         </td>
+                        <td><input type="text" class="border rounded px-2 py-1 w-60 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded px-2 py-1 w-32 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded px-2 py-1  bg-gray-50" /></td>
                         <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
-                        <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
-                        <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
-                        <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
-                        <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
-                        <td><input type="number" class="border rounded px-2 py-1 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded px-2 py-1 w-16 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded px-2 py-1 w-20 bg-gray-50" /></td>
                         <td class="text-center">
-                            <button type="button" class="text-red-500 remove-row-btn"><i
+                            <button type="button" class="text-red-500 remove-row-btn text-lg"><i
                                     class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
@@ -319,7 +438,7 @@
             </div>
 
             <!-- Section: Submit Button -->
-            <div class="flex justify-end mt-8 mb-4">
+            <div class="flex justify-center md:justify-end my-8">
                 <button type="submit"
                     class="bg-gradient-to-r from-green-400 to-green-600 text-white px-8 py-2 rounded-full shadow hover:scale-105 transition font-semibold text-lg">
                     <i class="fa-solid fa-paper-plane mr-2"></i> ส่งใบสมัคร
@@ -376,16 +495,73 @@
             }
         });
 
+        const birthInput = document.getElementById("birthdate");
+        const ageInput = document.getElementById("age");
+
+        birthInput.addEventListener("change", function () {
+            const birthDate = new Date(this.value);
+            const today = new Date();
+
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const m = today.getMonth() - birthDate.getMonth();
+
+            // ถ้ายังไม่ถึงวันเกิดปีนี้ ให้ลบอายุออก 1 ปี
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            ageInput.value = age >= 0 ? age : '';
+        });
+
         // Dynamic Education Table
         function addEduRow() {
             const template = document.getElementById('edu-row-template').content.cloneNode(true);
             template.querySelector('.remove-row-btn').onclick = function (e) {
-                e.target.closest('tr').remove();
+                const tbody = document.getElementById('edu-table-body');
+                // เช็คจำนวนแถว
+                if (tbody.querySelectorAll('tr').length > 1) {
+                    e.target.closest('tr').remove();
+                }
+                // ถ้ามีแค่ 1 แถว ไม่ต้องลบ
             };
             document.getElementById('edu-table-body').appendChild(template);
+            updateRemoveBtnState();
         }
+
+        // ฟังก์ชันสำหรับซ่อน/โชว์ปุ่มลบ
+        function updateRemoveBtnState() {
+            const tbody = document.getElementById('edu-table-body');
+            const rows = tbody.querySelectorAll('tr');
+            rows.forEach(row => {
+                const btn = row.querySelector('.remove-row-btn');
+                if (rows.length === 1) {
+                    btn.style.display = 'none'; // ซ่อนปุ่มลบถ้ามีแค่แถวเดียว
+                } else {
+                    btn.style.display = '';
+                }
+            });
+        }
+
         // Add first row by default
-        window.onload = () => { addEduRow(); };
+        window.onload = () => { addEduRow(); }; // เพิ่มในฟังก์ชัน addEduRow และหลังจากลบแถวเสร็จ
+
+        function formatThaiID(input) { //Thai ID Card Format
+            // ลบทุกตัวที่ไม่ใช่ตัวเลข
+            let value = input.value.replace(/\D/g, '');
+
+            // ตัดให้เหลือ 13 หลัก
+            if (value.length > 13) value = value.substr(0, 13);
+
+            // ใส่ขีดตามฟอร์แมต
+            let formatted = value;
+            if (value.length > 0) formatted = value.substr(0, 1);
+            if (value.length > 1) formatted += '-' + value.substr(1, 4);
+            if (value.length > 5) formatted += '-' + value.substr(5, 5);
+            if (value.length > 10) formatted += '-' + value.substr(10, 2);
+            if (value.length > 12) formatted += '-' + value.substr(12, 1);
+
+            input.value = formatted;
+        }
     </script>
 </body>
 
