@@ -61,11 +61,11 @@
                     id="image-container">
                     <input type="file" id="image1" name="img_user" accept="image/*" class="hidden" />
                     <label for="image1"
-                        class="flex items-center justify-center cursor-pointer h-full w-full absolute top-0 left-0 z-10"
-                        id="image-label">
-                        <span class="font-semibold text-indigo-600 text-center" id="upload-text">
+                        class="flex items-center justify-center h-full w-full absolute top-0 left-0 z-10">
+                        <span class="font-semibold text-indigo-600 text-center cursor-pointer" id="upload-text">
                             <i class="fa-regular fa-image text-gray-400 text-4xl"></i>
-                            <br>Upload a file<br>
+                            <br>อัปโหลดรูปภาพ<br>
+                            <span class="text-gray-500">หรือลากรูปภาพมาวาง</span>
                         </span>
                     </label>
                     <!-- ภาพตัวอย่างจะแสดงตรงนี้ -->
@@ -386,7 +386,7 @@
                         <label for="address" class="mb-2 font-medium"> ที่อยู่ตามทะเบียนบ้าน
                         </label>
                         <input type="text" id="address" name="address" placeholder="เลขที่/หมู่บ้าน/ซอย/ถนน"
-                            class="w-[350px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+                            class="w-[420px] h-8 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
                             autocomplete="off" />
                     </div>
                 </div>
@@ -521,13 +521,15 @@
 
                         <div class="md:grid-cols-3 text-sm mt-6"> <!-- Checkboxes -->
                             <label class="flex items-center gap-2">
-                                <input type="radio" id="dadalive" name="dadalive" value="yes">
-                                <span>มีชีวิตอยู่</span>
+                                <input type="radio" id="dadalive" name="dadalive" value="yes"
+                                    class="w-[15px] h-[15px] accent-purple-600 cursor-pointer">
+                                <span class="text-gray-700 font-medium">มีชีวิตอยู่</span>
                             </label>
 
                             <label class="flex items-center gap-2">
-                                <input type="radio" id="dadalive" name="dadalive" value="no">
-                                <span>ถึงแก่กรรม</span>
+                                <input type="radio" id="dadnalive" name="dadalive" value="no"
+                                class="w-[15px] h-[15px] accent-purple-600 cursor-pointer">
+                                <span class="text-gray-700 font-medium">ถึงแก่กรรม</span>
                             </label>
                         </div>
                     </div>
@@ -553,13 +555,15 @@
 
                         <div class="md:grid-cols-3 text-sm mt-6"> <!-- Checkboxes -->
                             <label class="flex items-center gap-2">
-                                <input type="radio" id="momalive" name="momalive" value="yes">
-                                <span>มีชีวิตอยู่</span>
+                                <input type="radio" id="momalive" name="momalive" value="yes"
+                                class="w-[15px] h-[15px] accent-purple-600 cursor-pointer">
+                                <span class="text-gray-700 font-medium">มีชีวิตอยู่</span>
                             </label>
 
                             <label class="flex items-center gap-2">
-                                <input type="radio" id="momalive" name="momalive" value="no">
-                                <span>ถึงแก่กรรม</span>
+                                <input type="radio" id="momalive" name="momalive" value="no"
+                                class="w-[15px] h-[15px] accent-purple-600 cursor-pointer">
+                                <span class="text-gray-700 font-medium">ถึงแก่กรรม</span>
                             </label>
                         </div>
                     </div>
@@ -1332,7 +1336,7 @@
     </script>
 
     <script> // JavaScript for step navigation
-        let currentStep = 1;
+        let currentStep = 2;
         const totalSteps = 6;
 
         function showStep(step) {
@@ -1394,7 +1398,7 @@
         });
     </script>
 
-    <script>
+    <script> // JavaScript for drag and drop image upload
         const container = document.getElementById('image-container');
         const input = document.getElementById('image1');
         const preview = document.getElementById('preview');
