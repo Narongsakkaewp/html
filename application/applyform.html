@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Application Form</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.io/logo_vby.png"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.io/logo_vby.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/78659597ce.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,16 +49,37 @@
             background-color: #059669;
         }
     </style>
+
+
 </head>
 
-<body class="bg-gray-50 min-h-screen py-10">
+<body class="bg-gray-50 min-h-screen overflow-auto md:py-10">
     <div class="max-w-4xl mx-auto space-y-10">
 
         <!-- Header -->
-        <div class="bg-white rounded-xl shadow-md p-8 flex items-center gap-4">
-            <span class="text-green-600 text-3xl"><i class="fa-solid fa-file-lines"></i></span>
-            <h1 class="text-2xl font-medium">ใบสมัครงาน (Application Form)</h1>
+        <div
+            class="bg-white rounded-xl md:rounded-t-xl rounded-t-none shadow-md p-4 md:p-8 grid grid-cols-2 gap-4 items-center mt-0 md:mt-4">
+            <!-- ส่วนซ้าย -->
+            <div class="flex items-center min-w-0">
+                <span class="text-green-600 text-2xl md:text-3xl flex-shrink-0">
+                    <i class="fa-solid fa-file-lines"></i>
+                </span>
+                <h2 class="ml-3 text-base md:text-2xl font-medium truncate">
+                    ใบสมัครงาน (Application Form)
+                </h2>
+            </div>
+            <!-- ส่วนขวา -->
+            <div class="flex justify-end">
+                <img src="../assets/favicon.io/logo_vby.png" class="w-10 h-10 md:w-12 md:h-12" alt="logo_vby">
+            </div>
         </div>
+
+        <!-- <div x-data="{ open: false }">
+            <button @click="open = !open" class="bg-green-500 px-4 py-2 text-white rounded">Toggle</button>
+            <div x-show="open" class="mt-2 p-4 bg-gray-100 rounded shadow">
+                นี่คือข้อความที่ซ่อน/แสดงด้วย Alpine.js!
+            </div>
+        </div> -->
 
         <!-- Section: Profile & Basic Info -->
         <form autocomplete="off">
@@ -65,9 +87,9 @@
                 <!-- Profile Image -->
                 <div class="flex flex-col items-center justify-start col-span-1">
                     <div id="image-container"
-                        class="relative w-32 h-32 rounded-full border-4 border-dashed border-green-400 flex items-center justify-center bg-gray-100 hover:bg-green-50 transition mb-4">
-                        <input type="file" id="image1" name="img_user" accept="image/*" class="hidden" />
-                        <label for="image1" 
+                        class="relative w-[200px] h-[200px] rounded-full border-4 border-dashed border-green-400 flex items-center justify-center bg-gray-100 hover:bg-green-50 transition mb-4">
+                        <input type="file" id="image1" name="img_user" accept=".jpg,.jpeg,.png," class="hidden" />
+                        <label for="image1"
                             class="cursor-pointer absolute inset-0 flex flex-col items-center justify-center">
                             <div id="image-placeholder" class="flex flex-col items-center justify-center">
                                 <span class="text-gray-300 text-4xl"><i class="fa-regular fa-image"></i></span>
@@ -92,12 +114,12 @@
                             <option value="it">IT Support</option>
                             <option value="programmer">Programmer</option>
                             <option value="advertising">Advertising Manager</option>
-                            <option value="sustainable">Sustainable Development</option>
                             <option value="bd">Business Development</option>
+                            <option value="sustainable">Sustainable Development </option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-1">วุฒิการศึกษา <span
+                        <label class="block text-gray-700 font-semibold mb-1">วุฒิการศึกษาสูงสุด<span
                                 class="text-red-500">*</span></label>
                         <input type="text" required
                             class="w-full h-10 border border-gray-300 rounded-lg px-3 focus:ring-2 focus:ring-green-400 bg-gray-50" />
@@ -260,9 +282,13 @@
                     <table class="min-w-full text-sm border rounded-lg">
                         <thead>
                             <tr class="bg-gray-100 text-center">
-                                <th class="py-2 px-4">ระดับ</th>
-                                <th class="py-2 px-4">สถาบัน</th>
-                                <th class="py-2 px-4">ปีจบ</th>
+                                <th class="py-2 px-4">ระดับการศึกษา</th>
+                                <th class="py-2 px-4">ชื่อสถานศึกษา</th>
+                                <th class="py-2 px-4">ประเทศ</th>
+                                <th class="py-2 px-4">หลักสูตร</th>
+                                <th class="py-2 px-4">สาขาวิชา</th>
+                                <th class="py-2 px-4">เกรดเฉลี่ย</th>
+                                <th class="py-2 px-4">ปีที่สำเร็จการศึกษา</th>
                                 <th class="py-2 px-4">ลบ</th>
                             </tr>
                         </thead>
@@ -278,12 +304,12 @@
                                 <option>มัธยม</option>
                             </select>
                         </td>
-                        <td>
-                            <input type="text" class="border rounded px-2 py-1 bg-gray-50" />
-                        </td>
-                        <td>
-                            <input type="number" class="border rounded px-2 py-1 w-20 bg-gray-50" />
-                        </td>
+                        <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
+                        <td><input type="number" class="border rounded px-2 py-1 bg-gray-50" /></td>
                         <td class="text-center">
                             <button type="button" class="text-red-500 remove-row-btn"><i
                                     class="fa-solid fa-trash"></i></button>
@@ -293,7 +319,7 @@
             </div>
 
             <!-- Section: Submit Button -->
-            <div class="flex justify-end mt-8">
+            <div class="flex justify-end mt-8 mb-4">
                 <button type="submit"
                     class="bg-gradient-to-r from-green-400 to-green-600 text-white px-8 py-2 rounded-full shadow hover:scale-105 transition font-semibold text-lg">
                     <i class="fa-solid fa-paper-plane mr-2"></i> ส่งใบสมัคร
@@ -317,24 +343,36 @@
             }
         });
 
+        // drag and drop 
         const container = document.getElementById('image-container');
         container.addEventListener('dragover', e => {
             e.preventDefault();
-            container.classList.add('ring-2', 'ring-green-400');
+            container.classList.add('ring-4', 'ring-green-400');
         });
         container.addEventListener('dragleave', e => {
             e.preventDefault();
-            container.classList.remove('ring-2', 'ring-green-400');
+            container.classList.remove('ring-4', 'ring-green-400');
         });
         container.addEventListener('drop', e => {
             e.preventDefault();
-            container.classList.remove('ring-2', 'ring-green-400');
+            container.classList.remove('ring-4', 'ring-green-400');
             const files = e.dataTransfer.files;
             if (files && files[0]) {
                 input.files = files;
                 preview.src = URL.createObjectURL(files[0]);
                 preview.classList.remove('hidden');
                 placeholder.classList.add('hidden');
+            }
+        });
+
+        //alert file >2mb
+        const maxSize = 2 * 1024 * 1024; // 2MB
+        document.getElementById('image1').addEventListener('change', function (e) {
+            const file = this.files[0];
+            if (file && file.size > maxSize) {
+                alert('ขนาดไฟล์ต้องไม่เกิน 2MB');
+                this.value = " "; // ลบไฟล์ที่เลือกออก
+                // หรือจะ reset preview, reset error message เพิ่มเติม
             }
         });
 
