@@ -516,18 +516,95 @@
             <!-- Section: Talent ความสามารถ -->
             <div class="bg-white rounded-xl shadow-md p-8 space-y-6 mt-8">
                 <h2 class="text-lg font-bold text-green-600">ความสามารถ</h2>
-                <div class="flex items-center grid md:grid-cols-[50%_50%]">
-                    <!-- Row 1 -->
-                    <label class="block text-gray-700 font-semibold mb-1">ความสามารถในการใช้ยานพาหนะ</label>
+                <div class="flex items-center grid md:grid-cols-[100%]">
+                    
+                    <!-- Row 1 ความสามารถในการขับขี่ -->
                     <div>
+                        <label class="block text-gray-700 font-semibold mb-2">ความสามารถในการขับขี่</label>
+                        <div class="flex flex-col sm:flex-row gap-12">
+                            <label class="inline-flex items-center gap-2">
+                                <input type="checkbox" class="accent-green-600 w-4 h-4">
+                                <span>ใบขับขี่รถยนต์</span>
+                            </label>
+                            <label class="inline-flex items-center gap-2">
+                                <input type="checkbox" class="accent-green-600 w-4 h-4">
+                                <span>ใบขับขี่รถจักรยานยนต์</span>
+                            </label>
+                        </div>
                     </div>
-                    <!-- Row 2 -->
-                    <label class="block text-gray-700 font-semibold mb-1">ความสามารถด้านคอมพิวเตอร์</label>
-                    <div>
+                    <!-- Row 2 ความสามารถด้านคอมพิวเตอร์--> 
+                    <div x-data="{ programs: [{ name: '', level: '' }] }">
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="block text-gray-700 font-semibold mb-2 mt-6">ความสามารถด้านคอมพิวเตอร์</label>
+                            <button type="button"
+                                class="bg-green-500 hover:bg-green-700 text-white px-4 py-1 rounded-full flex items-center gap-1 text-sm mt-2"
+                                @click="programs.push({ name: '', level: '' })">
+                                <i class="fa-solid fa-plus"></i> เพิ่มโปรแกรม
+                            </button>
+                        </div>
+
+                        <template x-for="(program, idx) in programs" :key="idx">
+                            <div class="grid grid-cols-1 md:grid-cols-[60%_20%_20%] gap-2 mb-2">
+                                <input type="text" x-model="program.name"
+                                    class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50"
+                                    placeholder="Microsoft Excel, etc.">
+                                <select x-model="program.level"
+                                    class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50">
+                                    <option value="">เลือกความชำนาญ</option>
+                                    <option>พื้นฐาน</option>
+                                    <option>ปานกลาง</option>
+                                    <option>ดีมาก</option>
+                                </select>
+                                <button type="button" class="text-red-500 font-bold px-2 md:justify-self-end md:mr-4"
+                                    @click="programs.length > 1 ? programs.splice(idx, 1) : null"
+                                    x-show="programs.length >= 0" title="ลบโปรแกรมนี้"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </template>
                     </div>
-                    <!-- Row 3 -->
-                    <label class="block text-gray-700 font-semibold mb-1">ความสามารถด้านภาษา</label>
-                    <div>
+                    <!-- Row 3 ความสามารถด้านภาษา -->
+                    <div x-data="{
+                                    langs: [
+                                    { name: 'ภาษาไทย', level: '', file: null },
+                                    { name: 'ภาษาอังกฤษ', level: '', file: null }
+                                    ]
+                                }">
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="block text-gray-700 font-semibold mb-2 mt-6">ความสามารถด้านภาษา</label>
+                            <button type="button"
+                                class="bg-green-500 hover:bg-green-700 text-white px-4 py-1 rounded-full flex items-center gap-1 text-sm mt-2"
+                                @click="langs.push({ name: '', level: '', file: null })">
+                                <i class="fa-solid fa-plus"></i> เพิ่มภาษา
+                            </button>
+                        </div>
+                        <template x-for="(lang, idx) in langs" :key="idx">
+                            <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_auto_auto] gap-2 mb-2 items-center">
+                                <input type="text" x-model="lang.name"
+                                    class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50"
+                                    placeholder="ภาษาอื่น ๆ">
+                                <select x-model="lang.level"
+                                    class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50">
+                                    <option value="">เลือกระดับ</option>
+                                    <option>พื้นฐาน</option>
+                                    <option>ปานกลาง</option>
+                                    <option>ดีมาก</option>
+                                    <option>เจ้าของภาษา</option>
+                                </select>
+                                <!-- ปุ่มอัปโหลดไฟล์ -->
+                                <label
+                                    class="cursor-pointer flex items-center justify-center h-10 w-10 rounded bg-green-500 hover:bg-green-700 text-white border border-gray-300"
+                                    :title="'อัปโหลดใบคะแนน ('+ lang.name +')'">
+                                    <i class="fa-solid fa-file-arrow-up mr-2 "></i>*
+                                    <input type="file" class="hidden" @change="lang.file = $event.target.files[0]">
+                                </label>
+                                <button type="button" class="text-red-500 font-bold px-2"
+                                    @click="langs.length > 2 ? langs.splice(idx, 1) : null" x-show="langs.length > 0"
+                                    title="ลบภาษา"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </template>
+                        <p class="text-xs text-gray-500 mt-2 ml-1">
+                            * อัปโหลดไฟล์ผลคะแนน CU-TFL, TOEIC, IELTS, TOEFL, HSK, JLPT หรืออื่น ๆ (ถ้ามี)
+                        </p>
                     </div>
                 </div>
             </div>
