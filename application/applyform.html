@@ -575,7 +575,7 @@
                                         <option>ดีมาก</option>
                                     </select>
 
-                                    <button type="button" class="ml-12 sm:ml-auto text-red-500 font-bold px-2"
+                                    <button type="button" class="text-red-500 font-bold px-2"
                                         @click="programs.length > 1 ? programs.splice(idx, 1) : null"
                                         x-show="programs.length >= 0" title="ลบโปรแกรมนี้">
                                         <i class="fa-solid fa-trash"></i>
@@ -607,7 +607,7 @@
                                 <input type="text" x-model="lang.name" 
                                     :readonly="[0, 1].includes(idx)"
                                     :class="{ 'bg-gray-200 text-gray-700': [0, 1].includes(idx) }"
-                                    class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50"
+                                    class="h-10 border border-gray-300 focus:ring-2 focus:ring-green-400 rounded-lg px-3 bg-gray-50 w-full"
                                     placeholder="ภาษาอื่น ๆ">
 
                                 <!-- selector + ปุ่มอัปโหลด + ปุ่มลบ (Respone มือถือ) -->
@@ -631,7 +631,7 @@
                                     </label>
 
                                     <!-- ปุ่มลบ -->
-                                    <button type="button" class="ml-0 sm:ml-auto text-red-500 font-bold px-2 md:col-start-4"
+                                    <button type="button" class="text-red-500 font-bold px-2 md:col-start-4"
                                         @click="langs.length > 2 ? langs.splice(idx, 1) : null"
                                         x-show="langs.length > 0" title="ลบภาษา">
                                         <i class="fa-solid fa-trash"></i>
