@@ -156,8 +156,6 @@
                         สำเนาบัตรประชาชน </label>
                     <label class="flex items-center gap-3"><input type="checkbox" class="accent-green-500 w-5 h-5">
                         สำเนาใบผ่านงาน </label>
-                    <label class="flex items-center gap-3"><input type="checkbox" class="accent-green-500 w-5 h-5">
-                        สำเนาใบขับขี่ </label>
                 </div>
             </div>
 
@@ -361,7 +359,7 @@
                 <div class="flex items-center grid md:grid-cols-[20%_80%]">
 
                     <!-- Row 1 -->
-                    <label class="block text-gray-700 font-semibold mb-1">สถานภาพทางสมรส</label>
+                    <label class="block text-gray-700 font-semibold mb-1">สถานภาพทางสมรส :</label>
                     <div class="flex gap-4 mb-2">
                         <label class="flex items-center gap-2"><input type="radio" name="status"
                                 class="w-[15px] h-[15px] accent-green-600 cursor-pointer">
@@ -378,7 +376,7 @@
                     </div>
 
                     <!-- Row 2 -->
-                    <label class="block text-gray-700 font-semibold mb-1">สถานภาพทางทหาร</label>
+                    <label class="block text-gray-700 font-semibold mb-1">สถานภาพทางทหาร :</label>
                     <div class="flex gap-2">
                         <label class="flex items-center gap-2"><input type="radio" name="militaryStatus"
                                 class="w-[15px] h-[15px] accent-green-600 cursor-pointer">
@@ -513,26 +511,43 @@
                 </template>
             </div>
 
-            <!-- Section: Talent ความสามารถ -->
+            <!-- Section: Talent ความสามารถ ก้อนนี้ลองใช้ Alpine.js เขียนด้วย-->
             <div class="bg-white rounded-xl shadow-md p-8 space-y-6 mt-8">
                 <h2 class="text-lg font-bold text-green-600">ความสามารถ</h2>
                 <div class="flex items-center grid md:grid-cols-[100%]">
-                    
+
                     <!-- Row 1 ความสามารถในการขับขี่ -->
-                    <div>
-                        <label class="block text-gray-700 font-semibold mb-2">ความสามารถในการขับขี่</label>
-                        <div class="flex flex-col sm:flex-row gap-12">
-                            <label class="inline-flex items-center gap-2">
-                                <input type="checkbox" class="accent-green-600 w-4 h-4">
-                                <span>ใบขับขี่รถยนต์</span>
-                            </label>
-                            <label class="inline-flex items-center gap-2">
-                                <input type="checkbox" class="accent-green-600 w-4 h-4">
-                                <span>ใบขับขี่รถจักรยานยนต์</span>
-                            </label>
+                    <div x-data="{ car: false, motorcycle: false }">
+                        <label class="block text-gray-700 font-semibold mb-2">ความสามารถในการใช้รถ</label>
+
+                        <div class="flex flex-col sm:flex-row sm:gap-x-4 md:gap-x-6">
+                            <!-- ใบขับขี่รถยนต์ -->
+                            <div class="space-y-2">
+                                <label class="inline-flex items-center gap-2">
+                                    <input type="checkbox" class="accent-green-600 w-4 h-4" x-model="car">
+                                    <span>มีใบขับขี่รถยนต์</span>
+                                </label>
+                                <div x-show="car" x-transition>
+                                    <input type="text" placeholder="เลขที่ใบขับขี่รถยนต์"
+                                        class="w-full sm:w-60 border border-gray-300 focus:ring-2 focus:ring-green-400 rounded px-3 py-1 bg-gray-50 mb-4" />
+                                </div>
+                            </div>
+
+                            <!-- ใบขับขี่รถจักรยานยนต์ -->
+                            <div class="space-y-2">
+                                <label class="inline-flex items-center gap-2">
+                                    <input type="checkbox" class="accent-green-600 w-4 h-4" x-model="motorcycle">
+                                    <span>มีใบขับขี่รถจักรยานยนต์</span>
+                                </label>
+                                <div x-show="motorcycle" x-transition>
+                                    <input type="text" placeholder="เลขที่ใบขับขี่รถจักรยานยนต์"
+                                        class="w-full sm:w-60 border border-gray-300 focus:ring-2 focus:ring-green-400 rounded px-3 py-1 bg-gray-50 mb-4" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Row 2 ความสามารถด้านคอมพิวเตอร์--> 
+
+                    <!-- Row 2 ความสามารถด้านคอมพิวเตอร์-->
                     <div x-data="{ programs: [{ name: '', level: '' }] }">
                         <div class="flex items-center justify-between mb-2">
                             <label class="block text-gray-700 font-semibold mb-2 mt-6">ความสามารถด้านคอมพิวเตอร์</label>
@@ -544,21 +559,29 @@
                         </div>
 
                         <template x-for="(program, idx) in programs" :key="idx">
-                            <div class="grid grid-cols-1 md:grid-cols-[60%_20%_20%] gap-2 mb-2">
+                            <div class="grid grid-cols-1 md:grid-cols-[2fr_auto_auto] gap-6 mb-2">
+                                <!-- โปรแกรม -->
                                 <input type="text" x-model="program.name"
-                                    class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50"
-                                    placeholder="Microsoft Excel, etc.">
-                                <select x-model="program.level"
-                                    class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50">
-                                    <option value="">เลือกความชำนาญ</option>
-                                    <option>พื้นฐาน</option>
-                                    <option>ปานกลาง</option>
-                                    <option>ดีมาก</option>
-                                </select>
-                                <button type="button" class="text-red-500 font-bold px-2 md:justify-self-end md:mr-4"
-                                    @click="programs.length > 1 ? programs.splice(idx, 1) : null"
-                                    x-show="programs.length >= 0" title="ลบโปรแกรมนี้"><i
-                                        class="fa-solid fa-trash"></i></button>
+                                    class="h-10 border border-gray-300 focus:ring-2 focus:ring-green-400 rounded-lg px-3 bg-gray-50"
+                                    placeholder="Microsoft Excel, Photoshop etc.">
+
+                                <!-- กลุ่ม selector + ปุ่มลบ -->
+                                <div class="flex flex-wrap gap-2 md:contents">
+                                    <select x-model="program.level"
+                                        class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50">
+                                        <option value="" disabled selected>เลือกความชำนาญ</option>
+                                        <option>พื้นฐาน</option>
+                                        <option>ปานกลาง</option>
+                                        <option>ดีมาก</option>
+                                    </select>
+
+                                    <button type="button" class="ml-12 sm:ml-auto text-red-500 font-bold px-2"
+                                        @click="programs.length > 1 ? programs.splice(idx, 1) : null"
+                                        x-show="programs.length >= 0" title="ลบโปรแกรมนี้">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+
                             </div>
                         </template>
                     </div>
@@ -578,32 +601,48 @@
                             </button>
                         </div>
                         <template x-for="(lang, idx) in langs" :key="idx">
-                            <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_auto_auto] gap-2 mb-2 items-center">
-                                <input type="text" x-model="lang.name"
+                            <div class="space-y-2 md:grid md:grid-cols-[1.5fr_1fr_auto_auto] gap-6 mb-2 items-center">
+
+                                <!-- ภาษาอื่น ๆ -->
+                                <input type="text" x-model="lang.name" 
+                                    :readonly="[0, 1].includes(idx)"
+                                    :class="{ 'bg-gray-200 text-gray-700': [0, 1].includes(idx) }"
                                     class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50"
                                     placeholder="ภาษาอื่น ๆ">
-                                <select x-model="lang.level"
-                                    class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50">
-                                    <option value="">เลือกระดับ</option>
-                                    <option>พื้นฐาน</option>
-                                    <option>ปานกลาง</option>
-                                    <option>ดีมาก</option>
-                                    <option>เจ้าของภาษา</option>
-                                </select>
-                                <!-- ปุ่มอัปโหลดไฟล์ -->
-                                <label
-                                    class="cursor-pointer flex items-center justify-center h-10 w-10 rounded bg-green-500 hover:bg-green-700 text-white border border-gray-300"
-                                    :title="'อัปโหลดใบคะแนน ('+ lang.name +')'">
-                                    <i class="fa-solid fa-file-arrow-up mr-2 "></i>*
-                                    <input type="file" class="hidden" @change="lang.file = $event.target.files[0]">
-                                </label>
-                                <button type="button" class="text-red-500 font-bold px-2"
-                                    @click="langs.length > 2 ? langs.splice(idx, 1) : null" x-show="langs.length > 0"
-                                    title="ลบภาษา"><i class="fa-solid fa-trash"></i></button>
+
+                                <!-- selector + ปุ่มอัปโหลด + ปุ่มลบ (Respone มือถือ) -->
+                                <div class="flex flex-wrap gap-2 md:contents">
+                                    <!-- Selector -->
+                                    <select x-model="lang.level"
+                                        class="h-10 border border-gray-300 rounded-lg px-3 bg-gray-50 md:col-start-2">
+                                        <option value="" disabled selected>เลือกความชำนาญ</option>
+                                        <option>พื้นฐาน</option>
+                                        <option>ปานกลาง</option>
+                                        <option>ดีมาก</option>
+                                        <option>เจ้าของภาษา</option>
+                                    </select>
+
+                                    <!-- ปุ่มอัปโหลด -->
+                                    <label
+                                        class="cursor-pointer flex items-center justify-center h-10 w-10 rounded bg-green-500 hover:bg-green-700 text-white border border-gray-300 md:col-start-3"
+                                        :title="'อัปโหลดใบคะแนน ('+ lang.name +')'">
+                                        <i class="fa-solid fa-file-arrow-up"></i>
+                                        <input type="file" class="hidden" @change="lang.file = $event.target.files[0]">
+                                    </label>
+
+                                    <!-- ปุ่มลบ -->
+                                    <button type="button" class="ml-0 sm:ml-auto text-red-500 font-bold px-2 md:col-start-4"
+                                        @click="langs.length > 2 ? langs.splice(idx, 1) : null"
+                                        x-show="langs.length > 0" title="ลบภาษา">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
                             </div>
                         </template>
+
                         <p class="text-xs text-gray-500 mt-2 ml-1">
-                            * อัปโหลดไฟล์ผลคะแนน CU-TFL, TOEIC, IELTS, TOEFL, HSK, JLPT หรืออื่น ๆ (ถ้ามี)
+                            <i class="fa-solid fa-file-arrow-up mr-2 "></i>อัปโหลดไฟล์ผลคะแนน CU-TFL, TOEIC, IELTS,
+                            TOEFL, HSK, JLPT หรืออื่น ๆ (ถ้ามี)
                         </p>
                     </div>
                 </div>
