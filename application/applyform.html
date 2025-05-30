@@ -85,20 +85,72 @@
         <form autocomplete="off">
             <div class="grid md:grid-cols-3 gap-8 bg-white rounded-xl shadow-md p-8">
                 <!-- Profile Image -->
-                <div class="flex flex-col items-center justify-start col-span-1">
+                <div class="flex flex-col items-center justify-start col-span-1" x-data="{
+                            previewUrl: '',
+                            errorMsg: '',
+                            isDragOver: false,
+                            fileInput: null,
+                            handleFiles(files) {
+                                this.errorMsg = '';
+                                if (!files?.length) return;
+                                const file = files[0];
+                                // ตรวจสอบประเภทไฟล์
+                                if (!['image/jpeg','image/png','image/jpg'].includes(file.type)) {
+                                    this.errorMsg = 'รองรับเฉพาะไฟล์ .jpg, .jpeg, .png เท่านั้น';
+                                    this.clear();
+                                    return;
+                                }
+                                // ตรวจสอบขนาดไฟล์ (5MB = 5 * 1024 * 1024)
+                                if (file.size > 2 * 1024 * 1024) {
+                                    this.errorMsg = 'ไฟล์มีขนาดเกิน 2MB';
+                                    this.clear();
+                                    return;
+                                }
+                                // แสดงตัวอย่างรูป
+                                const reader = new FileReader();
+                                reader.onload = e => {
+                                    this.previewUrl = e.target.result;
+                                };
+                                reader.readAsDataURL(file);
+                            },
+                            onDrop(e) {
+                                e.preventDefault();
+                                const dt = e.dataTransfer;
+                                const files = dt.files;
+                                this.handleFiles(files);
+                            },
+                            triggerInput() {
+                                this.$refs.fileInput.click();
+                            },
+                            clear() {
+                                this.previewUrl = '';
+                                this.$refs.fileInput.value = '';
+                            }
+                        }">
                     <div id="image-container"
-                        class="relative w-[200px] h-[200px] rounded-full border-4 border-dashed border-green-400 flex items-center justify-center bg-gray-100 hover:bg-green-50 transition mb-4">
-                        <input type="file" id="image1" name="img_user" accept=".jpg,.jpeg,.png," class="hidden" />
+                        :class="isDragOver ? 'border-green-700 border-4' : 'border-green-500 border-4'"
+                        class="relative w-[200px] h-[200px] rounded-full border-dashed flex items-center justify-center bg-gray-100 hover:bg-green-100 transition mb-4"
+                        @dragover.prevent="isDragOver = true" @dragenter.prevent="isDragOver = true"
+                        @dragleave.prevent="isDragOver = false" @drop="onDrop($event)" @click="triggerInput">
+                        <input type="file" id="image1" name="img_user" accept=".jpg,.jpeg,.png" class="hidden"
+                            x-ref="fileInput" @change="handleFiles($event.target.files)" />
                         <label for="image1"
-                            class="cursor-pointer absolute inset-0 flex flex-col items-center justify-center">
-                            <div id="image-placeholder" class="flex flex-col items-center justify-center">
-                                <span class="text-gray-300 text-4xl"><i class="fa-regular fa-image"></i></span>
-                                <span class="text-xs text-gray-500">ลากหรือคลิก</span>
-                            </div>
+                            class="cursor-pointer absolute inset-0 flex flex-col items-center justify-center"
+                            @click.stop="triggerInput">
+                            <template x-if="!previewUrl">
+                                <div id="image-placeholder" class="flex flex-col items-center justify-center">
+                                    <span class="text-gray-300 text-4xl"><i class="fa-regular fa-image"></i></span>
+                                    <span class="text-xs text-gray-500">ลากหรือคลิก</span>
+                                </div>
+                            </template>
+                            <img x-show="previewUrl" :src="previewUrl" id="preview"
+                                class="w-full h-full object-cover rounded-full" />
                         </label>
-                        <img id="preview" class="w-full h-full object-cover rounded-full hidden" />
                     </div>
                     <span class="text-xs text-gray-400 text-center">รองรับ .jpg, .png, .jpeg</span>
+                    <template x-if="errorMsg">
+                        <div class="text-red-500 text-xs mt-2" x-text="errorMsg"></div>
+                    </template>
                 </div>
 
                 <!-- Basic Info -->
@@ -295,7 +347,7 @@
                 </div>
             </div>
 
-            <!-- Section: Personal Family Info and Status -->
+            <!-- Section: Personal Family Info and Status ประวัติครอบครัวและสถานะ -->
             <div class="bg-white rounded-xl shadow-md p-8 space-y-6 mt-8">
                 <h2 class="text-lg font-bold text-green-600">ข้อมูลครอบครัว</h2>
                 <div>
@@ -394,7 +446,7 @@
                 </div>
             </div>
 
-            <!-- Section: Address & Contact -->
+            <!-- Section: Address & Contact ที่อยู่และช่องทางการติดต่อ-->
             <div class="bg-white rounded-xl shadow-md p-8 space-y-6 mt-8">
                 <h2 class="text-lg font-bold text-green-600">ที่อยู่และการติดต่อ</h2>
                 <div class="grid md:grid-cols-2 gap-6">
@@ -456,7 +508,7 @@
                 </div>
             </div>
 
-            <!-- Section: Education Table (Dynamic) -->
+            <!-- Section: Education Table (Dynamic) ตารางประวัติการศึกษา -->
             <div class="bg-white rounded-xl shadow-md p-8 space-y-6 mt-8">
                 <div class="flex items-center justify-between mb-2">
                     <h2 class="text-lg font-bold text-green-600">ประวัติการศึกษา</h2>
@@ -466,6 +518,7 @@
                         <i class="fa-solid fa-plus"></i> เพิ่มแถว
                     </button>
                 </div>
+                <p class="text-xs text-gray-500 mt-2 ml-1"><span class="text-red-500">* </span>เรียงจากใหม่ไปเก่าสุด</p>
                 <div class="overflow-x-auto">
                     <table class="min-w-full text-sm border rounded-lg">
                         <thead>
@@ -486,7 +539,7 @@
                 <template id="edu-row-template">
                     <tr>
                         <td> <!--select ระดับการศึกษา-->
-                            <select class="border rounded px-2 py-1 bg-gray-50 my-1">
+                            <select class="border rounded px-2 py-1 h-10 bg-gray-50 my-1">
                                 <option value="" disabled selected>ระดับการศึกษา</option>
                                 <option value="doctorate">ปริญญาเอก</option>
                                 <option value="master">ปริญญาโท</option>
@@ -497,12 +550,12 @@
                                 <option value="high_school">มัธยมศึกษา</option>
                             </select>
                         </td>
-                        <td><input type="text" class="border rounded px-2 py-1 w-60 bg-gray-50" /></td>
-                        <td><input type="text" class="border rounded px-2 py-1 w-32 bg-gray-50" /></td>
-                        <td><input type="text" class="border rounded px-2 py-1  bg-gray-50" /></td>
-                        <td><input type="text" class="border rounded px-2 py-1 bg-gray-50" /></td>
-                        <td><input type="text" class="border rounded px-2 py-1 w-16 bg-gray-50" /></td>
-                        <td><input type="text" class="border rounded px-2 py-1 w-20 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded h-10 px-2 py-1 w-60 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded h-10 px-2 py-1 w-32 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded h-10 px-2 py-1  bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded h-10 px-2 py-1 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded h-10 px-2 py-1 w-16 bg-gray-50" /></td>
+                        <td><input type="text" class="border rounded h-10 px-2 py-1 w-20 bg-gray-50" /></td>
                         <td class="text-center">
                             <button type="button" class="text-red-500 remove-row-btn text-lg"><i
                                     class="fa-solid fa-trash"></i></button>
@@ -517,8 +570,8 @@
                 <div class="flex items-center grid md:grid-cols-[100%]">
 
                     <!-- Row 1 ความสามารถในการขับขี่ -->
-                    <div x-data="{ car: false, motorcycle: false }">
-                        <label class="block text-gray-700 font-semibold mb-2">ความสามารถในการใช้รถ</label>
+                    <div x-data="{ car: false, motorcycle: false }" class="bg-gray-50 p-4 rounded-lg mb-4">
+                        <label class="block text-gray-700 font-semibold mb-4">ความสามารถในการใช้รถ</label>
 
                         <div class="flex flex-col sm:flex-row sm:gap-x-4 md:gap-x-6">
                             <!-- ใบขับขี่รถยนต์ -->
@@ -548,7 +601,7 @@
                     </div>
 
                     <!-- Row 2 ความสามารถด้านคอมพิวเตอร์-->
-                    <div x-data="{ programs: [{ name: '', level: '' }] }">
+                    <div x-data="{ programs: [{ name: '', level: '' }] }" class="bg-gray-50 p-4 rounded-lg mb-4">
                         <div class="flex items-center justify-between mb-2">
                             <label class="block text-gray-700 font-semibold mb-2 mt-6">ความสามารถด้านคอมพิวเตอร์</label>
                             <button type="button"
@@ -577,11 +630,12 @@
 
                                     <button type="button" class="text-red-500 font-bold px-2"
                                         @click="programs.length > 1 ? programs.splice(idx, 1) : null"
-                                        x-show="programs.length >= 0" title="ลบโปรแกรมนี้">
+                                        x-show="programs.length >= 0" :disabled="programs.length === 1"
+                                        :class="programs.length === 1 ? 'opacity-40 cursor-not-allowed' : ''"
+                                        title="ลบโปรแกรมนี้">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </div>
-
                             </div>
                         </template>
                     </div>
@@ -591,7 +645,7 @@
                                     { name: 'ภาษาไทย', level: '', file: null },
                                     { name: 'ภาษาอังกฤษ', level: '', file: null }
                                     ]
-                                }">
+                                }" class="bg-gray-50 p-4 rounded-lg">
                         <div class="flex items-center justify-between mb-2">
                             <label class="block text-gray-700 font-semibold mb-2 mt-6">ความสามารถด้านภาษา</label>
                             <button type="button"
@@ -601,11 +655,10 @@
                             </button>
                         </div>
                         <template x-for="(lang, idx) in langs" :key="idx">
-                            <div class="space-y-2 md:grid md:grid-cols-[1.5fr_1fr_auto_auto] gap-6 mb-2 items-center">
+                            <div class="space-y-2 md:grid md:grid-cols-[1.5fr_1fr_auto_auto] gap-6 mb-2 items-center ">
 
                                 <!-- ภาษาอื่น ๆ -->
-                                <input type="text" x-model="lang.name" 
-                                    :readonly="[0, 1].includes(idx)"
+                                <input type="text" x-model="lang.name" :readonly="[0, 1].includes(idx)"
                                     :class="{ 'bg-gray-200 text-gray-700': [0, 1].includes(idx) }"
                                     class="h-10 border border-gray-300 focus:ring-2 focus:ring-green-400 rounded-lg px-3 bg-gray-50 w-full"
                                     placeholder="ภาษาอื่น ๆ">
@@ -633,7 +686,9 @@
                                     <!-- ปุ่มลบ -->
                                     <button type="button" class="text-red-500 font-bold px-2 md:col-start-4"
                                         @click="langs.length > 2 ? langs.splice(idx, 1) : null"
-                                        x-show="langs.length > 0" title="ลบภาษา">
+                                        x-show="langs.length > 0" :disabled="langs.length === 2"
+                                        :class="langs.length === 2 ? 'opacity-40 cursor-not-allowed' : ''"
+                                        title="ลบภาษา">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </div>
@@ -648,6 +703,100 @@
                 </div>
             </div>
 
+            <!-- Section Training Course -->
+            <div class="bg-white rounded-xl shadow-md p-8 mt-8" x-data="{
+        trainings: [
+            { year: '', duration: '', topic: '', institution: '' }
+        ],
+        addRow() {
+            this.trainings.unshift({ year: '', duration: '', topic: '', institution: '' });
+        },
+        removeRow(idx) {
+            if (this.trainings.length > 1) this.trainings.splice(idx, 1);
+        }
+    }">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-bold text-green-600">การอบรม การดูงาน การฝึกงาน</h2>
+                    <button type="button"
+                        class="bg-green-500 hover:bg-green-700 text-white px-4 py-1 rounded-full flex items-center gap-1 text-sm"
+                        @click="addRow()">
+                        <i class="fa-solid fa-plus"></i> เพิ่มข้อมูล
+                    </button>
+                </div>
+
+                <!-- หมายเหตุ -->
+                <p class="text-xs text-gray-500 mt-2 ml-1">
+                    <span class="text-red-500">* </span>เรียงจากใหม่ไปเก่าสุด
+                </p>
+
+                <!-- กล่องรวมทั้งหมด -->
+                <div class="bg-gray-50 rounded-lg p-4 mt-4">
+                    <template x-for="(training, idx) in trainings" :key="idx">
+                        <!-- แถวข้อมูลแต่ละรายการ -->
+                        <div class="grid md:grid-cols-[10%_16%_30%_35%_5%] gap-2 items-end mb-4">
+                            <!-- ปี + ระยะเวลา -->
+                            <div class="col-span-1 md:col-span-2 flex gap-2">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">ปี (พ.ศ.)</label>
+                                    <input type="text"
+                                        class="w-20 h-10 md:w-full border border-gray-300 rounded px-2 py-1"
+                                        placeholder="2566" x-model="training.year">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">ระยะเวลา</label>
+                                    <input type="text"
+                                        class="w-32 h-10 md:w-36 border border-gray-300 rounded px-2 py-1"
+                                        placeholder="3 เดือน / 20 ชม." x-model="training.duration">
+                                </div>
+                            </div>
+
+                            <!-- หัวข้อ -->
+                            <div class="col-span-1 md:col-span-1">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">หลักสูตร / หัวข้อ</label>
+                                <input type="text" class="w-full h-10 border border-gray-300 rounded px-2 py-1"
+                                    placeholder="เช่น อบรมการใช้ AI ในการทำงาน" x-model="training.topic">
+                            </div>
+
+                            <!-- สถาบัน + ปุ่มลบ (มือถือ) -->
+                            <div class="col-span-1 md:col-span-1 flex items-center">
+                                <div class="flex-1">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">ชื่อสถาบัน /
+                                        เว็บไซต์</label>
+                                    <input type="text" class="w-full h-10 border border-gray-300 rounded px-2 py-1"
+                                        placeholder="สถาบัน... / เว็บไซต์..." x-model="training.institution">
+                                </div>
+                                <button type="button" class="ml-2 mt-6 text-red-500 font-bold py-2 px-2 md:hidden"
+                                    title="ลบแถว" @click="removeRow(idx)" :disabled="trainings.length === 1"
+                                    :class="trainings.length === 1 ? 'opacity-40 cursor-not-allowed' : ''">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+
+                            <!-- ปุ่มลบ: Desktop -->
+                            <button type="button"
+                                class="text-red-500 font-bold px-2 md:py-2 hidden md:block md:col-start-5" title="ลบแถว"
+                                @click="removeRow(idx)" :disabled="trainings.length === 1"
+                                :class="trainings.length === 1 ? 'opacity-40 cursor-not-allowed' : ''">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+
+            <div class="bg-white rounded-xl shadow-md p-8 space-y-6 mt-8">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-lg font-bold text-green-600">ประวัติการทำงาน</h2>
+                    <button type="button"
+                        class="bg-green-500 hover:bg-green-700 text-white px-4 py-1 rounded-full flex items-center gap-1 text-sm"
+                        @click="addRow()">
+                        <i class="fa-solid fa-plus"></i> เพิ่มข้อมูล
+                    </button>
+                </div>
+            </div>
+
             <!-- Section: Submit Button -->
             <div class="flex justify-center md:justify-end my-8">
                 <button type="submit"
@@ -658,7 +807,6 @@
         </form>
     </div>
 
-    <!-- Modern JS: Image Preview & Dynamic Table -->
     <script>
         // Modern Image Preview
         const input = document.getElementById('image1');
@@ -670,39 +818,6 @@
                 preview.src = URL.createObjectURL(this.files[0]);
                 preview.classList.remove('hidden');
                 placeholder.classList.add('hidden');
-            }
-        });
-
-        // drag and drop 
-        const container = document.getElementById('image-container');
-        container.addEventListener('dragover', e => {
-            e.preventDefault();
-            container.classList.add('ring-4', 'ring-green-400');
-        });
-        container.addEventListener('dragleave', e => {
-            e.preventDefault();
-            container.classList.remove('ring-4', 'ring-green-400');
-        });
-        container.addEventListener('drop', e => {
-            e.preventDefault();
-            container.classList.remove('ring-4', 'ring-green-400');
-            const files = e.dataTransfer.files;
-            if (files && files[0]) {
-                input.files = files;
-                preview.src = URL.createObjectURL(files[0]);
-                preview.classList.remove('hidden');
-                placeholder.classList.add('hidden');
-            }
-        });
-
-        //alert file >2mb
-        const maxSize = 2 * 1024 * 1024; // 2MB
-        document.getElementById('image1').addEventListener('change', function (e) {
-            const file = this.files[0];
-            if (file && file.size > maxSize) {
-                alert('ขนาดไฟล์ต้องไม่เกิน 2MB');
-                this.value = " "; // ลบไฟล์ที่เลือกออก
-                // หรือจะ reset preview, reset error message เพิ่มเติม
             }
         });
 
@@ -774,6 +889,7 @@
             input.value = formatted;
         }
     </script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 </body>
 
 </html>
