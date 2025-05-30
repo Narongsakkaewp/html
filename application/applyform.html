@@ -515,7 +515,7 @@
                     <button type="button"
                         class="bg-green-500 hover:bg-green-700 text-white px-4 py-1 rounded-full flex items-center gap-1 text-sm"
                         onclick="addEduRow()">
-                        <i class="fa-solid fa-plus"></i> เพิ่มแถว
+                        <i class="fa-solid fa-plus"></i> เพิ่มข้อมูล
                     </button>
                 </div>
                 <p class="text-xs text-gray-500 mt-2 ml-1"><span class="text-red-500">* </span>เรียงจากใหม่ไปเก่าสุด</p>
@@ -607,7 +607,7 @@
                             <button type="button"
                                 class="bg-green-500 hover:bg-green-700 text-white px-4 py-1 rounded-full flex items-center gap-1 text-sm mt-2"
                                 @click="programs.push({ name: '', level: '' })">
-                                <i class="fa-solid fa-plus"></i> เพิ่มโปรแกรม
+                                <i class="fa-solid fa-plus"></i> เพิ่มข้อมูล
                             </button>
                         </div>
 
@@ -651,7 +651,7 @@
                             <button type="button"
                                 class="bg-green-500 hover:bg-green-700 text-white px-4 py-1 rounded-full flex items-center gap-1 text-sm mt-2"
                                 @click="langs.push({ name: '', level: '', file: null })">
-                                <i class="fa-solid fa-plus"></i> เพิ่มภาษา
+                                <i class="fa-solid fa-plus"></i> เพิ่มข้อมูล
                             </button>
                         </div>
                         <template x-for="(lang, idx) in langs" :key="idx">
@@ -705,16 +705,16 @@
 
             <!-- Section Training Course -->
             <div class="bg-white rounded-xl shadow-md p-8 mt-8" x-data="{
-        trainings: [
-            { year: '', duration: '', topic: '', institution: '' }
-        ],
-        addRow() {
-            this.trainings.unshift({ year: '', duration: '', topic: '', institution: '' });
-        },
-        removeRow(idx) {
-            if (this.trainings.length > 1) this.trainings.splice(idx, 1);
-        }
-    }">
+                    trainings: [
+                        { year: '', duration: '', topic: '', institution: '' }
+                    ],
+                    addRow() {
+                        this.trainings.push({ year: '', duration: '', topic: '', institution: '' });
+                    },
+                    removeRow(idx) {
+                        if (this.trainings.length > 1) this.trainings.splice(idx, 1);
+                    }
+                }">
                 <!-- Header -->
                 <div class="flex items-center justify-between mb-4">
                     <h2 class="text-lg font-bold text-green-600">การอบรม การดูงาน การฝึกงาน</h2>
@@ -725,7 +725,6 @@
                     </button>
                 </div>
 
-                <!-- หมายเหตุ -->
                 <p class="text-xs text-gray-500 mt-2 ml-1">
                     <span class="text-red-500">* </span>เรียงจากใหม่ไปเก่าสุด
                 </p>
@@ -740,13 +739,13 @@
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">ปี (พ.ศ.)</label>
                                     <input type="text"
-                                        class="w-20 h-10 md:w-full border border-gray-300 rounded px-2 py-1"
+                                        class="w-20 h-10 md:w-full border border-gray-300 focus:ring-2 focus:ring-green-400 rounded-lg px-2 py-1"
                                         placeholder="2566" x-model="training.year">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">ระยะเวลา</label>
                                     <input type="text"
-                                        class="w-32 h-10 md:w-36 border border-gray-300 rounded px-2 py-1"
+                                        class="w-32 h-10 md:w-36 border border-gray-300 focus:ring-2 focus:ring-green-400 rounded-lg px-2 py-1"
                                         placeholder="3 เดือน / 20 ชม." x-model="training.duration">
                                 </div>
                             </div>
@@ -754,7 +753,8 @@
                             <!-- หัวข้อ -->
                             <div class="col-span-1 md:col-span-1">
                                 <label class="block text-sm font-medium text-gray-700 mb-1">หลักสูตร / หัวข้อ</label>
-                                <input type="text" class="w-full h-10 border border-gray-300 rounded px-2 py-1"
+                                <input type="text"
+                                    class="w-full h-10 border border-gray-300 focus:ring-2 focus:ring-green-400 rounded-lg px-2 py-1"
                                     placeholder="เช่น อบรมการใช้ AI ในการทำงาน" x-model="training.topic">
                             </div>
 
@@ -763,7 +763,8 @@
                                 <div class="flex-1">
                                     <label class="block text-sm font-medium text-gray-700 mb-1">ชื่อสถาบัน /
                                         เว็บไซต์</label>
-                                    <input type="text" class="w-full h-10 border border-gray-300 rounded px-2 py-1"
+                                    <input type="text"
+                                        class="w-full h-10 border border-gray-300 focus:ring-2 focus:ring-green-400 rounded-lg px-2 py-1"
                                         placeholder="สถาบัน... / เว็บไซต์..." x-model="training.institution">
                                 </div>
                                 <button type="button" class="ml-2 mt-6 text-red-500 font-bold py-2 px-2 md:hidden"
@@ -785,9 +786,26 @@
                 </div>
             </div>
 
-
-            <div class="bg-white rounded-xl shadow-md p-8 space-y-6 mt-8">
-                <div class="flex items-center justify-between mb-2">
+            <!-- Section Work Experience ประวัติการทำงาน-->
+            <div class="bg-white rounded-xl shadow-md p-8 mt-8" x-data="{
+                    works: [
+                        {
+                            company: '', position: '', responsibility: '', duration: '',
+                            salary: '', otherIncome: '', totalIncome: '', reason: ''
+                        }
+                    ],
+                    addRow() {
+                        this.works.push({
+                            company: '', position: '', responsibility: '', duration: '',
+                            salary: '', otherIncome: '', totalIncome: '', reason: ''
+                        });
+                    },
+                    removeRow(idx) {
+                        if (this.works.length > 1) this.works.splice(idx, 1);
+                    }
+                }">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-4">
                     <h2 class="text-lg font-bold text-green-600">ประวัติการทำงาน</h2>
                     <button type="button"
                         class="bg-green-500 hover:bg-green-700 text-white px-4 py-1 rounded-full flex items-center gap-1 text-sm"
@@ -795,7 +813,80 @@
                         <i class="fa-solid fa-plus"></i> เพิ่มข้อมูล
                     </button>
                 </div>
+
+                <p class="text-xs text-gray-500 mt-2 ml-1">
+                    <span class="text-red-500">* </span>เรียงจากใหม่ไปเก่าสุด
+                </p>
+
+                <!-- กล่องพื้นหลังเทา รวมรายการทั้งหมด -->
+                <div class="bg-gray-50 rounded-lg p-4 mt-4 space-y-6">
+                    <template x-for="(work, idx) in works" :key="idx">
+                        <!-- แถวข้อมูลแต่ละรายการ -->
+                        <div class="grid gap-4">
+                            <!-- สถานที่ทำงาน + ตำแหน่ง -->
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">สถานที่ทำงาน</label>
+                                    <input type="text" class="w-full h-10 border border-gray-300 rounded-lg px-2 py-1"
+                                        x-model="work.company">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">ตำแหน่ง</label>
+                                    <input type="text" class="w-full h-10 border border-gray-300 rounded-lg px-2 py-1"
+                                        x-model="work.position">
+                                </div>
+                            </div>
+
+                            <!-- งานที่รับผิดชอบ -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">งานที่รับผิดชอบ</label>
+                                <input type="text" class="w-full h-10 border border-gray-300 rounded-lg px-2 py-1"
+                                    x-model="work.responsibility">
+                            </div>
+
+                            <!-- ระยะเวลา + เงินเดือน + รายได้อื่นๆ -->
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">ระยะเวลาการทำงาน</label>
+                                    <input type="text" class="w-full h-10 border border-gray-300 rounded-lg px-2 py-1"
+                                        placeholder="เช่น ม.ค. 2564 - ธ.ค. 2566" x-model="work.duration">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">เงินเดือนล่าสุด</label>
+                                    <input type="text" class="w-full h-10 border border-gray-300 rounded-lg px-2 py-1"
+                                        x-model="work.salary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">รายได้อื่น ๆ</label>
+                                    <input type="text" class="w-full h-10 border border-gray-300 rounded-lg px-2 py-1"
+                                        x-model="work.otherIncome">
+                                </div>
+                            </div>
+
+                            <!-- รายได้สุทธิ + สาเหตุที่ออก + ปุ่มลบ -->
+                            <div class="grid md:grid-cols-[1fr_2fr_auto] gap-4 items-end">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">รายได้สุทธิ</label>
+                                    <input type="text" class="w-full h-10 border border-gray-300 rounded-lg px-2 py-1"
+                                        placeholder="รวมทั้งหมดต่อเดือน" x-model="work.totalIncome">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">สาเหตุที่ออก</label>
+                                    <input type="text" class="w-full h-10 border border-gray-300 rounded-lg px-2 py-1"
+                                        placeholder="เช่น หมดสัญญา, เปลี่ยนสายงาน" x-model="work.reason">
+                                </div>
+                                <!-- ปุ่มลบ -->
+                                <button type="button" class="text-red-500 font-bold px-2 py-2 self-end" title="ลบแถว"
+                                    @click="removeRow(idx)" :disabled="works.length === 1"
+                                    :class="works.length === 1 ? 'opacity-40 cursor-not-allowed' : ''">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
             </div>
+
 
             <!-- Section: Submit Button -->
             <div class="flex justify-center md:justify-end my-8">
