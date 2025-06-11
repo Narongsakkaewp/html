@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Application Form</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.io/logo_vby.png" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Thai:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/78659597ce.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md hidden md:flex flex-col items-center py-6">
+        <nav class="mt-6 w-full px-4 space-y-2">
+            <a href="#" class="flex items-center gap-2 px-4 py-2 text-gray-700 rounded hover:bg-green-100">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </a>
+            <a href="#" class="flex items-center gap-2 px-4 py-2 text-gray-700 rounded hover:bg-green-100">
+                <i class="fa-solid fa-user-check"></i> ข้อมูลเช็คชื่อเข้าทำงาน
+            </a>
+            <a href="#" class="flex items-center gap-2 px-4 py-2 text-gray-700 rounded hover:bg-green-100">
+                <i class="fa-solid fa-newspaper"></i> ข้อมูลข่าวสาร
+            </a>
+            <a href="#" class="flex items-center gap-2 px-4 py-2 text-gray-700 rounded hover:bg-green-100">
+                <i class="fa-solid fa-graduation-cap"></i> การอบรม
+            </a>
+            <a href="#" class="flex items-center gap-2 px-4 py-2 text-gray-700 rounded hover:bg-green-100">
+                <i class="fa-solid fa-users"></i> บุคลากรบริษัท
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 p-6">
+        <div class="max-w-4xl mx-auto space-y-6">
+            <!-- Header -->
+            <div class="bg-white rounded-xl shadow-md p-6 flex items-center justify-between">
+                <h2 class="text-xl font-semibold text-gray-700">
+                    ข้อมูลส่วนตัว
+                </h2>
+                <img src="../assets/logo_vby.png" alt="logo" class="h-12">
+            </div>
+
+            <!-- Personal Info -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <img src="../assets/profile.jpg" alt="Profile" class="w-36 h-36 rounded-full border mb-4">
+                        <div class="text-center space-y-1">
+                            <div class="font-semibold text-gray-800">ID : 6701032</div>
+                            <div class="text-sm text-gray-600">ชื่อ-นามสกุล</div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><span class="font-semibold">ชื่อ - นามสกุล:</span> </p>
+                        <p><span class="font-semibold">วันที่เริ่มงาน:</span> </p>
+                        <p><span class="font-semibold">อายุงาน:</span> </p>
+                        <p><span class="font-semibold">เบอร์โทร:</span> </p>
+                        <p><span class="font-semibold">ที่อยู่:</span> </p>
+                    </div>
+                    <div>
+                        <p><span class="font-semibold">วันเกิด:</span> </p>
+                        <p><span class="font-semibold">อายุ:</span> </p>
+                        <p><span class="font-semibold">แผนก:</span> Information Technology (IT)</p>
+                        <p><span class="font-semibold">ตำแหน่ง:</span>Programmer</p>
+                        <p><span class="font-semibold">สถานะ:</span> <span
+                                class="bg-green-500 text-white px-2 py-1 rounded text-sm">พนักงาน</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
